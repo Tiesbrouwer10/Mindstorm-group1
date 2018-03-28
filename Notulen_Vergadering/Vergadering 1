@@ -2,6 +2,10 @@ NOTULEN VERGADERING (1)
 notulist: Matthies Brouwer
 
 1.  OPENING VERGADERING
+ 
+28/03/2018 - 12:45
+
+
 
 2.  AGENDA
 1.      Opening Vergadering         
@@ -13,11 +17,27 @@ notulist: Matthies Brouwer
 7.      TaakVerdeling
 8.      Planning
 9.      Compli Frustri
-10.      wnwozmhl
+10.     wnwozmhl
 11.     Einde Vergadering
 
 
-2. NOTULEN VORIGE VERGADERING
 3. NOTULEN VORIGE VERGADERING
 
-1. 
+Dit is de eerste vergadering.
+
+4. PROJECT EISEN
+
+De robot moet een lijn kunnen volgen.
+De robot moet kunnen stoppen als een object op zijn weg zit.
+De robot moet de lijn kunnen terugvinden
+De robot moet vloeiend rijden. Niet schokkend
+De robot moet op een matrix een andere route kunnen vinden.
+De robot moet op een matrix rijden.
+De robot moet geluid afspelen bij het rijden.
+
+
+
+5. DEELPROBLEMEN BEDENKEN
+
+Deelprobleem 1:
+Als 1 van de 2 lichtsensoren zwart opmerkt dan gaat hij zich aanpassen zodat de 2 sensoren weer allebei wit zien
