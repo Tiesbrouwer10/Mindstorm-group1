@@ -13,12 +13,11 @@ notulist: Matthies Brouwer
 3.      Notulen vorige Vergadering
 4.      ProjectEisen
 5.      Deelproblemen Bedenken
-6.      To Do list
-7.      TaakVerdeling
-8.      Planning
-9.      Compli Frustri
-10.     wnwozmhl
-11.     Einde Vergadering
+6.      TaakVerdeling
+7.      Planning
+8.      Compli Frustri
+9.      wnwozmhl
+10.     Einde Vergadering
 
 
 3. NOTULEN VORIGE VERGADERING
@@ -40,4 +39,31 @@ De robot moet geluid afspelen bij het rijden.
 5. DEELPROBLEMEN BEDENKEN
 
 Deelprobleem 1:
-Als 1 van de 2 lichtsensoren zwart opmerkt dan gaat hij zich aanpassen zodat de 2 sensoren weer allebei wit zien
+Als 1 van de 2 lichtsensoren zwart opmerkt dan gaat hij zich aanpassen zodat de 2 sensoren weer allebei wit zien.
+
+Deelprobleem 2:
+De robot moet rechtdoor rijden tenzij er een interupt is.
+
+Deelprobleem 3:
+Het hoofd moet om het obstakel heen draaien/kijken.
+
+Deelprobleem 4:
+De robot moet weten hoe ver de wielen moeten draaien om 180* te draaien
+
+Deelprobleem 5:
+De robot moet een matrix kunnen onthouden.
+
+Deelprobleem 6:
+De robot de user input in queue kunnen zetten.
+
+TOEKOMSTIGE DEELPROBLEMEN:
+
+
+6. TAAK VERDELING
+BrickPi installeren: Matthies
+Lichtsensoren: Tony, Niels
+Ultra sensor: Matthies en Marc
+Kleine functies: Jasper
+Volgende vergadering inplannen en voorbereiden: Matthies
+Lego bouwen: Marc,Niels,Jasper
+
