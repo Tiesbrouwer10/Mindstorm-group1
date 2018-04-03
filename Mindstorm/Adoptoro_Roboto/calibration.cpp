@@ -5,6 +5,8 @@ using namespace std;
 
 BrickPi3 BP;
 
+int error;
+
 void sensorCalibration(){
 	
 	int BWValue = 0;
