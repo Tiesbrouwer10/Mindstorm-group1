@@ -9,8 +9,8 @@ BrickPi3 BP2;
 
 void sensorCalibration(){
 	
-	int BWValue = 0;
-	int CValue = 0;
+	int BWValue;
+	int CValue;
 
 	BP2.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON); // Blacc/White Sensor Port Defenition
 	BP2.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL);	// Color Sensor Port Defenition
