@@ -3,8 +3,6 @@
 
 using namespace std;
 
-BrickPi3 BP;
-
 // Signal handler that will be called when Ctrl+C is pressed to stop the program.
 
 void exitSignalHandler(int signo){
