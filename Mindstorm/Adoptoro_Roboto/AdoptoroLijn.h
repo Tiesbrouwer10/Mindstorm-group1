@@ -9,6 +9,8 @@ using namespace std;
 #include <iostream>
 #include <unistd.h>
 #include <vector>
+#include <iomanip>
+#include <signal.h>
 
 //==================================
 // Header content
