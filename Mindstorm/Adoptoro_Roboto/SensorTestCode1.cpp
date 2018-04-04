@@ -6,6 +6,10 @@ using namespace std;
 BrickPi3 BPafs;
 BrickPi3 BPmot;
 
+void stop(void){
+    BPmot.set_motor_power(PORT_B, 0);
+    BPmot.set_motor_power(PORT_C, 0);
+}
 
 void ObjectInDeWeg(){
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
@@ -13,9 +17,9 @@ void ObjectInDeWeg(){
         BPmot.set_motor_position_relative(PORT_B, -450);
         BPmot.set_motor_position_relative(PORT_C, 450); //De robot draait hier de hele robot 90 graden
         sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
-        BPmot,set_motor_power(PORT_B, 20); 
-        BPmot,set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
-        while(BPafs.get_sensor(PORT_1, ultrasonic <=100){ // de while loop bestaat totdat hij langs het object is
+        BPmot.set_motor_power(PORT_B, 20); 
+        BPmot.set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
+        while(BPafs.get_sensor(PORT_1, Ultrasonic <=100)){ // de while loop bestaat totdat hij langs het object is
         }
         
         sleep(1);
@@ -24,10 +28,10 @@ void ObjectInDeWeg(){
         BPmot.set_motor_position_relative(PORT_B, 450);     //motoren draaien terug naar de tweede positie
         BPmot.set_motor_position_relative(PORT_C, -450);            
         sleep(3);
-        BPmot,set_motor_power(PORT_B, 20);
-        BPmot,set_motor_power(PORT_C, 20);    
+        BPmot.set_motor_power(PORT_B, 20);
+        BPmot.set_motor_power(PORT_C, 20);    
         sleep(1);
-        while(BPafs.get_sensor(PORT_1, ultrasonic <=100){       //while loop gaat weer door tot het object weg is
+        while(BPafs.get_sensor(PORT_1, Ultrasonic <=100)){       //while loop gaat weer door tot het object weg is
         }
         
         sleep(2);
@@ -37,8 +41,8 @@ void ObjectInDeWeg(){
         BPmot.set_motor_position_relative(PORT_C, 450);
         BPmot.set_motor_position(PORT_A, 1); 
         sleep(1);
-        BPmot,set_motor_power(PORT_B, 20);
-        BPmot,set_motor_power(PORT_C, 20);     
+        BPmot.set_motor_power(PORT_B, 20);
+        BPmot.set_motor_power(PORT_C, 20);     
 }
 
 void SensorAfstand(){
@@ -67,7 +71,6 @@ void SensorAfstand(){
 
 
 int main(){
-    signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
     
     BPafs.detect();
     BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
