@@ -5,8 +5,6 @@ using namespace std;
 
 int error;
 
-BrickPi3 BP2;
-
 void sensorCalibration(){
 	
 	int BWValue;
