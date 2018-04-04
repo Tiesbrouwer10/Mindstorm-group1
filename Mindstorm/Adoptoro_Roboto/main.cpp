@@ -21,7 +21,7 @@ int main(){
 	
 	while(true){
 		sensorCalibration();
-		break;
+
 	}
 	
 	
