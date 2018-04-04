@@ -47,7 +47,8 @@ void ObjectInDeWeg(){
         BPmot.set_motor_position(PORT_A, 1); 
         sleep(1);
         BPmot.set_motor_power(PORT_B, 20);
-        BPmot.set_motor_power(PORT_C, 20);     
+        BPmot.set_motor_power(PORT_C, 20);
+        cout << "hij komt ook aan het einde" << endl;
 }
 
 void SensorAfstand(){
