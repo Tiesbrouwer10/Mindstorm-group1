@@ -21,7 +21,7 @@ void sensorCalibration(){
 	sleep(2);
 
 	error = 0;
-	if(unsigned int i = 0; i < 10; i++){
+	for(unsigned int i = 0; i < 10; i++){
 		if(BP2.get_sensor(PORT_2, Light) == 0){
 			BWValue += Light.reflected;
 		}
