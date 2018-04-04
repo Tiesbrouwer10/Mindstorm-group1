@@ -12,8 +12,7 @@ void stop(void){
 }
 
 void ObjectInDeWeg(){
-        BPafs.detect();
-        BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
+
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
         BPmot.set_motor_position(PORT_A, 90);            //De robot draait de afstandssensor 90 gradenrichting het object
@@ -61,7 +60,7 @@ void SensorAfstand(){
         }
     }
     if(keuze == 'G'){       //deze functie is om de eigenlijke functie te testen
-        FOR(;;){
+        for(;;){
             cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
             if(BPafs.get_sensor(PORT_1, Ultrasonic2) <= 50){
                 ObjectInDeWeg();
@@ -75,7 +74,9 @@ void SensorAfstand(){
 
 int main(){
     
-
+    BPafs.detect();
+    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
+    sensor_ultrasonic_t Ultrasonic2;
     SensorAfstand();
     
     return 0;
