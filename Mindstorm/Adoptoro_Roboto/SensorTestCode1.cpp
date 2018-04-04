@@ -12,6 +12,7 @@ void stop(void){
 }
 
 void ObjectInDeWeg(){
+    cout << "hij komt in objecetindeweg" << endl;
     BPafs.detect();
     BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
     sensor_ultrasonic_t Ultrasonic2;
