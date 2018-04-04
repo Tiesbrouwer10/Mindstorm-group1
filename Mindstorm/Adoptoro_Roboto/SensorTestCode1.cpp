@@ -67,7 +67,7 @@ void SensorAfstand(){
     if(keuze == 'G'){       //deze functie is om de eigenlijke functie te testen
         while(true){
             cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
-            if(BPafs.get_sensor(PORT_1, Ultrasonic2) <= 10){
+            if(BPafs.get_sensor(PORT_1, Ultrasonic2) <= 0.9){
                 cout << "l" << endl;
                 ObjectInDeWeg();
             }
