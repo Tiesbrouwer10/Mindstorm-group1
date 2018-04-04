@@ -7,9 +7,9 @@ int error;
 
 void sensorCalibration(){
 	
-	int BWValue;
-	int CValue;
-	int placebo;
+	int BWValue = 0;
+	int CValue = 0;
+	int placebo = 0;
 	
 	BrickPi3 BP2;
 	
