@@ -14,7 +14,7 @@ void stop(void){
 void ObjectInDeWeg(){
     BPafs.detect();
     BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
-    sensor_ultrasonic_t Ultrasonic;
+    sensor_ultrasonic_t Ultrasonic2;
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
         BPmot.set_motor_position(PORT_A, 90);            //De robot draait de afstandssensor 90 gradenrichting het object
@@ -23,7 +23,7 @@ void ObjectInDeWeg(){
         sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
         BPmot.set_motor_power(PORT_B, 20); 
         BPmot.set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
-        while(BPafs.get_sensor(PORT_1, Ultrasonic <=100)){ // de while loop bestaat totdat hij langs het object is
+        while(BPafs.get_sensor(PORT_1, Ultrasonic2)<=100){ // de while loop bestaat totdat hij langs het object is
         }
         
         sleep(1);
@@ -35,7 +35,7 @@ void ObjectInDeWeg(){
         BPmot.set_motor_power(PORT_B, 20);
         BPmot.set_motor_power(PORT_C, 20);    
         sleep(1);
-        while(BPafs.get_sensor(PORT_1, Ultrasonic <=100)){       //while loop gaat weer door tot het object weg is
+        while(BPafs.get_sensor(PORT_1, Ultrasonic2)<=100){       //while loop gaat weer door tot het object weg is
         }
         
         sleep(2);
@@ -50,13 +50,15 @@ void ObjectInDeWeg(){
 }
 
 void SensorAfstand(){
-    
+    BPafs.detect();
+    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
+    sensor_ultrasonic_t Ultrasonic2;
   char keuze;
     cout << "T voor testen, G voor gebruiken:\t" << endl;
     cin >> keuze;
     if(keuze == 'T'){       //deze functie is alleen voor het testen van de sensor
         for(;;){
-            if(BPafs.get_sensor(PORT_1, Ultrasonic) == 0){
+            if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
                 cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
             }
         }
@@ -81,3 +83,4 @@ int main(){
     
     return 0;
 }
+
