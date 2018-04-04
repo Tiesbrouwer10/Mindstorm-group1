@@ -67,7 +67,7 @@ void SensorAfstand(){
         while(true){
             cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
             if(BPafs.get_sensor(PORT_1, Ultrasonic2) <= 10){
-                cout << l << endl;
+                cout << "l" << endl;
                 ObjectInDeWeg();
             }
         }
