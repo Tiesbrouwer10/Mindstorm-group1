@@ -9,7 +9,6 @@ void sensorCalibration(){
 	
 	int BWValue = 0;
 	int CValue = 0;
-	int placebo = 0;
 	
 //	BrickPi3 BP2;
 	
@@ -21,12 +20,6 @@ void sensorCalibration(){
 	
 	error = 0;
 	
-	if(BP.get_sensor(PORT_2, Light) == 0){
-		placebo += Light.reflected;
-	}
-	if(BP.get_sensor(PORT_3,Color) == 0){
-		placebo += Color.reflected_red;
-	}
 	
 	sleep(2);
 	
