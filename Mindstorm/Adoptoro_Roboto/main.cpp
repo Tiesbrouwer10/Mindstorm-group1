@@ -13,7 +13,7 @@ using namespace std;
 BrickPi3 BP;
 
 int main(){
-
+	sleep(2);
 	signal(SIGINT, exitSignalHandler); // Register the exit function for Ctrl+C
 	
 	BP.detect(); // Make sure that thye BrickPi3 is communicating and that the firmware is compatible with the drivers
