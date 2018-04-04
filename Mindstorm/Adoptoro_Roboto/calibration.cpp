@@ -15,7 +15,7 @@ void sensorCalibration(){
 	
 	sensor_light_t		Light;
 	sensor_color_t		Color;
-
+	sleep(2);
 	error = 0;
 	for(unsigned int i = 0; i < 10; i++){
 		if(BP2.get_sensor(PORT_2, Light) == 0){
