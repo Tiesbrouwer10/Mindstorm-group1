@@ -12,7 +12,9 @@ void stop(void){
 }
 
 void ObjectInDeWeg(){
-
+    BPafs.detect();
+    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
+    sensor_ultrasonic_t Ultrasonic2;
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
         BPmot.set_motor_position(PORT_A, 90);            //De robot draait de afstandssensor 90 gradenrichting het object
@@ -74,9 +76,7 @@ void SensorAfstand(){
 
 int main(){
     
-    BPafs.detect();
-    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
-    sensor_ultrasonic_t Ultrasonic2;
+
     SensorAfstand();
     
     return 0;
