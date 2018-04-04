@@ -34,6 +34,7 @@ void ObjectInDeWeg(){
         sleep(1);
         BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
         BPmot.set_motor_position_relative(PORT_C, 450);
+        BPmot.set_motor_position(PORT_A, 1); 
         sleep(1);
         BPmot,set_motor_power(PORT_B, 20);
         BPmot,set_motor_power(PORT_C, 20);     
