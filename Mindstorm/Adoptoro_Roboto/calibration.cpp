@@ -37,7 +37,7 @@ void sensorCalibration(){
 	BWValue /= 10;
 	CValue /= 10;
 
-	cout << "Black/White Sensor Reflected: " << BWValue << "\n";
+	cout << "\nBlack/White Sensor Reflected: " << BWValue << "\n";
 	cout << "Color Sensor Reflected: " << CValue << "\n";
 	cout << "DONE" << '\n';
 	
