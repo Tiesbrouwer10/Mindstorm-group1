@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <iostream>
 #include "BrickPi3.h"
+#include <unistd.h>
 using namespace std;
 BrickPi3 BPafs;
-BrickPi3 BPmot
+BrickPi3 BPmot;
 
 
 void ObjectInDeWeg(){
