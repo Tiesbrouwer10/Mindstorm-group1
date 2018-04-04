@@ -11,30 +11,30 @@ void sensorCalibration(){
 	int CValue = 0;
 	int placebo = 0;
 	
-	BrickPi3 BP2;
+//	BrickPi3 BP2;
 	
-	BP2.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON); // Blacc/White Sensor Port Defenition
-	BP2.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL); // Color Sensor Port Defenition
+	BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON); // Blacc/White Sensor Port Defenition
+	BP.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL); // Color Sensor Port Defenition
 	
 	sensor_light_t		Light;
 	sensor_color_t		Color;
 	
 	error = 0;
 	
-	if(BP2.get_sensor(PORT_2, Light) == 0){
+	if(BP.get_sensor(PORT_2, Light) == 0){
 		placebo += Light.reflected;
 	}
-	if(BP2.get_sensor(PORT_3,Color) == 0){
+	if(BP.get_sensor(PORT_3,Color) == 0){
 		placebo += Color.reflected_red;
 	}
 	
 	sleep(2);
 	
 	for(unsigned int i = 0; i < 10; i++){
-		if(BP2.get_sensor(PORT_2, Light) == 0){
+		if(BP.get_sensor(PORT_2, Light) == 0){
 			BWValue += Light.reflected;
 		}
-		if(BP2.get_sensor(PORT_3,Color) == 0){
+		if(BP.get_sensor(PORT_3,Color) == 0){
 			CValue += Color.reflected_red;
 		}
 	
