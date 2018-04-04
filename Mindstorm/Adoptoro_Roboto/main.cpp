@@ -11,6 +11,7 @@
 using namespace std; 
 
 BrickPi3 BP;
+BrickPi3 BP2;
 
 int main(){
 
