@@ -30,7 +30,7 @@ void sensorCalibration(){
 	cout << "Color Sensor Reflected: " << CValue << "\n";
 
 		
-	sleep(1);
+	sleep(0.1);
 		
 	
 }
