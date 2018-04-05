@@ -30,7 +30,7 @@ void lineRider(borderValues calibratedInputs){
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
 					BPLine.set_motor_power(PORT_C, 0);
-					BPLine.set_motor_power(PORT_B, 301);
+					BPLine.set_motor_power(PORT_B, 30);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
 					BPLine.set_motor_power(PORT_B, 30);
