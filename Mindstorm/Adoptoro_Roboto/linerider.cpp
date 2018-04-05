@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int error;
+int errorLine;
 
 void lineRider(borderValues calibratedInputs){
 	
@@ -11,7 +11,7 @@ void lineRider(borderValues calibratedInputs){
 	sensor_light_t		Light;
 	sensor_color_t		Color;
 	
-	error = 0;
+	errorLine = 0;
 	
 	while(true){
 		// Get value from sensors
