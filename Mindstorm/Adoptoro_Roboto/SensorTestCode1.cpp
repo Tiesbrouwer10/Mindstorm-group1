@@ -61,7 +61,10 @@ void SensorAfstand(){
     if(keuze == 'T'){       //deze functie is alleen voor het testen van de sensor
         for(;;){
             if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
-                cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
+                if(Ultrasonic2.cm >=20){
+                    cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
+                    
+                }
             }
         }
     }
