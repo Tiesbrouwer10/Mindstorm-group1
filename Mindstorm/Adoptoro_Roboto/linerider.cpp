@@ -27,16 +27,16 @@ void lineRider(borderValues calibratedInputs){
 				cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 30);
+					BPLine.set_motor_power(PORT_C, 50);
 					BPLine.set_motor_power(PORT_B, 0);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
 					BPLine.set_motor_power(PORT_B, 0);
-					BPLine.set_motor_power(PORT_C, 30);
+					BPLine.set_motor_power(PORT_C, 50);
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, 20);
-					BPLine.set_motor_power(PORT_B, 20);
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
 				}
 				sleep(0.1);
 			}
