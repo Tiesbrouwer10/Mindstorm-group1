@@ -5,7 +5,7 @@ using namespace std;
 
 int error;
 
-void sensorCalibration(){
+int sensorCalibration(){
 	
 	int BWValue = 0;
 	int CValue = 0;
@@ -51,6 +51,14 @@ void sensorCalibration(){
 	cout << "\nBlack/White Sensor Reflected: " << BWValue << "\n";
 	cout << "Color Sensor Reflected: " << CValue << "\n";
 	cout << "DONE" << '\n';
+	
+	// Setting Border Values
+	borderValues.calibratedInputs;
+	calibratedInputs.borderValueBW = BWValue * 1.25;
+	calibratedInputs.borderValueC = CValue * 0.75;
+
+	
+	return calibratedInputs;
 	
 }
 
