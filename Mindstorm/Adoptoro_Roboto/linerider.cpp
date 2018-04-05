@@ -29,10 +29,12 @@ void lineRider(borderValues calibratedInputs){
 				cout << "SLEEP DONE\n";
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 10);
+					BPLine.set_motor_power(PORT_C, 0);
+					BPLine.set_motor_power(PORT_B, 301);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, 10);
+					BPLine.set_motor_power(PORT_B, 30);
+					BPLine.set_motor_power(PORT_C, 0);
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 20);
