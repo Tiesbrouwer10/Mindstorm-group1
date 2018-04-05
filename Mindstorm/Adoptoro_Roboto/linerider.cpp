@@ -17,7 +17,8 @@ void lineRider(borderValues calibratedInputs){
 		BPLine.get_sensor(PORT_3,Color);
 		cout << "BW SCANNED: " << Light.reflected << " BWVALUE = " << calibratedInputs.borderValueBW << '\n';
 		cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
-		
+		sleep(1);
+		cout << "SLEEP DONE\n";
 		// Ride for 1 step
 		if(Light.reflected > calibratedInputs.borderValueBW){
 			BPLine.set_motor_power(PORT_C, 10);
@@ -29,6 +30,6 @@ void lineRider(borderValues calibratedInputs){
 			BPLine.set_motor_power(PORT_C, 20);
 			BPLine.set_motor_power(PORT_B, 20);
 		}
-		sleep(0.5);
+		
 	}
 }
