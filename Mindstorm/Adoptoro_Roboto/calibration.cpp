@@ -5,7 +5,7 @@ using namespace std;
 
 int error;
 
-int sensorCalibration(){
+borderValues sensorCalibration(){
 	
 	int BWValue = 0;
 	int CValue = 0;
