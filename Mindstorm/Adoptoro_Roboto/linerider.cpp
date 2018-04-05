@@ -8,6 +8,8 @@ using namespace std;
 void lineRider(borderValues calibratedInputs){
 	
 	BrickPi3 BPLine;
+	sensor_light_t		Light;
+	sensor_color_t		Color;
 	
 	while(true){
 		// Get value from sensors
