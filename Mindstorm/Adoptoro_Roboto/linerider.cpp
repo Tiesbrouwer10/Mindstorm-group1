@@ -2,10 +2,11 @@
 
 using namespace std;
 
-BrickPi3 BPLine;
+
 
 void lineRider(borderValues calibratedInputs){
 	
+	BrickPi3 BPLine;
 	
 	while(true){
 		// Get value from sensors
