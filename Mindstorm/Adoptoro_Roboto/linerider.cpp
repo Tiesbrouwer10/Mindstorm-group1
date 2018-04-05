@@ -16,8 +16,6 @@ void lineRider(borderValues calibratedInputs){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	int BWAccelerator = 60;
-	int CAccelerator = 60;
 	
 	while(true){
 		// Get value from sensors
@@ -29,20 +27,18 @@ void lineRider(borderValues calibratedInputs){
 				cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 20);
-					BPLine.set_motor_power(PORT_B, BWAccelerator);
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, -20);
 					BWAccelerator += 2;
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, 20);
-					BPLine.set_motor_power(PORT_C, CAccelerator);
+					BPLine.set_motor_power(PORT_B, 40);
+					BPLine.set_motor_power(PORT_C, -20);
 					CAccelerator += 2;
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
-					BWAccelerator = 60;
-					CAccelerator = 60;
 				}
 			}
 		}
