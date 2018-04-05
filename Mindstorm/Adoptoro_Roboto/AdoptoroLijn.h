@@ -9,6 +9,7 @@ using namespace std;
 #include <iostream>
 #include <unistd.h>
 #include <vector>
+#include <signal.h>
 
 //==================================
 // Structs 
