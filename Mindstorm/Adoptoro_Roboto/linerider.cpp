@@ -38,7 +38,7 @@ void lineRider(borderValues calibratedInputs){
 					
 					if(BWAccelerator <= 125 & BWBrake >= -125){
 							BWAccelerator += 4;
-							BWBrake -= 0.25;
+							BWBrake -= 1;
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
@@ -47,14 +47,14 @@ void lineRider(borderValues calibratedInputs){
 					
 					if(CAccelerator <= 125 & CBrake >= -125){
 						CAccelerator += 4;
-						CBrake -= 0.25;
+						CBrake -= 1;
 					}
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, 30);
-					BPLine.set_motor_power(PORT_B, 30);
-					BWAccelerator = 40;
-					CAccelerator = 40;
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
+					BWAccelerator = 50;
+					CAccelerator = 50;
 					BWBrake = 20;
 					CBrake = 20;
 				}
