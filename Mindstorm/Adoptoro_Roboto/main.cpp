@@ -19,9 +19,9 @@ int main(){
 	BPMain.detect(); // Make sure that the BrickPi3 is communicating and that the firmware is compatible with the drivers
 	
 	// Get values from sensors
-	sensorCalibration();
+	// sensorCalibration();
 	
 	// Start lineriding function
-	lineRider(calibratedInputs);
+	lineRider(sensorCalibration());
 	
 }
