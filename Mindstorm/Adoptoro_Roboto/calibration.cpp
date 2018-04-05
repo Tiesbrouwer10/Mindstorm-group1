@@ -53,7 +53,7 @@ borderValues sensorCalibration(){
 	cout << "DONE" << '\n';
 	
 	// Setting Border Values
-	borderValues.calibratedInputs;
+	borderValues calibratedInputs;
 	calibratedInputs.borderValueBW = BWValue * 1.25;
 	calibratedInputs.borderValueC = CValue * 0.75;
 
