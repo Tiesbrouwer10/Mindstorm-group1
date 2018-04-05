@@ -37,8 +37,8 @@ void lineRider(borderValues calibratedInputs){
 					BPLine.set_motor_power(PORT_B, BWAccelerator);
 					
 					if(BWAccelerator <= 125 & BWBrake >= -125){
-							BWAccelerator += 2;
-							BWBrake -= 2;
+							BWAccelerator += 4;
+							BWBrake -= 0.25;
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
@@ -46,8 +46,8 @@ void lineRider(borderValues calibratedInputs){
 					BPLine.set_motor_power(PORT_C, CAccelerator);
 					
 					if(CAccelerator <= 125 & CBrake >= -125){
-						CAccelerator += 2;
-						CBrake -= 2;
+						CAccelerator += 4;
+						CBrake -= 0.25;
 					}
 				}
 				else{
