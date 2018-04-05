@@ -58,6 +58,7 @@ void lineRider(borderValues calibratedInputs){
 					CBrake = 20;
 				}
 			}
+		sleep(0.1);
 		}
 	}
 }
