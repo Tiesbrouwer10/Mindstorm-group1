@@ -29,6 +29,6 @@ void lineRider(borderValues calibratedInputs){
 			BPLine.set_motor_power(PORT_C, 20);
 			BPLine.set_motor_power(PORT_B, 20);
 		}
-		sleep(0.1);
+		sleep(0.5);
 	}
 }
