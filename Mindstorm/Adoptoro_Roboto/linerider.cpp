@@ -18,10 +18,10 @@ void lineRider(borderValues calibratedInputs){
 	int CLine = 0;
 	
 	// Steering Variables
-	int BWAccelerator = 0;
-	int CAccelerator = 0;
-	int BWBrake = 0;
-	int CBrake = 0;
+	int BWAccelerator = 40;
+	int CAccelerator = 40;
+	int BWBrake = 20;
+	int CBrake = 20;
 	
 	while(true){
 		// Get value from sensors
