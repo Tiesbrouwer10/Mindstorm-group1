@@ -12,18 +12,21 @@ using namespace std;
 
 BrickPi3 BPMain;
 
-
 int main(){
 
-	signal(SIGINT, exitSignalHandler); // Register the exit function for Ctrl+C
+	signal(SIGINT, exitSignalHandler()); // Register the exit function for Ctrl+C0
 	
-	BPMain.detect(); // Make sure that thye BrickPi3 is communicating and that the firmware is compatible with the drivers
+	BP.detect(); // Make sure that the BrickPi3 is communicating and that the firmware is compatible with the drivers
 	
-	while(true){
-		sensorCalibration();
-		break;
+	// Get values from sensors
+	sensorCalibration();
+	
+	// Setting Border Values
+	borderValues calibratedInputs;
+	calibratedInputs borderValueBW = BWValue * 1.25;
+	calibratedInputs borderValueC = CValue * 0.75;
 
-	}
-	
+	// Start lineriding function
+	lineRider(calibratedInputs);
 	
 }
