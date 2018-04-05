@@ -21,11 +21,6 @@ int main(){
 	// Get values from sensors
 	sensorCalibration();
 	
-	// Setting Border Values
-	borderValues calibratedInputs;
-	calibratedInputs.borderValueBW = BWValue * 1.25;
-	calibratedInputs.borderValueC = CValue * 0.75;
-
 	// Start lineriding function
 	lineRider(calibratedInputs);
 	
