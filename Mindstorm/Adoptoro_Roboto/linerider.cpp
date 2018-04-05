@@ -22,12 +22,13 @@ void lineRider(borderValues calibratedInputs){
 		if(Light.reflected > calibratedInputs.borderValueBW){
 			BPLine.set_motor_power(PORT_C, 10);
 		}
-		if(Color.reflected_red < calibratedInputs.borderValueC){
+		else if(Color.reflected_red < calibratedInputs.borderValueC){
 			BPLine.set_motor_power(PORT_B, 10);
 		}
 		else{
 			BPLine.set_motor_power(PORT_C, 20);
 			BPLine.set_motor_power(PORT_B, 20);
 		}
+		sleep(0.1);
 	}
 }
