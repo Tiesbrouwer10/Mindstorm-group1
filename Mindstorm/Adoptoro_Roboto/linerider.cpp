@@ -2,7 +2,7 @@
 
 using namespace std;
 
-BrickPi3 BPLine
+BrickPi3 BPLine;
 
 void lineRider(borderValues calibratedInputs){
 	
