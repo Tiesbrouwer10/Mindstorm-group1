@@ -3,13 +3,13 @@
 
 using namespace std;
 
-BrickPi3 BPMain;
+BrickPi3 BPSignalHandler;
 
 // Signal handler that will be called when Ctrl+C is pressed to stop the program.
 
 void exitSignalHandler(int signo){
 	if(signo == SIGINT){
-		BPMain.reset_all();		// Reset everything so t here are no run-away motors.
+		BPSignalHandler.reset_all();		// Reset everything so t here are no run-away motors.
 		exit(-2);
 	}
 }
