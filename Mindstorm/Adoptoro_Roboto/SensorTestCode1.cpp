@@ -18,37 +18,37 @@ void ObjectInDeWeg(){
     sensor_ultrasonic_t Ultrasonic2;
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
-        BPmot.set_motor_position(PORT_A, 90);            //De robot draait de afstandssensor 90 gradenrichting het object
-        BPmot.set_motor_position_relative(PORT_B, -450);
-        BPmot.set_motor_position_relative(PORT_C, 450); //De robot draait hier de hele robot 90 graden
-        sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
-        BPmot.set_motor_power(PORT_B, 20); 
-        BPmot.set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
-        while(BPafs.get_sensor(PORT_1, Ultrasonic2)<=100){ // de while loop bestaat totdat hij langs het object is
-        }
-        
-        sleep(1);
-        stop();                                            // hier zorg ik ervoor dat alles soepel verloopt met het stoppen op de gewenste positie
-        sleep(1);
-        BPmot.set_motor_position_relative(PORT_B, 450);     //motoren draaien terug naar de tweede positie
-        BPmot.set_motor_position_relative(PORT_C, -450);            
-        sleep(3);
-        BPmot.set_motor_power(PORT_B, 20);
-        BPmot.set_motor_power(PORT_C, 20);    
-        sleep(1);
-        while(BPafs.get_sensor(PORT_1, Ultrasonic2)<=100){       //while loop gaat weer door tot het object weg is
-        }
-        
-        sleep(2);
-        stop();
-        sleep(1);
-        BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
-        BPmot.set_motor_position_relative(PORT_C, 450);
-        BPmot.set_motor_position(PORT_A, 1); 
-        sleep(1);
-        BPmot.set_motor_power(PORT_B, 20);
-        BPmot.set_motor_power(PORT_C, 20);
-        cout << "hij komt ook aan het einde" << endl;
+    BPmot.set_motor_position(PORT_A, 90);            //De robot draait de afstandssensor 90 gradenrichting het object
+    BPmot.set_motor_position_relative(PORT_B, -450);
+    BPmot.set_motor_position_relative(PORT_C, 450); //De robot draait hier de hele robot 90 graden
+    sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
+    BPmot.set_motor_power(PORT_B, 20); 
+    BPmot.set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
+    while(BPafs.get_sensor(PORT_1, Ultrasonic2.cm)<=30){ // de while loop bestaat totdat hij langs het object is
+    }
+    
+    sleep(1);
+    stop();                                            // hier zorg ik ervoor dat alles soepel verloopt met het stoppen op de gewenste positie
+    sleep(1);
+    BPmot.set_motor_position_relative(PORT_B, 450);     //motoren draaien terug naar de tweede positie
+    BPmot.set_motor_position_relative(PORT_C, -450);            
+    sleep(3);
+    BPmot.set_motor_power(PORT_B, 20);
+    BPmot.set_motor_power(PORT_C, 20);    
+    sleep(1);
+    while(BPafs.get_sensor(PORT_1, Ultrasonic2.cm)<=30){       //while loop gaat weer door tot het object weg is
+    }
+    
+    sleep(2);
+    stop();
+    sleep(1);
+    BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
+    BPmot.set_motor_position_relative(PORT_C, 450);
+    BPmot.set_motor_position(PORT_A, 1); 
+    sleep(1);
+    BPmot.set_motor_power(PORT_B, 20);
+    BPmot.set_motor_power(PORT_C, 20);
+    cout << "hij komt ook aan het einde" << endl;
 }
 
 void SensorAfstand(){
@@ -68,7 +68,7 @@ void SensorAfstand(){
     if(keuze == 'G'){       //deze functie is om de eigenlijke functie te testen
         while(true){
             cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
-            if(BPafs.get_sensor(PORT_1, Ultrasonic2) <= 0.9){
+            if(BPafs.get_sensor(PORT_1, Ultrasonic2.cm) <= 30){
                 cout << "l" << endl;
                 ObjectInDeWeg();
             }
