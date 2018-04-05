@@ -14,17 +14,17 @@ BrickPi3 BPMain;
 
 int main(){
 
-	signal(SIGINT, exitSignalHandler()); // Register the exit function for Ctrl+C0
+	signal(SIGINT, exitSignalHandler); // Register the exit function for Ctrl+C0
 	
-	BP.detect(); // Make sure that the BrickPi3 is communicating and that the firmware is compatible with the drivers
+	BPMain.detect(); // Make sure that the BrickPi3 is communicating and that the firmware is compatible with the drivers
 	
 	// Get values from sensors
 	sensorCalibration();
 	
 	// Setting Border Values
 	borderValues calibratedInputs;
-	calibratedInputs borderValueBW = BWValue * 1.25;
-	calibratedInputs borderValueC = CValue * 0.75;
+	calibratedInputs.borderValueBW = BWValue * 1.25;
+	calibratedInputs.borderValueC = CValue * 0.75;
 
 	// Start lineriding function
 	lineRider(calibratedInputs);
