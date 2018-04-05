@@ -15,6 +15,8 @@ void lineRider(borderValues calibratedInputs){
 		// Get value from sensors
 		BPLine.get_sensor(PORT_2, Light);
 		BPLine.get_sensor(PORT_3,Color);
+		cout << "BW SCANNED: " << Light.reflected << " BWVALUE = " << calibratedInputs.borderValueBW << '\n';
+		cout << "C  SCANNED: " << Color.reflected << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
 		
 		// Ride for 1 step
 		if(Light.reflected > calibratedInputs.borderValueBW){
