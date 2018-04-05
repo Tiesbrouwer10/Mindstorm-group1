@@ -17,10 +17,10 @@ void lineRider(borderValues calibratedInputs){
 		BPLine.get_sensor(PORT_3,Color);
 		
 		// Ride for 1 step
-		if(Light.reflected > borderValueBW){
+		if(Light.reflected > calibratedInputs.borderValueBW){
 			BPLine.set_motor_power(PORT_C, 10);
 		}
-		if(Color.reflected_red < borderValueC){
+		if(Color.reflected_red < calibratedInputs.borderValueC){
 			BPLine.set_motor_power(PORT_B, 10);
 		}
 		else{
