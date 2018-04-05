@@ -24,7 +24,7 @@ void ObjectInDeWeg(){
     sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
     BPmot.set_motor_power(PORT_B, 20); 
     BPmot.set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
-    while(BPafs.get_sensor(PORT_1, Ultrasonic2)<=30){ // de while loop bestaat totdat hij langs het object is
+    while(Ultrasonic2.cm <=25){ // de while loop bestaat totdat hij langs het object is
     }
     
     sleep(1);
@@ -36,7 +36,7 @@ void ObjectInDeWeg(){
     BPmot.set_motor_power(PORT_B, 20);
     BPmot.set_motor_power(PORT_C, 20);    
     sleep(1);
-    while(BPafs.get_sensor(PORT_1, Ultrasonic2)<=30){       //while loop gaat weer door tot het object weg is
+    while(Ultrasonic2.cm <=25){       //while loop gaat weer door tot het object weg is
     }
     
     sleep(2);
@@ -71,7 +71,7 @@ void SensorAfstand(){
     if(keuze == 'G'){       //deze functie is om de eigenlijke functie te testen
         while(true){
             cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
-            if(BPafs.get_sensor(PORT_1, Ultrasonic2) <= 0.9){
+            if(Ultrasonic2.cm <= 15 ){
                 cout << "l" << endl;
                 ObjectInDeWeg();
             }
