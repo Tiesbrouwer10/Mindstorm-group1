@@ -3,7 +3,7 @@
 
 using namespace std;
 
-
+int error;
 
 void lineRider(borderValues calibratedInputs){
 	
