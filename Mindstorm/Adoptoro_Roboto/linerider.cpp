@@ -3,7 +3,6 @@
 
 using namespace std;
 
-int errorLine;
 
 void lineRider(borderValues calibratedInputs){
 	
@@ -11,22 +10,25 @@ void lineRider(borderValues calibratedInputs){
 	sensor_light_t		Light;
 	sensor_color_t		Color;
 	
-	errorLine = 0;
+	int BWLine = 0;
+	int CLine = 0;
 	
 	while(true){
 		// Get value from sensors
 		if(BPLine.get_sensor(PORT_2, Light) == 0){
+			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
+				CLine = Color.reflected_red;
 				cout << "BW SCANNED: " << Light.reflected << " BWVALUE = " << calibratedInputs.borderValueBW << '\n';
 				cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
 				sleep(1);
 				cout << "SLEEP DONE\n";
 				// Ride for 1 step
-				if(Light.reflected > calibratedInputs.borderValueBW){
+				if(BWLine > calibratedInputs.borderValueBW){
 					BPLine.set_motor_power(PORT_C, 10);
 				}
-				else if(Color.reflected_red < calibratedInputs.borderValueC){
-			BPLine.set_motor_power(PORT_B, 10);
+				else if(CLine < calibratedInputs.borderValueC){
+					BPLine.set_motor_power(PORT_B, 10);
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 20);
