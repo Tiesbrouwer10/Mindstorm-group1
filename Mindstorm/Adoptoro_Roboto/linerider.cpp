@@ -4,7 +4,7 @@ using namespace std;
 
 BrickPi3 BPLine;
 
-void lineRider(borderValues calibratedInputs){
+void lineRider(borderValues.calibratedInputs){
 	
 	
 	while(true){
