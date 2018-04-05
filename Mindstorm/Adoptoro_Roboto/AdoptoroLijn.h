@@ -23,7 +23,7 @@ struct borderValues{ // Contains to be updated border values from calibration
 //==================================
 // Header content
 
-void sensorCalibration(); // Calibrates Sensors
+borderValues sensorCalibration(); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
