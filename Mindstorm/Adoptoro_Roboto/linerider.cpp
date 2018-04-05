@@ -38,7 +38,7 @@ void lineRider(borderValues calibratedInputs){
 					
 					if(BWAccelerator <= 125 && BWBrake >= 0){
 							BWAccelerator += 4;
-							BWBrake -= 1;
+							//BWBrake -= 1;
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
@@ -47,7 +47,7 @@ void lineRider(borderValues calibratedInputs){
 					
 					if(CAccelerator <= 125 && CBrake >= 0){
 						CAccelerator += 4;
-						CBrake -= 1;
+						//CBrake -= 1;
 					}
 				}
 				else{
