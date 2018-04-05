@@ -13,6 +13,7 @@ void lineRider(borderValues calibratedInputs){
 	
 	while(true){
 		// Get value from sensors
+		cout << "ZIT IN DE WHILE LOOP";
 		if(BPLine.get_sensor(PORT_2, Light) == 0){
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
 				cout << "BW SCANNED: " << Light.reflected << " BWVALUE = " << calibratedInputs.borderValueBW << '\n';
