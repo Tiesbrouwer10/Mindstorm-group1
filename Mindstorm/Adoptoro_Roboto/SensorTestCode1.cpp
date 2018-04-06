@@ -6,7 +6,7 @@ using namespace std;
 BrickPi3 BPafs;
 BrickPi3 BPmot;
 
-void stop(void){
+void stop(){
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
 }
