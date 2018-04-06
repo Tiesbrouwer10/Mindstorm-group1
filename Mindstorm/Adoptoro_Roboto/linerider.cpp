@@ -42,7 +42,7 @@ void lineRider(borderValues calibratedInputs){
                         			BPLine.set_motor_power(PORT_C, curSpeedB);
                    			}
                    			if(curSpeedC < maxSpeed){
-						curSpeed += 5;
+						curSpeedC += 5;
                         			BPLine.set_motor_power(PORT_B, curSpeedC + 5);
                     			}
 				}
