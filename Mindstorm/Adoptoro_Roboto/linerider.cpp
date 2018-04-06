@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 void lineRider(borderValues calibratedInputs){
 	
 	BrickPi3 BPLine;
@@ -16,29 +15,37 @@ void lineRider(borderValues calibratedInputs){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	
+	int curSpeedB = 0;
+   	int curSpeedC = 0;
+   	int maxSpeed = 40;
+    
 	while(true){
 		// Get value from sensors
 		if(BPLine.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
-				CLine = Color.reflected_red;
-				cout << "BW SCANNED: " << Light.reflected << " BWVALUE = " << calibratedInputs.borderValueBW << '\n';
-				cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
+                CLine = Color.reflected_red;
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 0);
-					BPLine.set_motor_power(PORT_B, 60);
+                   			if(curSpeedC > -128){
+                       				BPLine.set_motor_power(PORT_C, curSpeedC - 5);
+                    			}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, 0);
-					BPLine.set_motor_power(PORT_C, 60);
+                    			if(curSpeedB > -128){
+                        			BPLine.set_motor_power(PORT_B, curSpeedB - 5);
+                    			}
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, 80);
-					BPLine.set_motor_power(PORT_B, 80);
+                   		 	if(curSpeedB < maxSpeed){
+                        			BPLine.set_motor_power(PORT_C, curSpeedC + 5);
+                   			}
+                   			if(curSpeedC < maxSpeed){
+                        			BPLine.set_motor_power(PORT_B, curSpeedB + 5);
+                    			}
 				}
 			}
 		}
+        sleep(0.01);
 	}
 }
