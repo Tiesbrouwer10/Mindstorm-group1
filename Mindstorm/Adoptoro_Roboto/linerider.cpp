@@ -28,7 +28,7 @@ void lineRider(borderValues calibratedInputs){
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, Brake);
+					BPLine.set_motor_power(PORT_C, Brake-20);
 					BPLine.set_motor_power(PORT_B, 50);
 					
 					// Slow down one bot's wheels gradually
@@ -38,7 +38,7 @@ void lineRider(borderValues calibratedInputs){
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, Brake);
+					BPLine.set_motor_power(PORT_B, Brake-20);
 					BPLine.set_motor_power(PORT_C, 50);
 					
 					// Slow down one bot's wheels gradually
