@@ -24,7 +24,7 @@ void lineRider(borderValues calibratedInputs){
 		if(BPLine.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
-                CLine = Color.reflected_red;
+              			CLine = Color.reflected_red;
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
                    			if(curSpeedC > -128){
@@ -38,10 +38,12 @@ void lineRider(borderValues calibratedInputs){
 				}
 				else{
                    		 	if(curSpeedB < maxSpeed){
-                        			BPLine.set_motor_power(PORT_C, curSpeedC + 5);
+						curSpeedB += 5;
+                        			BPLine.set_motor_power(PORT_C, curSpeedB);
                    			}
                    			if(curSpeedC < maxSpeed){
-                        			BPLine.set_motor_power(PORT_B, curSpeedB + 5);
+						curSpeed += 5;
+                        			BPLine.set_motor_power(PORT_B, curSpeedC + 5);
                     			}
 				}
 			}
