@@ -16,7 +16,7 @@ void lineRider(borderValues calibratedInputs){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	int Brake = 40;
+	int Brake = 30;
 	int BrakeCounter = 0;
 	
 	while(true){
@@ -29,7 +29,7 @@ void lineRider(borderValues calibratedInputs){
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
 					BPLine.set_motor_power(PORT_C, Brake);
-					BPLine.set_motor_power(PORT_B, 60);
+					BPLine.set_motor_power(PORT_B, 50);
 					
 					// Slow down one bot's wheels gradually
 					BrakeCounter += 1;
@@ -39,7 +39,7 @@ void lineRider(borderValues calibratedInputs){
 				}
 				else if(CLine < calibratedInputs.borderValueC){
 					BPLine.set_motor_power(PORT_B, Brake);
-					BPLine.set_motor_power(PORT_C, 60);
+					BPLine.set_motor_power(PORT_C, 50);
 					
 					// Slow down one bot's wheels gradually
 					BrakeCounter += 1;
@@ -48,9 +48,9 @@ void lineRider(borderValues calibratedInputs){
 					}
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, 40);
-					BPLine.set_motor_power(PORT_B, 40);
-					Brake = 40;
+					BPLine.set_motor_power(PORT_C, 30);
+					BPLine.set_motor_power(PORT_B, 30);
+					Brake = 30;
 				}
 			}
 		}
