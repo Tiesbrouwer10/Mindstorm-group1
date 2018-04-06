@@ -58,9 +58,9 @@ void lineRider(borderValues calibratedInputs){
 				else{
 					
 					if(Deaccelerator < 40){
-						BWDeaccelerator += 2;
+						Deaccelerator += 2;
 						BPLine.set_motor_power(PORT_C, Deaccelerator);
-						cout << BWDeaccelerator << " Deaccalerator\n";
+						cout << Deaccelerator << " Deaccalerator\n";
 					}
 					Accelerator = 40;
 					cout << "Accelerator set to 40\n"; 
