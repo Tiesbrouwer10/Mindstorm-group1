@@ -2,9 +2,11 @@
 #include <iostream>
 #include "BrickPi3.h"
 #include <unistd.h>
+#include <signal.h>
 using namespace std;
 BrickPi3 BPafs;
 BrickPi3 BPmot;
+BrickPi3 BP;
 
 void exit_signal_handler(int signo);
 
