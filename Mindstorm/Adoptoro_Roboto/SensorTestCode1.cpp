@@ -6,25 +6,31 @@ using namespace std;
 BrickPi3 BPafs;
 BrickPi3 BPmot;
 
-void stop(){
+void exit_signal_handler(int signo);
+
+
+void stop(void){
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
 }
 
 void ObjectInDeWeg(){
+
     cout << "er komt een object in de weg." << endl;
     BPafs.detect();
     BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
     sensor_ultrasonic_t Ultrasonic2;
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
-    BPmot.set_motor_position(PORT_A, 90);            //De robot draait de afstandssensor 90 gradenrichting het object
+    BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
+    sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450); //De robot draait hier de hele robot 90 graden
     sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
-    BPmot.set_motor_power(PORT_B, 20); 
-    BPmot.set_motor_power(PORT_C, 20);              //hier gaan de motoren draaien
+    BPmot.set_motor_power(PORT_B, 10); 
+    BPmot.set_motor_power(PORT_C, 10);              //hier gaan de motoren draaien
     while(Ultrasonic2.cm <=25){ // de while loop bestaat totdat hij langs het object is
+        sleep(0.01);
     }
     
     sleep(1);
@@ -37,6 +43,7 @@ void ObjectInDeWeg(){
     BPmot.set_motor_power(PORT_C, 20);    
     sleep(1);
     while(Ultrasonic2.cm <=25){       //while loop gaat weer door tot het object weg is
+        sleep(0.01);
     }
     
     sleep(2);
@@ -44,6 +51,7 @@ void ObjectInDeWeg(){
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
     BPmot.set_motor_position_relative(PORT_C, 450);
+    sleep(1);
     BPmot.set_motor_position(PORT_A, 1); 
     sleep(1);
     BPmot.set_motor_power(PORT_B, 20);
@@ -52,6 +60,7 @@ void ObjectInDeWeg(){
 }
 
 void SensorAfstand(){
+
     BPafs.detect();
     BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
     sensor_ultrasonic_t Ultrasonic2;
@@ -68,13 +77,18 @@ void SensorAfstand(){
             }
         }
     }
-    if(keuze == 'G'){       //deze functie is om de eigenlijke functie te testen
+    if(keuze == 'G'){
+        sleep(1);   //deze functie is om de eigenlijke functie te testen
+        BPmot.set_motor_power(PORT_A, 10);
         while(true){
             if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
-               // sleep(1);
+                //sleep(1);
                 cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
+
                 if(Ultrasonic2.cm <= 15 ){
                     cout << "l" << endl;
+                    stop();
+                    sleep(1);
                     ObjectInDeWeg();
                 }
                 
@@ -87,7 +101,7 @@ void SensorAfstand(){
 
 
 int main(){
-    
+    signal(SIGINT, exit_signal_handler); // register the exit function for Ctrl+C
 
     SensorAfstand();
     
