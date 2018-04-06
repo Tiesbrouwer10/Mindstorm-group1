@@ -39,7 +39,7 @@ void lineRider(borderValues calibratedInputs){
 					}
 					if(Accelerator > 89 && BWDeaccelerator > -10){
 						BPLine.set_motor_power(PORT_C, BWDeaccelerator);
-						BWDeaccelerator -= 1;
+						BWDeaccelerator -= 2;
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
@@ -53,19 +53,19 @@ void lineRider(borderValues calibratedInputs){
 					}
 					if(Accelerator > 89 && CDeaccelerator > -10){
 						BPLine.set_motor_power(PORT_B, CDeaccelerator);
-						CDeaccelerator -= 1;
+						CDeaccelerator -= 2;
 					}
 				}
 				else{
 					
 					if(BWDeaccelerator < 40){
-						BWDeaccelerator += 1;
+						BWDeaccelerator += 2;
 						BPLine.set_motor_power(PORT_C, BWDeaccelerator);
 						cout << BWDeaccelerator << " BWDeaccalerator\n";
 					}
 					
 					if(CDeaccelerator < 40){
-						CDeaccelerator += 1;
+						CDeaccelerator += 2;
 						BPLine.set_motor_power(PORT_B, CDeaccelerator);
 						cout << CDeaccelerator << " CDeaccalerator\n";
 
