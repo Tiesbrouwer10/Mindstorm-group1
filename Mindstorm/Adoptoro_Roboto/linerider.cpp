@@ -37,7 +37,7 @@ void lineRider(borderValues calibratedInputs){
 						cout << Accelerator << " BW Accelerator\n";
 						sleep(0.1);
 					}
-					if(Accelerator > 89 && BWDeaccelerator > -10)){
+					if(Accelerator > 89 && BWDeaccelerator > -10){
 						BPLine.set_motor_power(PORT_C, BWDeaccelerator);
 						BWDeaccelerator -= 1;
 					}
