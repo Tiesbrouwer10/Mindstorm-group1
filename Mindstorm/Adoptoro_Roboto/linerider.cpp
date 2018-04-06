@@ -30,19 +30,18 @@ void lineRider(borderValues calibratedInputs){
 				if(BWLine > calibratedInputs.borderValueBW){
 					BPLine.set_motor_power(PORT_C, 15);
 					BPLine.set_motor_power(PORT_B, Accelerator);
-					
+					AcceleratorCounter += 1;
 					if(AcceleratorCounter % 10 == 0 && Accelerator <= 125){
 						Accelerator += 10;
-						AcceleratorCounter += 1;
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
 					BPLine.set_motor_power(PORT_B, 15);
 					BPLine.set_motor_power(PORT_C, Accelerator);
+					AcceleratorCounter += 1;
 					
 					if(AcceleratorCounter % 10 == 0 && Accelerator <= 125){
 						Accelerator += 10;
-						AcceleratorCounter += 1;
 					}
 				}
 				else{
