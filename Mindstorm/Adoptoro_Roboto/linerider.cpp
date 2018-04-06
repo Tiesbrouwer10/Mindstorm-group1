@@ -17,6 +17,12 @@ void lineRider(borderValues calibratedInputs){
 	int BWLine = 0;
 	int CLine = 0;
 	
+	// Steering Variables
+	int BWAccelerator = 0;
+	int CAccelerator = 0;
+	int BWBrake = 0;
+	int CBrake = 0;
+	
 	while(true){
 		// Get value from sensors
 		if(BPLine.get_sensor(PORT_2, Light) == 0){
@@ -27,16 +33,30 @@ void lineRider(borderValues calibratedInputs){
 				cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 20);
-					BPLine.set_motor_power(PORT_B, 60);
+					BPLine.set_motor_power(PORT_C, BWBrake);
+					BPLine.set_motor_power(PORT_B, BWAccelerator);
+					
+					if(BWAccelerator <= 125 & BWBrake >= -125){
+							BWAccelerator += 2;
+							BWBrake -= 2;
+					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, 20);
-					BPLine.set_motor_power(PORT_C, 60);
+					BPLine.set_motor_power(PORT_B, CBrake);
+					BPLine.set_motor_power(PORT_C, CAccelerator);
+					
+					if(CAccelerator <= 125 & CBrake >= -125){
+						CAccelerator += 2;
+						CBrake -= 2;
+					}
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
+					BWAccelerator = 40;
+					CAccelerator = 40;
+					BWBrake = 20;
+					CBrake = 20;
 				}
 			}
 		}
