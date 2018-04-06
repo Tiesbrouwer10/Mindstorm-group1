@@ -17,7 +17,6 @@ void lineRider(borderValues calibratedInputs){
 	int BWLine = 0;
 	int CLine = 0;
 	int Accelerator = 40;
-	int Deaccelerator = 40;
 	
 	while(true){
 		// Get value from sensors
@@ -36,9 +35,8 @@ void lineRider(borderValues calibratedInputs){
 						cout << Accelerator << " BW Accelerator\n";
 						sleep(0.1);
 					}
-					if(Accelerator > 89 && Deaccelerator > -10){
-						BPLine.set_motor_power(PORT_C, Deaccelerator);
-						Deaccelerator -= 2;
+					if(Accelerator > 59){
+						PLine.set_motor_power(PORT_C, 0);
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
@@ -50,20 +48,17 @@ void lineRider(borderValues calibratedInputs){
 						cout << Accelerator << " C Accelerator\n";
 						sleep(0.1);
 					}
-					if(Accelerator > 89 && Deaccelerator > -10){
-						BPLine.set_motor_power(PORT_B, Deaccelerator);
-						Deaccelerator -= 2;
+					if(Accelerator > 59){
+						BPLine.set_motor_power(PORT_B, 0);
 					}
 				}
 				else{
-					
-					if(Deaccelerator < 40){
-						Deaccelerator += 2;
-						BPLine.set_motor_power(PORT_C, Deaccelerator);
-						cout << Deaccelerator << " Deaccalerator\n";
-					}
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
+					
 					cout << "Accelerator set to 40\n"; 
+					
 				}
 			}
 		}
