@@ -27,10 +27,14 @@ void lineRider(borderValues calibratedInputs){
                 CLine = Color.reflected_red;
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, curSpeedC - 5);
+                    if(curSpeedC > -128){
+                        BPLine.set_motor_power(PORT_C, curSpeedC - 5);
+                    }
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-                    BPLine.set_motor_power(PORT_B, curSpeedB - 5);
+                    if(curSpeedB > -128){
+                        BPLine.set_motor_power(PORT_B, curSpeedB - 5);
+                    }
 				}
 				else{
                     if(curSpeedB < maxSpeed){
