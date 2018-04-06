@@ -16,8 +16,6 @@ void lineRider(borderValues calibratedInputs){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	int Brake = 90;
-	int BrakeCounter = 0;
 	
 	while(true){
 		// Get value from sensors
@@ -25,32 +23,20 @@ void lineRider(borderValues calibratedInputs){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
-				
+				cout << "BW SCANNED: " << Light.reflected << " BWVALUE = " << calibratedInputs.borderValueBW << '\n';
+				cout << "C  SCANNED: " << Color.reflected_red << "  CVALUE = " << calibratedInputs.borderValueC << '\n';
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, Brake-60);
-					BPLine.set_motor_power(PORT_B, 70);
-					
-					// Slow down one bot's wheels gradually
-					BrakeCounter += 1;
-					if(BrakeCounter % 10 == 0){
-						Brake *= 0.8;
-					}
+					BPLine.set_motor_power(PORT_C, 20);
+					BPLine.set_motor_power(PORT_B, 60);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, Brake-60);
-					BPLine.set_motor_power(PORT_C, 70);
-					
-					// Slow down one bot's wheels gradually
-					BrakeCounter += 1;
-					if(BrakeCounter % 10 == 0){
-						Brake *= 0.8;
-					}
+					BPLine.set_motor_power(PORT_B, 20);
+					BPLine.set_motor_power(PORT_C, 60);
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, 35);
-					BPLine.set_motor_power(PORT_B, 35);
-					Brake = 90;
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
 				}
 			}
 		}
