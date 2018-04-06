@@ -46,8 +46,8 @@ void lineRider(borderValues calibratedInputs){
 					}
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, Accelerator);
-					BPLine.set_motor_power(PORT_B, Accelerator);
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
 					if(Accelerator > 40){
 						Accelerator -= 1;
 					}
