@@ -75,7 +75,7 @@ void SensorAfstand(){
                 cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
                 if(Ultrasonic2.cm <= 15 ){
                     cout << "l" << endl;
-                    //ObjectInDeWeg();
+                    ObjectInDeWeg();
                 }
                 
             }
