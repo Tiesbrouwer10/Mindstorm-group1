@@ -32,7 +32,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						BPLine.set_motor_power(PORT_B, Accelerator);
 					}
 					if(Accelerator <= 90){
-						Accelerator += 0.1;
+						Accelerator += 0.2;
 						sleep(0.01);
 					}
 				}
@@ -44,7 +44,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						BPLine.set_motor_power(PORT_C, Accelerator);
 					}
 					if(Accelerator <= 90){
-						Accelerator += 0.1;
+						Accelerator += 0.2;
 						sleep(0.01);
 					}
 				}
