@@ -31,7 +31,7 @@ void ObjectInDeWeg2(){
     BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
     sensor_ultrasonic_t Ultrasonic2;
   
-    BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
+    BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het objec
     cout << "1 werkt" << endl;
     sleep(0.2);
     BPmot.set_motor_power(PORT_A, 0);
