@@ -28,7 +28,6 @@ void ObjectInDeWeg(){
     sensor_ultrasonic_t Ultrasonic2;
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
-    BPmot.set_motor_position(PORT_A, 1);
     BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
     sleep(0.2);
    // stop();
@@ -36,7 +35,7 @@ void ObjectInDeWeg(){
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
-    sleep(0.2);//De robot draait hier de hele robot 90 graden
+    sleep(2);//De robot draait hier de hele robot 90 graden
     stop();
     sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
     BPmot.set_motor_power(PORT_B, 10); 
@@ -68,7 +67,7 @@ void ObjectInDeWeg(){
     sleep(0.2);
     stop();
     sleep(1);
-    BPmot.set_motor_position(PORT_A, 1); 
+    BPmot.set_motor_position(PORT_A, -90); 
     sleep(0.1);
     stop();
     sleep(1);
