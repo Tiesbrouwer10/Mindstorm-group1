@@ -25,26 +25,26 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					if(Accelerator > 89){
-						BPLine.set_motor_power(PORT_C, -90);
+					if(Accelerator > 69){
+						BPLine.set_motor_power(PORT_C, -60);
 					}else{
 						BPLine.set_motor_power(PORT_C, 15);
 						BPLine.set_motor_power(PORT_B, Accelerator);
 					}
-					if(Accelerator <= 90){
+					if(Accelerator <= 70){
 						Accelerator += 1;
 						cout << Accelerator << " BW Accelerator\n";
 						sleep(0.1);
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					if(Accelerator > 89){
-						BPLine.set_motor_power(PORT_B, -90);
+					if(Accelerator > 69){
+						BPLine.set_motor_power(PORT_B, -60);
 					}else{
 						BPLine.set_motor_power(PORT_B, 15);
 						BPLine.set_motor_power(PORT_C, Accelerator);
 					}
-					if(Accelerator <= 90){
+					if(Accelerator <= 70){
 						Accelerator += 1;
 						cout << Accelerator << " C Accelerator\n";
 						sleep(0.1);
