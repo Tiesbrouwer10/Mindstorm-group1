@@ -163,7 +163,7 @@ void SensorAfstand(){
                 //sleep(1);
                 cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
 
-                if(Ultrasonic2.cm <= 15 ){
+                if(Ultrasonic2.cm <= 8 ){
                     cout << "l" << endl;
                     stop();
                     sleep(1);
