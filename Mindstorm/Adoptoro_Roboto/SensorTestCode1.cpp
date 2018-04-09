@@ -86,8 +86,8 @@ void SensorAfstand(){
     }
     if(keuze == 'G'){
         sleep(1);   //deze functie is om de eigenlijke functie te testen
-        BPmot.set_motor_power(PORT_B, 20);
-        BPmot.set_motor_power(PORT_C, 20);
+        BPmot.set_motor_power(PORT_B, 40);
+        BPmot.set_motor_power(PORT_C, 40);
         while(true){
             if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
                 //sleep(1);
