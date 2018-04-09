@@ -31,7 +31,7 @@ void ObjectInDeWeg2(){
   
     BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
     sleep(0.2);
-    stop();
+    BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
     sleep(2);
