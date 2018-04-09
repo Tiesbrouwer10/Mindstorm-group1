@@ -41,9 +41,10 @@ void ObjectInDeWeg2(){
     stop();
     
     while(kant1 == true){
+        cout << "hij komt in while" << endl;
         BPmot.set_motor_power(PORT_B, 40); 
         BPmot.set_motor_power(PORT_C, 40);
-        sleep(0.2);
+        sleep(0.8);
         stop();
         if(Ultrasonic2.cm > 15){
             kant1 == false;
