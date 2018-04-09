@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int getDist(){
+int getDist(BrickPi3 BPEva){
  
       BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
       sensor_ultrasonic_t Ultrasonic2;
@@ -15,7 +15,7 @@ int getDist(){
     
 }
 
-void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+void evadeObject(BrickPi3 BPEva, borderValues &calibratedInputs){
     
     BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
