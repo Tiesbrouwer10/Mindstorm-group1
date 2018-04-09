@@ -25,4 +25,7 @@ borderValues sensorCalibration(); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
+void MatrixRider(borderValues calibratedInputs); // Follows matrix
+
+
 #endif /* MATRIX_HPP */
