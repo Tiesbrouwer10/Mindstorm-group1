@@ -37,12 +37,11 @@ void ObjectInDeWeg2(){
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
     cout << "2 werkt" << endl;
-    sleep(2);
     //stop();
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
     
-    
+    cout << "hij komt voor de while" << endl;
     while(kant1 == true){
         cout << "hij komt in while" << endl;
         BPmot.set_motor_power(PORT_B, 40); 
