@@ -13,6 +13,9 @@ int getDist(BrickPi3 &BPEva){
 }
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+	
+	sensor_light_t	Light;
+	sensor_color_t	Color;
     
 	// Get value from sensors (temporary)
 		if(BPEva.get_sensor(PORT_2, Light) == 0 && BPEva.get_sensor(PORT_3,Color) == 0){
