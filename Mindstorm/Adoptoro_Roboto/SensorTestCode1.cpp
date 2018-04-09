@@ -9,11 +9,6 @@ using namespace std;
 void exit_signal_handler(int signo);
 
 
-void stop(){
-    BPmot.set_motor_power(PORT_A, 0);
-    BPmot.set_motor_power(PORT_B, 0);
-    BPmot.set_motor_power(PORT_C, 0);
-}
 
 int getDist(){
  
@@ -39,15 +34,15 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 
 void SensorAfstand(){
 
-    BPafs.detect();
-    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
+    BP.detect();
+    BP.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
     sensor_ultrasonic_t Ultrasonic2;
   char keuze;
     cout << "T voor testen, G voor gebruiken:\t" << endl;
     cin >> keuze;
     if(keuze == 'T'){       //deze functie is alleen voor het testen van de sensor
         for(;;){
-            if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
+            if(BP.get_sensor(PORT_1, Ultrasonic2) == 0){
                 if(Ultrasonic2.cm >=20){
                     cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
                     
@@ -57,10 +52,10 @@ void SensorAfstand(){
     }
     if(keuze == 'G'){
         sleep(1);   //deze functie is om de eigenlijke functie te testen
-        BPmot.set_motor_power(PORT_B, 40);
-        BPmot.set_motor_power(PORT_C, 40);
+        BP.set_motor_power(PORT_B, 40);
+        BP.set_motor_power(PORT_C, 40);
         while(true){
-            if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
+            if(BP.get_sensor(PORT_1, Ultrasonic2) == 0){
                 //sleep(1);
                 cout << "Ultrasonic sensor (S2): "   << getDist() << "cm" << endl;
 
