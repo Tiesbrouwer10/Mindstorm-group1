@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <iostream>
+#include "BrickPi3.h"
+#include <unistd.h>
+#include <signal.h>
+
+using namespace std;
+
+int getDist(){
+ 
+      BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
+      sensor_ultrasonic_t Ultrasonic2;
+    
+    return Ultrasonic2.cm;
+    
+}
+
+void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+    
+    BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+    BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+    
+    BPEva.set_motor_power(PORT_A, 10);
+    sleep(1);
+    BPEva.set_motor_power(PORT_A, 0);
+}
