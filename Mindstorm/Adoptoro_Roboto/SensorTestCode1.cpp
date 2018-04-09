@@ -36,7 +36,7 @@ void ObjectInDeWeg2(){
     BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
-    sleep(1);
+
     cout << "2 werkt" << endl;
     //stop();
     BPmot.set_motor_power(PORT_B, 0);
