@@ -11,7 +11,7 @@ BrickPi3 BP;
 void exit_signal_handler(int signo);
 
 
-void stop(BrickPi3 &BPmot){
+void stop(){
     BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
@@ -48,7 +48,8 @@ void ObjectInDeWeg2(){
         BPmot.set_motor_power(PORT_B, 40); 
         BPmot.set_motor_power(PORT_C, 40);
         sleep(0.8);
-        stop();
+        BPmot.set_motor_power(PORT_B, 0);
+        BPmot.set_motor_power(PORT_C, 0);
         if(Ultrasonic2.cm > 15){
             kant1 == false;
         }
@@ -57,12 +58,14 @@ void ObjectInDeWeg2(){
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
     sleep(2);
-    stop();
+    BPmot.set_motor_power(PORT_B, 0);
+    BPmot.set_motor_power(PORT_C, 0);
         while(kant2 == true){
         BPmot.set_motor_power(PORT_B, 40); 
         BPmot.set_motor_power(PORT_C, 40);
         sleep(0.2);
-        stop();
+        BPmot.set_motor_power(PORT_B, 0);
+        BPmot.set_motor_power(PORT_C, 0);
         if(Ultrasonic2.cm > 15){
             kant2 == false;
         }
@@ -71,11 +74,14 @@ void ObjectInDeWeg2(){
     BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
     BPmot.set_motor_position_relative(PORT_C, 450);
     sleep(0.2);
-    stop();
+    BPmot.set_motor_power(PORT_B, 0);
+    BPmot.set_motor_power(PORT_C, 0);
     sleep(1);
     BPmot.set_motor_position(PORT_A, -90); 
+    
     sleep(0.1);
-    stop();
+
+    BPmot.set_motor_power(PORT_A, 0);
     sleep(1);
     BPmot.set_motor_power(PORT_B, 20);
     BPmot.set_motor_power(PORT_C, 20);
