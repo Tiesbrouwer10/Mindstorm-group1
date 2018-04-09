@@ -31,7 +31,7 @@ void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
 void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine); // Follows line, (Currently called from main for 1 step)
 
-int getDist(); // Gets the distance the robot is away from object
+int getDist(BrickPi3, &BPEva); // Gets the distance the robot is away from object
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs); // Procedure to evading object
 
