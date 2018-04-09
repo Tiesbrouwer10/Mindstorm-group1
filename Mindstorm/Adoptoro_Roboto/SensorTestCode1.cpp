@@ -18,6 +18,9 @@ void stop(void){
 }
 
 void ObjectInDeWeg(){
+    BP.offset_motor_encoder(PORT_A, BP.get_motor_encoder(PORT_A));
+    BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
+    BP.offset_motor_encoder(PORT_C, BP.get_motor_encoder(PORT_C));
 
     cout << "er komt een object in de weg." << endl;
     BPafs.detect();
