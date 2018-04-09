@@ -31,7 +31,8 @@ void ObjectInDeWeg(){
 
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);
-    BPmot.set_motor_position_relative(PORT_C, 450); //De robot draait hier de hele robot 90 graden
+    BPmot.set_motor_position_relative(PORT_C, 450);
+    sleep(0.2);//De robot draait hier de hele robot 90 graden
     stop();
     sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
     BPmot.set_motor_power(PORT_B, 10); 
@@ -45,6 +46,7 @@ void ObjectInDeWeg(){
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, 450);     //motoren draaien terug naar de tweede positie
     BPmot.set_motor_position_relative(PORT_C, -450);  
+    sleep(0.2);
     stop();
     sleep(3);
     BPmot.set_motor_power(PORT_B, 20);
@@ -59,9 +61,12 @@ void ObjectInDeWeg(){
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
     BPmot.set_motor_position_relative(PORT_C, 450);
+    sleep(0.2);
     stop();
     sleep(1);
     BPmot.set_motor_position(PORT_A, 1); 
+    sleep(0.1);
+    stop();
     sleep(1);
     BPmot.set_motor_power(PORT_B, 20);
     BPmot.set_motor_power(PORT_C, 20);
