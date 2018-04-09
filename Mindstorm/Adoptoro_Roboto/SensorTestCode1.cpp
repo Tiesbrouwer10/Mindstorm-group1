@@ -3,7 +3,7 @@
 #include "BrickPi3.h"
 #include <unistd.h>
 #include <signal.h>
-
+BrickPi3 BP;
 using namespace std;
 
 void exit_signal_handler(int signo);
