@@ -11,7 +11,7 @@ BrickPi3 BP;
 void exit_signal_handler(int signo);
 
 
-void stop(void){
+void stop(BrickPi3 &BPmot){
     BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
@@ -38,7 +38,10 @@ void ObjectInDeWeg2(){
     BPmot.set_motor_position_relative(PORT_C, 450);
     cout << "2 werkt" << endl;
     sleep(2);
-    stop();
+    //stop();
+    BPmot.set_motor_power(PORT_B, 0);
+    BPmot.set_motor_power(PORT_C, 0);
+    
     
     while(kant1 == true){
         cout << "hij komt in while" << endl;
