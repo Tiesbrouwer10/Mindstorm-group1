@@ -3,10 +3,8 @@
 #include "BrickPi3.h"
 #include <unistd.h>
 #include <signal.h>
+
 using namespace std;
-BrickPi3 BPafs;
-BrickPi3 BPmot;
-BrickPi3 BP;
 
 void exit_signal_handler(int signo);
 
@@ -15,6 +13,25 @@ void stop(){
     BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
+}
+
+int getDist(){
+ 
+      BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
+      sensor_ultrasonic_t Ultrasonic2;
+    
+    return Ultrasonic2.cm;
+    
+}
+
+void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+    
+    BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+    BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+    
+    BPEva.set_motor_power(PORT_A, 10);
+    sleep(1);
+    BPEva.set_motor_power(PORT_A, 0);
 }
 
 void ObjectInDeWeg2(){
@@ -26,9 +43,6 @@ void ObjectInDeWeg2(){
     bool kant2 = true;
 
     cout << "er komt een object in de weg." << endl;
-    BPafs.detect();
-    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
-    sensor_ultrasonic_t Ultrasonic2;
     sleep(1);
     BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het objec
     cout << "1 werkt" << endl;
@@ -50,7 +64,7 @@ void ObjectInDeWeg2(){
         sleep(2);
         BPmot.set_motor_power(PORT_B, 0);
         BPmot.set_motor_power(PORT_C, 0);
-        if(Ultrasonic2.cm > 15){
+        if(getDist() > 15){
             kant1 == false;
         }
     }
@@ -91,64 +105,6 @@ void ObjectInDeWeg2(){
 
 
 
-void ObjectInDeWeg(){
-    BP.offset_motor_encoder(PORT_A, BP.get_motor_encoder(PORT_A));
-    BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
-    BP.offset_motor_encoder(PORT_C, BP.get_motor_encoder(PORT_C));
-
-    cout << "er komt een object in de weg." << endl;
-    BPafs.detect();
-    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
-    sensor_ultrasonic_t Ultrasonic2;
-    
-    //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
-    BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
-    sleep(0.2);
-   // stop();
-
-    sleep(1);
-    BPmot.set_motor_position_relative(PORT_B, -450);
-    BPmot.set_motor_position_relative(PORT_C, 450);
-    sleep(2);//De robot draait hier de hele robot 90 graden
-    stop();
-    sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
-    BPmot.set_motor_power(PORT_B, 10); 
-    BPmot.set_motor_power(PORT_C, 10);              //hier gaan de motoren draaien
-    while(Ultrasonic2.cm <=25){ // de while loop bestaat totdat hij langs het object is
-        sleep(0.01);
-    }
-    
-    sleep(1);
-    stop();                                            // hier zorg ik ervoor dat alles soepel verloopt met het stoppen op de gewenste positie
-    sleep(1);
-    BPmot.set_motor_position_relative(PORT_B, 450);     //motoren draaien terug naar de tweede positie
-    BPmot.set_motor_position_relative(PORT_C, -450);  
-    sleep(0.2);
-    stop();
-    sleep(3);
-    BPmot.set_motor_power(PORT_B, 20);
-    BPmot.set_motor_power(PORT_C, 20);    
-    sleep(1);
-    while(Ultrasonic2.cm <=25){       //while loop gaat weer door tot het object weg is
-        sleep(0.01);
-    }
-    
-    sleep(2);
-    stop();
-    sleep(1);
-    BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
-    BPmot.set_motor_position_relative(PORT_C, 450);
-    sleep(0.2);
-    stop();
-    sleep(1);
-    BPmot.set_motor_position(PORT_A, -90); 
-    sleep(0.1);
-    stop();
-    sleep(1);
-    BPmot.set_motor_power(PORT_B, 20);
-    BPmot.set_motor_power(PORT_C, 20);
-    cout << "hij komt ook aan het einde" << endl;
-}
 
 void SensorAfstand(){
 
@@ -177,7 +133,7 @@ void SensorAfstand(){
                 //sleep(1);
                 cout << "Ultrasonic sensor (S2): "   << Ultrasonic2.cm << "cm" << endl;
 
-                if(Ultrasonic2.cm <= 8 ){
+                if(getDist() <= 8 ){
                     cout << "l" << endl;
                     stop();
                     sleep(1);
