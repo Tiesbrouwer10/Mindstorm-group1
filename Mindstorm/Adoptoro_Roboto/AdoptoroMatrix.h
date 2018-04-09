@@ -13,9 +13,16 @@ using namespace std;
 //==================================
 // Header content
 
+struct borderValues{ // Contains to be updated border values from calibration
+	
+	int borderValueBW;
+	int borderValueC;
+	
+};
 
 
+borderValues sensorCalibration(); // Calibrates Sensors
 
-
+void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
 #endif /* MATRIX_HPP */
