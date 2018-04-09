@@ -10,6 +10,7 @@ using namespace std;
 #include <unistd.h>
 #include <vector>
 #include <signal.h>
+#include "BrickPi3.h"
 
 //==================================
 // Structs 
@@ -28,6 +29,8 @@ borderValues sensorCalibration(); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
-void lineRider(borderValues calibratedInputs); // Follows line, (Currently called from main for 1 step)
+void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine); // Follows line, (Currently called from main for 1 step)
+
+int getAcceleration(const int &motor, int do_up_down=0, bool set=false);
 
 #endif /* LIJN_HPP */
