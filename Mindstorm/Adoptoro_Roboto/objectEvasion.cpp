@@ -3,9 +3,9 @@
 
 using namespace std;
 
-int getDist(){
+int getDist(BrickPi3 &BPEva){
  
-      BP.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
+      BPEva.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
       sensor_ultrasonic_t Ultrasonic2;
     
     return Ultrasonic2.cm;
@@ -15,7 +15,7 @@ int getDist(){
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     
 	// Get value from sensors (temporary)
-		if(BPLine.get_sensor(PORT_2, Light) == 0 && BPLine.get_sensor(PORT_3,Color) == 0){
+		if(BPEva.get_sensor(PORT_2, Light) == 0 && BPEva.get_sensor(PORT_3,Color) == 0){
 			BWLine = Light.reflected;
 			CLine = Color.reflected_red;
 		}
