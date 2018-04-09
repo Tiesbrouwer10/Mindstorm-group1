@@ -12,6 +12,7 @@ void exit_signal_handler(int signo);
 
 
 void stop(void){
+    BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_power(PORT_B, 0);
     BPmot.set_motor_power(PORT_C, 0);
 }
@@ -24,10 +25,12 @@ void ObjectInDeWeg(){
     sensor_ultrasonic_t Ultrasonic2;
     
     //motor heeft 3 standen; (1) = motor aan, (0) = motor uit, (-1) = achteruit
-    BPmot.set_motor_position_relative(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
+    BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
+    stop();
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450); //De robot draait hier de hele robot 90 graden
+    stop();
     sleep(3);                                       //dit is ervoor zodat de motoren niet gaan rijden tijdens het draaien
     BPmot.set_motor_power(PORT_B, 10); 
     BPmot.set_motor_power(PORT_C, 10);              //hier gaan de motoren draaien
@@ -39,7 +42,8 @@ void ObjectInDeWeg(){
     stop();                                            // hier zorg ik ervoor dat alles soepel verloopt met het stoppen op de gewenste positie
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, 450);     //motoren draaien terug naar de tweede positie
-    BPmot.set_motor_position_relative(PORT_C, -450);            
+    BPmot.set_motor_position_relative(PORT_C, -450);  
+    stop();
     sleep(3);
     BPmot.set_motor_power(PORT_B, 20);
     BPmot.set_motor_power(PORT_C, 20);    
@@ -53,8 +57,9 @@ void ObjectInDeWeg(){
     sleep(1);
     BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
     BPmot.set_motor_position_relative(PORT_C, 450);
+    stop();
     sleep(1);
-    BPmot.set_motor_position_relative(PORT_A, -90); 
+    BPmot.set_motor_position(PORT_A, 1); 
     sleep(1);
     BPmot.set_motor_power(PORT_B, 20);
     BPmot.set_motor_power(PORT_C, 20);
@@ -81,8 +86,7 @@ void SensorAfstand(){
     }
     if(keuze == 'G'){
         sleep(1);   //deze functie is om de eigenlijke functie te testen
-        BPmot.set_motor_power(PORT_C, 10);
-        BPmot.set_motor_power(PORT_B, 10);
+        BPmot.set_motor_power(PORT_A, 30);
         while(true){
             if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
                 //sleep(1);
