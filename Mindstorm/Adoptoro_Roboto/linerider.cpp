@@ -19,9 +19,9 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	
 	while(true){
 		// Checks if distance is within range
-		distanceToObject = getDist();
+		distanceToObject = getDist(BPLine);
 		if(distanceToObject < 7){
-			evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs);
+			evadeObject(BPLine, calibratedInputs);
 		}
 		
 		// Get value from sensors
