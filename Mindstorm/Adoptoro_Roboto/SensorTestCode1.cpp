@@ -17,6 +17,66 @@ void stop(void){
     BPmot.set_motor_power(PORT_C, 0);
 }
 
+void ObjectInDeWeg2(){
+    BP.offset_motor_encoder(PORT_A, BP.get_motor_encoder(PORT_A));
+    BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
+    BP.offset_motor_encoder(PORT_C, BP.get_motor_encoder(PORT_C));
+    bool kant1 = true;
+    bool kant2 = true;
+
+    cout << "er komt een object in de weg." << endl;
+    BPafs.detect();
+    BPafs.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
+    sensor_ultrasonic_t Ultrasonic2;
+  
+    BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
+    sleep(0.2);
+    stop();
+    BPmot.set_motor_position_relative(PORT_B, -450);
+    BPmot.set_motor_position_relative(PORT_C, 450);
+    sleep(2);
+    stop();
+    
+    while(kant1 == true){
+        BPmot.set_motor_power(PORT_B, 40); 
+        BPmot.set_motor_power(PORT_C, 40);
+        sleep(0.2);
+        stop();
+        if(Ultrasonic2.cm > 15){
+            kant1 == false;
+        }
+    }
+    BPmot.set_motor_position_relative(PORT_B, -450);
+    BPmot.set_motor_position_relative(PORT_C, 450);
+    sleep(2);
+    stop();
+        while(kant2 == true){
+        BPmot.set_motor_power(PORT_B, 40); 
+        BPmot.set_motor_power(PORT_C, 40);
+        sleep(0.2);
+        stop();
+        if(Ultrasonic2.cm > 15){
+            kant2 == false;
+        }
+    }
+    sleep(1);
+    BPmot.set_motor_position_relative(PORT_B, -450);        //robot draait terug naar starspositie en is klaar
+    BPmot.set_motor_position_relative(PORT_C, 450);
+    sleep(0.2);
+    stop();
+    sleep(1);
+    BPmot.set_motor_position(PORT_A, -90); 
+    sleep(0.1);
+    stop();
+    sleep(1);
+    BPmot.set_motor_power(PORT_B, 20);
+    BPmot.set_motor_power(PORT_C, 20);
+    cout << "hij komt ook aan het einde" << endl;
+}
+    
+
+
+
 void ObjectInDeWeg(){
     BP.offset_motor_encoder(PORT_A, BP.get_motor_encoder(PORT_A));
     BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
@@ -107,7 +167,7 @@ void SensorAfstand(){
                     cout << "l" << endl;
                     stop();
                     sleep(1);
-                    ObjectInDeWeg();
+                    ObjectInDeWeg2();
                 }
                 
             }
