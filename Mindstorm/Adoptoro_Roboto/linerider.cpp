@@ -14,7 +14,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	int Accelerator = 40;
+	float Accelerator = 40;
 	
 	while(true){
 		// Get value from sensors
@@ -32,8 +32,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						BPLine.set_motor_power(PORT_B, Accelerator);
 					}
 					if(Accelerator <= 70){
-						Accelerator += 1;
-						cout << Accelerator << " BW Accelerator\n";
+						Accelerator += 0.5;
 						sleep(0.1);
 					}
 				}
@@ -45,19 +44,14 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						BPLine.set_motor_power(PORT_C, Accelerator);
 					}
 					if(Accelerator <= 70){
-						Accelerator += 1;
-						cout << Accelerator << " C Accelerator\n";
+						Accelerator += 0.5;
 						sleep(0.1);
 					}
-
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
-					
-					cout << "Accelerator set to 40\n"; 
-					
 				}
 			}
 		}
