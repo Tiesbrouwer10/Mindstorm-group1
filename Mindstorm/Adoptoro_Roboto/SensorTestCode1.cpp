@@ -129,7 +129,7 @@ void SensorAfstand(){
         BPmot.set_motor_power(PORT_B, 40);
         BPmot.set_motor_power(PORT_C, 40);
         while(true){
-            if(getDist() == 0){
+            if(BPafs.get_sensor(PORT_1, Ultrasonic2) == 0){
                 //sleep(1);
                 cout << "Ultrasonic sensor (S2): "   << getDist() << "cm" << endl;
 
