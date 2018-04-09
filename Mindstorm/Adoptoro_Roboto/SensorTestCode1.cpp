@@ -32,10 +32,12 @@ void ObjectInDeWeg2(){
     sensor_ultrasonic_t Ultrasonic2;
   
     BPmot.set_motor_position(PORT_A, 90); //De robot draait de afstandssensor 90 gradenrichting het object
+    cout << "1 werkt" << endl;
     sleep(0.2);
     BPmot.set_motor_power(PORT_A, 0);
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
+    cout << "2 werkt" << endl;
     sleep(2);
     stop();
     
@@ -48,6 +50,7 @@ void ObjectInDeWeg2(){
             kant1 == false;
         }
     }
+        cout << "3 werkt" << endl;
     BPmot.set_motor_position_relative(PORT_B, -450);
     BPmot.set_motor_position_relative(PORT_C, 450);
     sleep(2);
