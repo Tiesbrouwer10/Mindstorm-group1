@@ -1,9 +1,6 @@
 #include "AdoptoroLijn.h"
 #include "BrickPi3.h"
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-
 using namespace std;
 
 const int PORT_b = 2;
@@ -11,7 +8,7 @@ const int PORT_c = 4;
 
 int acceleration_B = 0;
 int acceleration_C = 0;
-int getAcceleration(int &motor, int do_up_down=0, bool set=false)
+int getAcceleration(int &motor, int8_t do_up_down=0, bool set=false)
 {
 	//0x02 = B
 	//0x04 = C
@@ -101,5 +98,3 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		}
 	}
 }
-
-#pragma clang diagnostic pop
