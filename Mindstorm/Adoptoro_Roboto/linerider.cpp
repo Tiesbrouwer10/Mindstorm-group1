@@ -27,30 +27,31 @@ void lineRider(borderValues calibratedInputs){
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 15);
-					BPLine.set_motor_power(PORT_B, Accelerator);
-					
+					if(Accelerator > 89){
+						BPLine.set_motor_power(PORT_C, -90);
+					}else{
+						BPLine.set_motor_power(PORT_C, 15);
+						BPLine.set_motor_power(PORT_B, Accelerator);
+					}
 					if(Accelerator <= 90){
 						Accelerator += 1;
 						cout << Accelerator << " BW Accelerator\n";
 						sleep(0.1);
 					}
-					if(Accelerator > 89){
-						BPLine.set_motor_power(PORT_C, -90);
-					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					BPLine.set_motor_power(PORT_B, 15);
-					BPLine.set_motor_power(PORT_C, Accelerator);
-					
+					if(Accelerator > 89){
+						BPLine.set_motor_power(PORT_B, -90);
+					}else{
+						BPLine.set_motor_power(PORT_B, 15);
+						BPLine.set_motor_power(PORT_C, Accelerator);
+					}
 					if(Accelerator <= 90){
 						Accelerator += 1;
 						cout << Accelerator << " C Accelerator\n";
 						sleep(0.1);
 					}
-					if(Accelerator > 89){
-						BPLine.set_motor_power(PORT_B, -90);
-					}
+
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
