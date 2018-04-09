@@ -1,4 +1,4 @@
 IP = 145.89.161.90
 NAME = pi
 PASSWORD = roboto
-https://github.com/Tiesbrouwer10/Mindstorm-group1.git
+git clone https://github.com/Tiesbrouwer10/Mindstorm-group1.git
