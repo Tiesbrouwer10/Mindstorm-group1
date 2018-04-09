@@ -22,7 +22,6 @@ void ObjectInDeWeg2(){
     BP.offset_motor_encoder(PORT_A, BP.get_motor_encoder(PORT_A));
     BP.offset_motor_encoder(PORT_B, BP.get_motor_encoder(PORT_B));
     BP.offset_motor_encoder(PORT_C, BP.get_motor_encoder(PORT_C));
-    BPmot.reset();
     bool kant1 = true;
     bool kant2 = true;
 
