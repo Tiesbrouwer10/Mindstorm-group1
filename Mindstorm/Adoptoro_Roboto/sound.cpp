@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <iostream>
-#include <windows.h>
+#include <adoptoro.h>
 
 using namespace std;
 
