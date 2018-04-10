@@ -28,8 +28,14 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
 				
+				if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
+					Accelerator = 40;
+				}
+				
 				// Ride for 1 step
-				if(BWLine > calibratedInputs.borderValueBW){
+				else if(BWLine > calibratedInputs.borderValueBW){
 					if(Accelerator > 69){
 						BPLine.set_motor_power(PORT_C, -60);
 					}else{
@@ -55,11 +61,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						sleep(0.1);
 					}
 
-				}
-				else if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 40);
-					BPLine.set_motor_power(PORT_B, 40);
-					Accelerator = 40;
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
