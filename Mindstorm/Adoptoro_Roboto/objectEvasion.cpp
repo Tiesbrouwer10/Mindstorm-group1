@@ -24,7 +24,7 @@ void turnMotor(int port, int degrees, BrickPi3 &BPEva){
     }
     if(port == 2){
 	    BPEva.offset_motor_encoder(PORT_B, BPEva.get_motor_encoder(PORT_B));
-	    BPEva.set_motor_power(PORT_B, 10);
+	    BPEva.set_motor_power(PORT_B, 20);
 	    while(BPEva.get_motor_encoder(PORT_B) < (degrees+1)){
 		    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
 		    sleep(0.01);
@@ -33,7 +33,7 @@ void turnMotor(int port, int degrees, BrickPi3 &BPEva){
     }  
     if(port == 3){
 	    BPEva.offset_motor_encoder(PORT_C, BPEva.get_motor_encoder(PORT_C));
-	    BPEva.set_motor_power(PORT_C, 10);
+	    BPEva.set_motor_power(PORT_C, 20);
 	    while(BPEva.get_motor_encoder(PORT_C) < (degrees+1)){
 		    cout << BPEva.get_motor_encoder(PORT_C) << "\n";
 		    sleep(0.01);
