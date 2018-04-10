@@ -12,6 +12,16 @@ int getDist(BrickPi3 &BPEva){
 	
 }
 
+void turnMotor(string port, int degrees){
+    BPEva.offset_motor_encoder(port, BPEva.get_motor_encoder(PORT_A));
+    BPEva.set_motor_power(port, 10);
+    while(BPEva.get_motor_encoder(port) < (degrees+1)){
+	    cout << BPEva.get_motor_encoder(port) << "\n";
+	    sleep(0.01);
+    }
+    BPEva.set_motor_power(port, 0);
+}
+
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 	
 	sensor_light_t	Light;
@@ -29,12 +39,6 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
     cout << "heloo its me";
-    BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
-    BPEva.set_motor_power(PORT_A, 10);
-    while(BPEva.get_motor_encoder(PORT_A) < 90){
-	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
-	    sleep(0.01);
-    }
-    BPEva.set_motor_power(PORT_A, 0);
+    turnMotor(PORT_A, 90);
     sleep(500);
 }
