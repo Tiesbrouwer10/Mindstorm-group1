@@ -16,13 +16,13 @@ int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 	switch(MOTOR){
 	
 		case 2:// Motor Right
-			if((accelerationB < 90 && acceleration <= 0) || (accelerationB > -90 && acceleration >= 0) && setSpeed != true){
+			if((accelerationB < 70 && acceleration <= 0) || (accelerationB > -60 && acceleration >= 0) && setSpeed != true){
 				accelerationB += acceleration;
-					if(accelerationB > 90){
-						accelerationB = 90; // Hard limits the negative speed limits
+					if(accelerationB > 70){
+						accelerationB = 70; // Hard limits the negative speed limits
 					}
-					else if(accelerationB < -90){
-						accelerationB = -90; // Hard limits the negative speed limits
+					else if(accelerationB < -60){
+						accelerationB = -60; // Hard limits the negative speed limits
 					}
 			}
 			else{
@@ -32,12 +32,12 @@ int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 			break;
 		
 		case 4: // Motor Left
-			if((accelerationC < 90 && acceleration <= 0) || (accelerationC > -90 && acceleration >= 0) && setSpeed != true){
+			if((accelerationC < 70 && acceleration <= 0) || (accelerationC > -60 && acceleration >= 0) && setSpeed != true){
 				accelerationC += acceleration;
-					if(accelerationC > 90){
-						accelerationC = 90; // Hard limits the negative speed limits
+					if(accelerationC > 70){
+						accelerationC = 70; // Hard limits the negative speed limits
 					}
-					else if(accelerationC < -90){
+					else if(accelerationC < -60){
 						accelerationC = -90; // Hard limits the negative speed limits
 					}
 			}
