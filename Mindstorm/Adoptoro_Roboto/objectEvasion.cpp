@@ -31,7 +31,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     cout << "heloo its me";
     BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
     BPEva.set_motor_power(PORT_A, 10);
-    while(BPEva.get_motor_encoder(PORT_A) >90){
+    while(BPEva.get_motor_encoder(PORT_A) < 90){
 	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
 	    sleep(0.01);
     }
