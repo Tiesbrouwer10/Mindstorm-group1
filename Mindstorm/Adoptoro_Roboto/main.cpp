@@ -22,6 +22,6 @@ int main(){
 	// sensorCalibration();
 	
 	// Start lineriding function
-	lineRider(sensorCalibration(), BPMain);
+	lineRider(sensorCalibration(BPMain), BPMain);
 	
 }
