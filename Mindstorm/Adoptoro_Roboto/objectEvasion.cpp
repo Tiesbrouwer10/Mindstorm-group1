@@ -16,6 +16,7 @@ void turnMotor(int port, int degrees, BrickPi3 &BPEva){
     int speed = 40
     if (degrees < 0){
 	    speed = -40
+    }
     if(port == 1){
 	    BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
 	    BPEva.set_motor_power(PORT_A, 10);
