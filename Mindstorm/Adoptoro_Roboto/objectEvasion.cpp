@@ -5,7 +5,7 @@ using namespace std;
 
 int getDist(BrickPi3 &BPEva){
       	sensor_ultrasonic_t Ultrasonic2;
-	if(BPEva.get_sensor(PORT_2, Ultrasonic2) == 0){
+	if(BPEva.get_sensor(PORT_1, Ultrasonic2) == 0){
 		cout << "De sensor meet afstand: " << Ultrasonic2.cm<< "\n";
 		return Ultrasonic2.cm;
  	}
