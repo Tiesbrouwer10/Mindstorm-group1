@@ -3,70 +3,70 @@
 
 using namespace std;
 
-/*
-
-
-*/
 void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
+
+	//==============================================================
+	// Sensor Defenition and base values / defenitions
 	
-	// Turns the light and color sensor on
 	BPLine.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON);
 	BPLine.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL);
 	
-	// Creates the required structs
 	sensor_light_t		Light;
 	sensor_color_t		Color;
 	
-	// Create variables
 	int BWLine = 0;
 	int CLine = 0;
 	int Accelerator = 40;
 	int distanceToObject = 0;
 	
+	int MOTOR_B =  2;
+	int MOTOR_C = 4;
+	
 	while(true){
-		// Checks if distance is within range
+		
+		// Checks if object is being detected
 		distanceToObject = getDist(BPLine);
 		if(distanceToObject < 7){
 			evadeObject(BPLine, calibratedInputs);
 		}
+		else{
 		
-		// Get value from sensors, if they are ready to be used
-		if(BPLine.get_sensor(PORT_2, Light) == 0){
-			BWLine = Light.reflected;
-			if(BPLine.get_sensor(PORT_3,Color) == 0){
+			// Get value from sensors
+			if(BPLine.get_sensor(PORT_2, Light) == 0 && BPLine.get_sensor(PORT_3,Color) == 0){
+				BWLine = Light.reflected;
 				CLine = Color.reflected_red;
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					if(Accelerator > 69){
-						BPLine.set_motor_power(PORT_C, -60);
-					}else{
-						BPLine.set_motor_power(PORT_C, 15);
-						BPLine.set_motor_power(PORT_B, Accelerator);
+				
+					Accelerator = getAcceleration(MOTOR_B); // Gets the current motor value from the function
+				
+					if(Accelerator > 89){
+						BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, -90, true);
 					}
-					if(Accelerator <= 70){
-						Accelerator += 1;
-						sleep(0.1);
+					else{
+						BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, 15, true));
+						BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_B, 1, false));
 					}
+					sleep(0.1);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					if(Accelerator > 69){
-						BPLine.set_motor_power(PORT_B, -60);
-					}else{
-						BPLine.set_motor_power(PORT_B, 15);
-						BPLine.set_motor_power(PORT_C, Accelerator);
+				
+					Accelerator = getAcceleration(MOTOR_C); // Gets the current motor value from the function
+				
+					if(Accelerator > 89){
+						BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_C, -90, true));
 					}
-					if(Accelerator <= 70){
-						Accelerator += 1;
-						sleep(0.1);
+					else{
+						BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_B, 15, true));
+						BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, 1, true));
 					}
-
+					sleep(0.1);
 				}
 				else{
-					BPLine.set_motor_power(PORT_C, 40);
-					BPLine.set_motor_power(PORT_B, 40);
-					Accelerator = 40;
-					
+					BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, 40, true)); // Set Left wheel back to base value
+					BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_C, 40, true)); // Set Right wheel back to base value
+					Accelerator = 40; // Set back to average value and speed
 				}
 			}
 		}
