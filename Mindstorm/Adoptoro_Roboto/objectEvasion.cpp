@@ -13,7 +13,7 @@ int getDist(BrickPi3 &BPEva){
 }
 
 void turnMotor(int port, int degrees, BrickPi3 &BPEva){
-    int speed = 40
+    int speed = 40;
     if (degrees < 0){
 	    speed = -40
     }
