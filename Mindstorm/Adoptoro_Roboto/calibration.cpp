@@ -13,7 +13,7 @@ borderValues sensorCalibration(BrickPi3 & BPCalibration){
 	// Black/White and Color sensor port defenition
 	BPCalibration.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON);
 	BPCalibration.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL);
-	BPCalibration.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
+	BPCalibration.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
 		
 	// Reset the motors
 	BPCalibration.offset_motor_encoder(PORT_A, BPCalibration.get_motor_encoder(PORT_A));
