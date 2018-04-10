@@ -5,11 +5,12 @@ using namespace std;
 
 int getDist(BrickPi3 &BPEva){
  
-      BPEva.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
-      sensor_ultrasonic_t Ultrasonic2;
-    
-    return Ultrasonic2.cm;
-    
+      	BPEva.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
+      	sensor_ultrasonic_t Ultrasonic2;
+	if(BP.get_sensor(PORT_2, Ultrasonic2) == 0){
+		return Ultrasonic2.cm;
+ 	}
+	
 }
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
