@@ -35,6 +35,8 @@ int getDist(BrickPi3 &BPEva); // Gets the distance the robot is away from object
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs); // Procedure to evading object
 
+void turnMotor(string port, int degrees, BrickPi3 &BPEva)
+
 void sound(); // Start sound effect
 
 #endif /* LIJN_HPP */
