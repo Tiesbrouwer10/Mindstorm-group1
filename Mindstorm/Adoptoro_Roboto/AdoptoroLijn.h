@@ -35,6 +35,6 @@ int getDist(BrickPi3 &BPEva); // Gets the distance the robot is away from object
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs); // Procedure to evading object
 
-int getAcceleration(const int &MOTOR, float acceleration , bool setSpeed = false); // Acceleration fuction keeps track of motor speed and set motor speed
+int getAcceleration(const int &MOTOR, float acceleration , bool setSpeed); // Acceleration fuction keeps track of motor speed and set motor speed
 
 #endif /* LIJN_HPP */
