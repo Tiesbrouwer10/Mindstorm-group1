@@ -31,12 +31,13 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 			cout << "TEST\n";
 			// Get value from sensors
 			if(BPLine.get_sensor(PORT_2, Light) == 0 && BPLine.get_sensor(PORT_3,Color) == 0){
+				cout << "TEST2\n";
 				BWLine = Light.reflected;
 				CLine = Color.reflected_red;
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-				
+					cout << "TEST3\n";
 					if(getAcceleration(MOTOR_B, 1, false) > 89){
 						BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, -90, true));
 					}
