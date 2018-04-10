@@ -2,16 +2,22 @@
 #include "BrickPi3.h"
 
 using namespace std;
-//comment
 
+/*
+
+
+*/
 void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	
+	// Turns the light and color sensor on
 	BPLine.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON);
 	BPLine.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL);
 	
+	// Creates the required structs
 	sensor_light_t		Light;
 	sensor_color_t		Color;
 	
+	// Create variables
 	int BWLine = 0;
 	int CLine = 0;
 	int Accelerator = 40;
@@ -24,7 +30,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 			evadeObject(BPLine, calibratedInputs);
 		}
 		
-		// Get value from sensors
+		// Get value from sensors, if they are ready to be used
 		if(BPLine.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
@@ -40,7 +46,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}
 					if(Accelerator <= 70){
 						Accelerator += 1;
-						//cout << Accelerator << " BW Accelerator\n";
 						sleep(0.1);
 					}
 				}
@@ -53,7 +58,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}
 					if(Accelerator <= 70){
 						Accelerator += 1;
-						//cout << Accelerator << " C Accelerator\n";
 						sleep(0.1);
 					}
 
@@ -62,8 +66,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
-					
-					//cout << "Accelerator set to 40\n"; 
 					
 				}
 			}
