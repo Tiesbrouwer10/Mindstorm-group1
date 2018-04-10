@@ -16,7 +16,7 @@ int getAcceleration(const int &MOTOR, int acceleration = 0 ,bool setSpeed = fals
 	switch(MOTOR)
 	
 		case MOTOR_B: // Motor Right
-			if((accelerationB < 90 && acceleration <= 0) || (accelerationB > -90 && acceleration >= 0) setSpeed != true){
+			if((accelerationB < 90 && acceleration <= 0) || (accelerationB > -90 && acceleration >= 0) && setSpeed != true){
 				
 				accelerationB += acceleration;
 					if(accelerationB > 90){
@@ -33,7 +33,7 @@ int getAcceleration(const int &MOTOR, int acceleration = 0 ,bool setSpeed = fals
 			break;
 		
 		case MOTOR_C: // Motor Left
-			if((accelerationC < 90 && acceleration <= 0) || (accelerationC > -90 && acceleration >= 0) setSpeed != true){
+			if((accelerationC < 90 && acceleration <= 0) || (accelerationC > -90 && acceleration >= 0) && setSpeed != true){
 				
 				accelerationC += acceleration;
 					if(accelerationC > 90){
