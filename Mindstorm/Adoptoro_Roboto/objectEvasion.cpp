@@ -15,7 +15,7 @@ int getDist(BrickPi3 &BPEva){
 void turnMotor(int port, int degrees, BrickPi3 &BPEva){
     int speed = 40;
     if (degrees < 0){
-	    speed = -40
+	    speed = -40;
     }
     if(port == 1){
 	    BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
