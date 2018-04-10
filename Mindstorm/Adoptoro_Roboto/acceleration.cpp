@@ -3,13 +3,13 @@
 
 using namespace std;
 
-	const int MOTOR_B = 2; // Value of motor B
-	const int MOTOR_C = 4; // Value of motor C
+	int MOTOR_B = 2; // Value of motor B
+	int MOTOR_C = 4; // Value of motor C
 	
 	int accelerationB = 0; // Acceleration value of B
 	int accelerationC = 0; // Acceleration value of C
 
-int getAcceleration(const int &MOTOR, int acceleration = 0 ,bool setSpeed = false){
+int getAcceleration(int MOTOR, int acceleration = 0 ,bool setSpeed = false){
 	
 	int returnSpeed = 0; // Return statement value
 	
