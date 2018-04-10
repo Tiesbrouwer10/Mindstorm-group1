@@ -13,7 +13,7 @@ int getAcceleration(const int &MOTOR, int acceleration = 0 ,bool setSpeed = fals
 	
 	int returnSpeed = 0; // Return statement value
 	
-	switch(MOTOR)
+	switch(MOTOR){
 	
 		case MOTOR_B: // Motor Right
 			if((accelerationB < 90 && acceleration <= 0) || (accelerationB > -90 && acceleration >= 0) && setSpeed != true){
@@ -48,5 +48,6 @@ int getAcceleration(const int &MOTOR, int acceleration = 0 ,bool setSpeed = fals
 			}
 			returnSpeed = accelerationC;
 			break;
+	}
 	return returnSpeed;
 }
