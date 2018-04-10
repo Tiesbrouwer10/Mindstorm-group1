@@ -10,6 +10,7 @@ using namespace std;
 #include <unistd.h>
 #include <vector>
 #include <signal.h>
+#include <string>
 #include "BrickPi3.h"
 
 //==================================
