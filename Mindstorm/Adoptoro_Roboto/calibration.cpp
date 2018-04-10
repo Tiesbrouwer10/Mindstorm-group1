@@ -5,7 +5,7 @@ using namespace std;
 
 int error;
 
-borderValues sensorCalibration(BrickPi3 &BPCalibration){
+borderValues sensorCalibration(BrickPi3 & BPCalibration){
 	
 	int BWValue = 0;
 	int CValue = 0;
