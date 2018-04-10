@@ -34,7 +34,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					BWLine = Light.reflected;
 					if(BPLine.get_sensor(PORT_3, Color) == 0){
 						CLine = Color.reflected_red;
-					}
+					
 			
 				
 					// Ride for 1 step
