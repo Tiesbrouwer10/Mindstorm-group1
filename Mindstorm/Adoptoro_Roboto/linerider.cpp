@@ -32,9 +32,10 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				// Get value from sensors
 				if(BPLine.get_sensor(PORT_2, Light) == 0){
 					BWLine = Light.reflected;
+					cout << "TESTLIGHT\n";
 					if(BPLine.get_sensor(PORT_3, Color) == 0){
 						CLine = Color.reflected_red;
-					
+					cout << "TESTCOLOR\n";
 			
 				
 					// Ride for 1 step
