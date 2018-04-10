@@ -13,6 +13,15 @@ int getDist(BrickPi3 &BPEva){
 }
 
 void turnMotor(string port, int degrees, BrickPi3 &BPEva){
+	switch(port){
+		case 1:
+			port = PORT_A;
+		case 2:
+			port = PORT_B;
+		case 3:
+			port = PORT_C;
+		default:
+			break;
     BPEva.offset_motor_encoder(port, BPEva.get_motor_encoder(PORT_A));
     BPEva.set_motor_power(port, 10);
     while(BPEva.get_motor_encoder(port) < (degrees+1)){
