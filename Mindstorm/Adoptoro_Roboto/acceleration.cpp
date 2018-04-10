@@ -17,6 +17,7 @@ int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 	
 		case 2:// Motor Right
 			if((accelerationB < 70 && acceleration <= 0) || (accelerationB > -60 && acceleration >= 0) && setSpeed != true){
+				cout << " Test 1\n";
 				accelerationB += acceleration;
 					if(accelerationB > 70){
 						accelerationB = 70; // Hard limits the negative speed limits
@@ -33,6 +34,7 @@ int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 		
 		case 4: // Motor Left
 			if((accelerationC < 70 && acceleration <= 0) || (accelerationC > -60 && acceleration >= 0) && setSpeed != true){
+				cout << " Test 2\n";
 				accelerationC += acceleration;
 					if(accelerationC > 70){
 						accelerationC = 70; // Hard limits the negative speed limits
