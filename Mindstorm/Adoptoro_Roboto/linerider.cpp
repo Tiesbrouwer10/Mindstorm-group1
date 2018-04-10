@@ -47,8 +47,8 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}
 					else if(CLine < calibratedInputs.borderValueC){
 				
-						if(getAcceleration(MOTOR_C, 1, false) > 69z){
-							BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_C, -60, true));
+						if(getAcceleration(MOTOR_C, 1, false) > 69){
+							BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_B, -60, true));
 						}
 						else{
 							BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_B, 15, true));
@@ -58,7 +58,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}
 					else{
 						BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, 40, true)); // Set Left wheel back to base value
-						BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_C, 40, true)); // Set Right wheel back to base value
+						BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_B, 40, true)); // Set Right wheel back to base value
 						Accelerator = 40; // Set back to average value and speed
 					}
 				}
