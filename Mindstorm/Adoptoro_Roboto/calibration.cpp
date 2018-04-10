@@ -5,7 +5,7 @@ using namespace std;
 
 int error;
 
-borderValues sensorCalibration(){
+borderValues sensorCalibration(BrickPi3 &BPCalibration){
 	
 	int BWValue = 0;
 	int CValue = 0;
@@ -15,6 +15,7 @@ borderValues sensorCalibration(){
 	// Black/White and Color sensor port defenition
 	BPCalibration.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON);
 	BPCalibration.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL);
+	BPCalibration.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
 		
 	// Reset the motors
 	BPCalibration.offset_motor_encoder(PORT_A, BPCalibration.get_motor_encoder(PORT_A));
