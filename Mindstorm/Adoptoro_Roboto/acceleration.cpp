@@ -15,7 +15,7 @@ int getAcceleration(int MOTOR, int acceleration = 0 ,bool setSpeed = false){
 	
 	switch(MOTOR){
 	
-		case MOTOR_B: // Motor Right
+		case 2:// Motor Right
 			if((accelerationB < 90 && acceleration <= 0) || (accelerationB > -90 && acceleration >= 0) && setSpeed != true){
 				
 				accelerationB += acceleration;
@@ -32,7 +32,7 @@ int getAcceleration(int MOTOR, int acceleration = 0 ,bool setSpeed = false){
 			returnSpeed = accelerationB;
 			break;
 		
-		case MOTOR_C: // Motor Left
+		case 4: // Motor Left
 			if((accelerationC < 90 && acceleration <= 0) || (accelerationC > -90 && acceleration >= 0) && setSpeed != true){
 				
 				accelerationC += acceleration;
