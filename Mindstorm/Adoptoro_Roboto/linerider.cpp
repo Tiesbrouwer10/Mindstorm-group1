@@ -15,14 +15,18 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	int CLine = 0;
 	float Accelerator = 40;
 	int distanceToObject = 0;
+	int objectTimer = 0;
 	
 	while(true){
 		// Checks if distance is within range
 		distanceToObject = getDist(BPLine);
 		cout << distanceToObject << '\n';
-		if(distanceToObject < 7 && distanceToObject > 0){
+		if(distanceToObject < 8 && distanceToObject > 0){
 			cout << "draai hoofd";
-			evadeObject(BPLine, calibratedInputs);
+			objectTimer += 1;
+			if(objectTimer > 500){
+				evadeObject(BPLine, calibratedInputs);
+			}
 		}
 		
 		// Get value from sensors
@@ -35,6 +39,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
+					objectTimer -= 1;
 				}
 				
 				// Ride for 1 step
@@ -44,6 +49,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}else{
 						BPLine.set_motor_power(PORT_C, 15);
 						BPLine.set_motor_power(PORT_B, Accelerator);
+						objectTimer -= 1;
 					}
 					if(Accelerator <= 70){
 						Accelerator += 0.1;
@@ -57,6 +63,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}else{
 						BPLine.set_motor_power(PORT_B, 15);
 						BPLine.set_motor_power(PORT_C, Accelerator);
+						objectTimer -= 1;
 					}
 					if(Accelerator <= 70){
 						Accelerator += 0.1;
@@ -69,6 +76,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
+					objectTimer -= 1;
 					
 					//cout << "Accelerator set to 40\n"; 
 					
