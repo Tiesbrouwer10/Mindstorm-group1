@@ -15,7 +15,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	int CLine = 0;
 	float Accelerator = 40;
 	int distanceToObject = 0;
-	int objectTimer = 0;
+	unsigned int objectTimer = 0;
 	
 	while(true){
 		// Checks if distance is within range
