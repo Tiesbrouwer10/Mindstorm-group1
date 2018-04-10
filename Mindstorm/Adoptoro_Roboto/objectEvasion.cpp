@@ -12,38 +12,25 @@ int getDist(BrickPi3 &BPEva){
 	
 }
 
-void turnMotor(int port, int degrees, BrickPi3 &BPEva){
-    int speed = 40;
-    if (degrees < 0){
-	    speed = -40;
+void turnHeadLeft(BrickPi3 &BPEva){
+    BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
+    BPEva.set_motor_power(PORT_A, 10);
+    while(BPEva.get_motor_encoder(PORT_A) < (91)){
+	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
+	    sleep(0.01);
     }
-    if(port == 1){
-	    BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
-	    BPEva.set_motor_power(PORT_A, 10);
-	    while(BPEva.get_motor_encoder(PORT_A) < (degrees+1)){
-		    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
-		    sleep(0.01);
-	    }
-	    BPEva.set_motor_power(PORT_A, 0);
+    BPEva.set_motor_power(PORT_A, 0); 
+}
+void turnCarRight(BrickPi3 &BPEva){
+    BPEva.offset_motor_encoder(PORT_B, BPEva.get_motor_encoder(PORT_B));
+    BPEva.set_motor_dps(PORT_B, 200);
+    BPEva.set_motor_dps(PORT_C, -200);
+    while(BPEva.get_motor_encoder(PORT_B) < (450)){
+	    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
+	    sleep(0.01);
     }
-    if(port == 2){
-	    BPEva.offset_motor_encoder(PORT_B, BPEva.get_motor_encoder(PORT_B));
-	    BPEva.set_motor_power(PORT_B, speed);
-	    while(BPEva.get_motor_encoder(PORT_B) < (degrees+1)){
-		    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
-		    sleep(0.01);
-	    }
-	    BPEva.set_motor_power(PORT_B, 0);
-    }  
-    if(port == 3){
-	    BPEva.offset_motor_encoder(PORT_C, BPEva.get_motor_encoder(PORT_C));
-	    BPEva.set_motor_power(PORT_C, speed);
-	    while(BPEva.get_motor_encoder(PORT_C) < (degrees+1)){
-		    cout << BPEva.get_motor_encoder(PORT_C) << "\n";
-		    sleep(0.01);
-	    }
-	    BPEva.set_motor_power(PORT_C, 0);
-    }    
+    BPEva.set_motor_power(PORT_B, 0);
+    BPEva.set_motor_power(PORT_C, 0);
 }
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
@@ -63,8 +50,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
     cout << "heloo its me";
-    turnMotor(1, 90, BPEva);
-    turnMotor(2, 450, BPEva);
-    turnMotor(3, -450, BPEva);
+    turnHeadLeft(BPEva);
+    turnCarRight(BPEva);
     sleep(500);
 }
