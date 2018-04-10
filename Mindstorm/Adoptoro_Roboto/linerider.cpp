@@ -18,6 +18,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	while(true){
 		// Checks if distance is within range
 		distanceToObject = getDist(BPLine);
+		cout << distanceToObject << '\n';
 		if(distanceToObject < 7){
 			cout << "draai hoofd";
 			evadeObject(BPLine, calibratedInputs);
