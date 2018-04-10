@@ -38,7 +38,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				}
 				
 				// Ride for 1 step
-				else if(BWLine > calibratedInputs.borderValueBW){
+				if(BWLine > calibratedInputs.borderValueBW){
 					if(Accelerator > 69){
 						BPLine.set_motor_power(PORT_C, -60);
 					}else{
