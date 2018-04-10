@@ -9,7 +9,7 @@ using namespace std;
 	int accelerationB = 0; // Acceleration value of B
 	int accelerationC = 0; // Acceleration value of C
 
-int getAcceleration(int MOTOR, int acceleration = 0, bool setSpeed = false){
+int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 	
 	int returnSpeed = 0; // Return statement value
 	
