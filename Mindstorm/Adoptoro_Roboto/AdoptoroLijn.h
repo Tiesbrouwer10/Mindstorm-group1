@@ -25,7 +25,7 @@ struct borderValues{ // Contains to be updated border values from calibration
 //==================================
 // Header content
 
-borderValues sensorCalibration(); // Calibrates Sensors
+borderValues sensorCalibration(BrickPi3 &BPMain); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
