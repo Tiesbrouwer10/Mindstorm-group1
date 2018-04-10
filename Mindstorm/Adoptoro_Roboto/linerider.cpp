@@ -23,10 +23,10 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	while(true){
 		
 		// Checks if object is being detected
-		//distanceToObject = getDist(BPLine);
-		//if(distanceToObject < 7){
-			//evadeObject(BPLine, calibratedInputs);
-		//}
+		distanceToObject = getDist(BPLine);
+		if(distanceToObject < 7){
+			evadeObject(BPLine, calibratedInputs);
+		}
 			if(true){
 				if(BPLine.get_sensor(PORT_2, Light) == 0){
 					BWLine = Light.reflected;
