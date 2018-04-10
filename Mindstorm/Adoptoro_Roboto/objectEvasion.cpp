@@ -29,7 +29,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
     
-    BPEva.set_motor_power(PORT_A, 10);
+    BPEva.set_motor_power(PORT_A, 5);
     sleep(1);
     BPEva.set_motor_power(PORT_A, 0);
 }
