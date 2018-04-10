@@ -28,7 +28,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 			//evadeObject(BPLine, calibratedInputs);
 		//}
 			if(true){
-				cout << BPLine.get_sensor(PORT_2, Light) << "\n";
+				cout << BPLine.get_sensor(PORT_2, Light) << BPLine.get_sensor(PORT_3, Color) << "\n";
 				// Get value from sensors
 				if(BPLine.get_sensor(PORT_2, Light) == 0){
 					BWLine = Light.reflected;
