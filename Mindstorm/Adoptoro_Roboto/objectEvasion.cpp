@@ -8,6 +8,7 @@ int getDist(BrickPi3 &BPEva){
       	BPEva.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_ULTRASONIC);
       	sensor_ultrasonic_t Ultrasonic2;
 	if(BPEva.get_sensor(PORT_2, Ultrasonic2) == 0){
+		cout << "De sensor meet afstand: " << sensor_ultrasonic_t Ultrasonic2 << "\n";
 		return Ultrasonic2.cm;
  	}
 	
