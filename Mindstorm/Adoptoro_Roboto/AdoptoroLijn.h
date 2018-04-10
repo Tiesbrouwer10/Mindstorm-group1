@@ -25,7 +25,7 @@ struct borderValues{ // Contains to be updated border values from calibration
 //==================================
 // Header content
 
-borderValues sensorCalibration(BrickPi3 & BPCalibration); // Calibrates Sensors
+borderValues sensorCalibration(); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
@@ -35,6 +35,6 @@ int getDist(BrickPi3 &BPEva); // Gets the distance the robot is away from object
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs); // Procedure to evading object
 
-int getAcceleration(int MOTOR, int acceleration , bool setSpeed); // Acceleration fuction keeps track of motor speed and set motor speed
+void sound(); // Start sound effect
 
 #endif /* LIJN_HPP */
