@@ -39,9 +39,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
 				
-					Accelerator = getAcceleration(MOTOR_B); // Gets the current motor value from the function
-				
-					if(Accelerator > 89){
+					if(getAcceleration(MOTOR_B, 1, false) > 89){
 						BPLine.set_motor_power(PORT_C, getAcceleration(MOTOR_C, -90, true);
 					}
 					else{
@@ -52,9 +50,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				}
 				else if(CLine < calibratedInputs.borderValueC){
 				
-					Accelerator = getAcceleration(MOTOR_C); // Gets the current motor value from the function
-				
-					if(Accelerator > 89){
+					if((getAcceleration(MOTOR_C, 1, false) > 89){
 						BPLine.set_motor_power(PORT_B, getAcceleration(MOTOR_C, -90, true));
 					}
 					else{
