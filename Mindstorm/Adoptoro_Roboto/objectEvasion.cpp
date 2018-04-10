@@ -34,5 +34,5 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_dps(PORT_A, 30);
     sleep(3);
     BPEva.set_motor_power(PORT_A, 0);
-    sleep(4123546879);
+    sleep(500);
 }
