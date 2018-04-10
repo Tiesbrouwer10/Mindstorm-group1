@@ -12,12 +12,13 @@ using namespace std;
 int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 	
 	int returnSpeed = 0; // Return statement value
+	cout << " Test 2\n";
 	
 	switch(MOTOR){
 	
 		case 2:// Motor Right
 			if((accelerationB < 90 && acceleration <= 0) || (accelerationB > -90 && acceleration >= 0) && setSpeed != true){
-				
+				cout << " Test 8\n";
 				accelerationB += acceleration;
 					if(accelerationB > 90){
 						accelerationB = 90; // Hard limits the negative speed limits
@@ -30,11 +31,12 @@ int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 				accelerationB = acceleration; // If not setspeed acceleration is the set value
 			}
 			returnSpeed = accelerationB;
+			cout << " Test 3\n";
 			break;
 		
 		case 4: // Motor Left
 			if((accelerationC < 90 && acceleration <= 0) || (accelerationC > -90 && acceleration >= 0) && setSpeed != true){
-				
+				cout << " Test 9\n";
 				accelerationC += acceleration;
 					if(accelerationC > 90){
 						accelerationC = 90; // Hard limits the negative speed limits
@@ -47,6 +49,7 @@ int getAcceleration(int MOTOR, int acceleration, bool setSpeed){
 				accelerationC = acceleration; // If not setspeed acceleration is the set value
 			}
 			returnSpeed = accelerationC;
+			cout << " Test 4\n";
 			break;
 		default:break;
 	}
