@@ -29,9 +29,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				CLine = Color.reflected_red;
 				
 				if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 40);
-					BPLine.set_motor_power(PORT_B, 40);
-					Accelerator = 40;
+					sleep(0.01);
 				}
 				
 				// Ride for 1 step
