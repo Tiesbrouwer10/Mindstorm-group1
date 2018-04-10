@@ -26,7 +26,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		}
 		
 		// Get value from sensors
-		if(BPLine.get_sensor(PORT_2, Light) == 0){
+		else if(BPLine.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
