@@ -12,7 +12,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	float Accelerator = 40;
+	int Accelerator = 40;
 	int distanceToObject = 0;
 	
 	while(true){
@@ -37,9 +37,9 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						BPLine.set_motor_power(PORT_B, Accelerator);
 					}
 					if(Accelerator <= 70){
-						Accelerator += 0.2;
+						Accelerator += 1;
 						//cout << Accelerator << " BW Accelerator\n";
-						sleep(0.01);
+						sleep(0.1);
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
@@ -50,11 +50,16 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 						BPLine.set_motor_power(PORT_C, Accelerator);
 					}
 					if(Accelerator <= 70){
-						Accelerator += 0.2;
+						Accelerator += 1;
 						//cout << Accelerator << " C Accelerator\n";
-						sleep(0.01);
+						sleep(0.1);
 					}
 
+				}
+				else if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
+					BPLine.set_motor_power(PORT_C, 40);
+					BPLine.set_motor_power(PORT_B, 40);
+					Accelerator = 40;
 				}
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
