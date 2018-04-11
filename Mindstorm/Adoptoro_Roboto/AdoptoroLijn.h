@@ -46,6 +46,6 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 
 void sound(); // Start sound effect
 
-void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues calibratedInputs); // Check if object is within range
+//void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues calibratedInputs); // Check if object is within range
 
 #endif /* LIJN_HPP */
