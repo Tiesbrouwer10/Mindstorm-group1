@@ -13,19 +13,22 @@ using namespace std;
 //==================================
 // Header content
 
-struct borderValues{ // Contains to be updated border values from calibration
+//struct borderValues{ // Contains to be updated border values from calibration
 	
-	int borderValueBW;
-	int borderValueC;
+//	int borderValueBW;
+//	int borderValueC;
 	
-};
+//};
 
+getDist(BrickPi3 &BPEva); //gets the distance of the nearest object infront of him
+
+turnAround(BrickPi3 &BPMatrix, int pos); // turns the robot around to last crossroad
 
 borderValues sensorCalibration(BrickPi3 &BPMain); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
-void MatrixRider(borderValues calibratedInputs, BrickPi3 & BPMatrix); // Follows matrix
+void matrixRider(borderValues calibratedInputs, BrickPi3 & BPMatrix); // Follows matrix
 
 void turning(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, borderValues calibratedInputs); // turning the robot
 
