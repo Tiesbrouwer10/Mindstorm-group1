@@ -75,6 +75,6 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 	}
 	if(Accelerator <= 70){
 		Accelerator += 0.1;
-		sleep(0.01);
+		sleep(0.02);
 	}
 }
