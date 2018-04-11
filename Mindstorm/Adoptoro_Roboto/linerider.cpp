@@ -58,18 +58,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					}
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					if(Accelerator > 69){
-						BPLine.set_motor_power(PORT_B, -60);
-					}else{
-						BPLine.set_motor_power(PORT_B, 15);
-						BPLine.set_motor_power(PORT_C, Accelerator);
-						objectTimer -= 1;
-					}
-					if(Accelerator <= 70){
-						Accelerator += 0.1;
-						//cout << Accelerator << " C Accelerator\n";
-						sleep(0.01);
-					}
+					lineSeen(PORT_B, PORT_C);
 
 				}
 				else{
@@ -83,5 +72,20 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				}
 			}
 		}
+	}
+}
+
+
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor){
+	if(Accelerator > 69){
+		BPLine.set_motor_power(insideMotor, -60);
+	}else{
+		BPLine.set_motor_power(insideMotor, 15);
+		BPLine.set_motor_power(outsideMotor, Accelerator);
+		objectTimer -= 1;
+	}
+	if(Accelerator <= 70){
+		Accelerator += 0.1;
+		sleep(0.01);
 	}
 }
