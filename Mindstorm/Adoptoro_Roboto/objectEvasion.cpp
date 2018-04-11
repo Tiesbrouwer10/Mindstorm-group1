@@ -22,7 +22,7 @@ void turnHead90degrees(BrickPi3 &BPEva, int rotateDirection){
     BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
     BPEva.set_motor_power(PORT_A, rotation);
 	
-    while(BPEva.get_motor_encoder(PORT_A) !< (-89) || BPEva.get_motor_encoder(PORT_A) !> (89) ){
+    while(BPEva.get_motor_encoder(PORT_A) !< -89 || BPEva.get_motor_encoder(PORT_A) !> 89){
 	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
 	    sleep(0.01);
     }
@@ -39,7 +39,7 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection){
     BPEva.set_motor_power(PORT_B, (motorPower * -1));
     BPEva.set_motor_power(PORT_C, motorPower);
 	
-    while(BPEva.get_motor_encoder(PORT_C) !> (449) || BPEva.get_motor_encoder(PORT_C) !< -449){
+    while(BPEva.get_motor_encoder(PORT_C) !> 449 || BPEva.get_motor_encoder(PORT_C) !< -449){
 	    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
 	    sleep(0.01);
     }
