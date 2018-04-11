@@ -33,7 +33,7 @@ void matrix(borderValues calibratedInputs){
                 while(posX != 4){
                     BPLine.set_motor_power(PORT_C, 40);
                     BPLine.set_motor_power(PORT_B, 40);
-                    if(BWLine > calibratedInputs.borderValueBW ||  CLine < calibratedInputs.borderValueC){
+                    if(BWLine > calibratedInputs.borderValueBW &&  CLine < calibratedInputs.borderValueC){
                         BPLine.set_motor_power(PORT_C, 0);
                         BPLine.set_motor_power(PORT_B, 0);
                         X++;
@@ -43,7 +43,7 @@ void matrix(borderValues calibratedInputs){
                 while(posY != 4){
                     BPLine.set_motor_power(PORT_C, 40);
                     BPLine.set_motor_power(PORT_B, 40);
-                    if(BWLine > calibratedInputs.borderValueBW ||  CLine < calibratedInputs.borderValueC){
+                    if(BWLine > calibratedInputs.borderValueBW &&  CLine < calibratedInputs.borderValueC){
                         BPLine.set_motor_power(PORT_C, 0);
                         BPLine.set_motor_power(PORT_B, 0);
                         Y++;
