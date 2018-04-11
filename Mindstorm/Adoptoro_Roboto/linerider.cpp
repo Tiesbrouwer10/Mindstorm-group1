@@ -22,32 +22,31 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		// Check if object is within range
 		objectDetection(BPLine, objectTimer);
 		
-				if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
-					BPLine.set_motor_power(PORT_C, 40);
-					BPLine.set_motor_power(PORT_B, 40);
-					Accelerator = 40;
-				}
+		if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
+			BPLine.set_motor_power(PORT_C, 40);
+			BPLine.set_motor_power(PORT_B, 40);
+			Accelerator = 40;
+		}
 				
-				// Ride for 1 step
-				if(BWLine > calibratedInputs.borderValueBW){
-					lineSeen(PORT_C, PORT_B, Accelerator, objectTimer, BPLine);
-				}
-				else if(CLine < calibratedInputs.borderValueC){
-					lineSeen(PORT_B, PORT_C, Accelerator, objectTimer, BPLine);
+		// Ride for 1 step
+		if(BWLine > calibratedInputs.borderValueBW){
+			lineSeen(PORT_C, PORT_B, Accelerator, objectTimer, BPLine);
+		}
+		else if(CLine < calibratedInputs.borderValueC){
+			lineSeen(PORT_B, PORT_C, Accelerator, objectTimer, BPLine);
 
-				}
-				else{
-					BPLine.set_motor_power(PORT_C, 40);
-					BPLine.set_motor_power(PORT_B, 40);
-					Accelerator = 40;
+		}
+		else{
+			BPLine.set_motor_power(PORT_C, 40);
+			BPLine.set_motor_power(PORT_B, 40);
+			Accelerator = 40;
 					
-					//cout << "Accelerator set to 40\n"; 
+			//cout << "Accelerator set to 40\n"; 
 					
-				}
-			}
 		}
 	}
 }
+
 
 void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer){
 	int distanceToObject = 0;
