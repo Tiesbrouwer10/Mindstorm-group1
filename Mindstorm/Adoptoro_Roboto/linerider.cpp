@@ -53,7 +53,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				else{
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
-					Accelerator = 40;
 					objectTimer -= 1;
 					
 					//cout << "Accelerator set to 40\n"; 
