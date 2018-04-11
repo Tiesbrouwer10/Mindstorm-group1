@@ -3,11 +3,8 @@
 #include "AdoptoroMatrix.h"
 
 using namespace std;
-//comment
-//You have been IP banned
 
 void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
-	
 	
 	sensor_light_t		Light;
 	sensor_color_t		Color;
@@ -21,8 +18,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	while(true){
 		// Checks if distance is within range
 		distanceToObject = getDist(BPLine);
-		cout << "Distance is: " <<distanceToObject << '\n';
-		cout << "Object Timer: " << objectTimer << "\n";
 		if(distanceToObject < 8 && distanceToObject > 0){
 			objectTimer += 1;
 			if(objectTimer > 500){
@@ -60,15 +55,11 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					if(objectTimer > 0){
 						objectTimer -= 1;
 					}
-					
-					//cout << "Accelerator set to 40\n"; 
-					
 				}
 			}
 		}
 	}
 }
-
 
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
 	if(Accelerator > 69){
