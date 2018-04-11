@@ -20,9 +20,9 @@ using namespace std;
 	
 //};
 
-getDist(BrickPi3 &BPEva); //gets the distance of the nearest object infront of him
+//getDist(BrickPi3 &BPEva); //gets the distance of the nearest object infront of him
 
-turnAround(BrickPi3 &BPMatrix, int pos); // turns the robot around to last crossroad
+//turnAround(BrickPi3 &BPMatrix, int pos); // turns the robot around to last crossroad
 
 borderValues sensorCalibration(BrickPi3 &BPMain); // Calibrates Sensors
 
