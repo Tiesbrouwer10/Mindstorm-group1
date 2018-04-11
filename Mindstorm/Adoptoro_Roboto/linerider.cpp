@@ -65,7 +65,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 }
 
 
-void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
 	if(Accelerator > 69){
 		BPLine.set_motor_power(insideMotor, -60);
 	}else{
