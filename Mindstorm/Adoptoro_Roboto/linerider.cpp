@@ -58,7 +58,7 @@ void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues ca
 			}
 		}
 	else{
-		objectTimer -=1
+		objectTimer -=1;
 	}
 }
 
