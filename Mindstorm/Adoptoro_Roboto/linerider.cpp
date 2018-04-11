@@ -24,7 +24,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		cout << "Distance is: " <<distanceToObject << '\n';
 		cout << "Object Timer: " << objectTimer << "\n";
 		if(distanceToObject < 8 && distanceToObject > 0){
-			cout << "TEST\n" ;
 			objectTimer += 1;
 			if(objectTimer > 500){
 				evadeObject(BPLine, calibratedInputs);
@@ -32,7 +31,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		}
 		
 		// Get value from sensors
-		if(BPLine.get_sensor(PORT_2, Light) == 0){
+		else if(BPLine.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
