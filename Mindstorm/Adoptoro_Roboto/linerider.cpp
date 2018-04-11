@@ -74,7 +74,7 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 		objectTimer -= 1;
 	}
 	if(Accelerator <= 70){
-		Accelerator += 0.1;
-		sleep(0.02);
+		Accelerator += 0.2;
+		sleep(0.01);
 	}
 }
