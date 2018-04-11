@@ -84,7 +84,8 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 				break; // Final exit statement
 			}
 		}
-		else{
+		else if(objectCounter > 0){
+			objectCounter -=1;
 			continue;
 		}
 		
