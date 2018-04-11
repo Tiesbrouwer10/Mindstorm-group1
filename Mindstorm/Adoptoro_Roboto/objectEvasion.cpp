@@ -12,7 +12,7 @@ int getDist(BrickPi3 &BPEva){
 	
 }
 
-void turnHeadLeft(BrickPi3 &BPEva){
+void turnHead90degrees(BrickPi3 &BPEva){
     BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
     BPEva.set_motor_power(PORT_A, -10);
     while(BPEva.get_motor_encoder(PORT_A) < (-91)){
