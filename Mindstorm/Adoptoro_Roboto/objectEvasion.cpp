@@ -70,6 +70,9 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		else if(objectCounter > 0){
 			objectCounter -= 1;
 		}
+		else{
+			continue;
+		}
 	}
 	
 	while(distanceToObject < 8 && distanceToObject > 0){
@@ -88,6 +91,9 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 		else if(objectCounter > 0){
 			objectCounter -=1;
+			continue;
+		}
+		else{
 			continue;
 		}
 		
