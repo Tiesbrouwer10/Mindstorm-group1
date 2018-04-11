@@ -66,7 +66,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
     cout << "heloo its me";
-    turnHead90degrees(BPEva, rotateLeft);
-    turnCar(BPEva, rotateLeft);
+    turnHead90degrees(BPEva, rotateRight);
+    turnCar(BPEva, rotateRight);
     sleep(500);
 }
