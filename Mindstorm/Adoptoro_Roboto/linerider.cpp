@@ -27,6 +27,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 			objectTimer += 1;
 			if(objectTimer > 500){
 				evadeObject(BPLine, calibratedInputs);
+				objectTimer = 0;
 			}
 		}
 		
@@ -40,7 +41,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
-					objectTimer -= 1;
 				}
 				
 				// Ride for 1 step
@@ -55,7 +55,6 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 					BPLine.set_motor_power(PORT_C, 40);
 					BPLine.set_motor_power(PORT_B, 40);
 					Accelerator = 40;
-					objectTimer -= 1;
 					
 					//cout << "Accelerator set to 40\n"; 
 					
@@ -66,13 +65,12 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 }
 
 
-void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPLine){
 	if(Accelerator > 69){
 		BPLine.set_motor_power(insideMotor, -60);
 	}else{
 		BPLine.set_motor_power(insideMotor, 15);
 		BPLine.set_motor_power(outsideMotor, Accelerator);
-		objectTimer -= 1;
 	}
 	if(Accelerator <= 70){
 		Accelerator += 0.2;
