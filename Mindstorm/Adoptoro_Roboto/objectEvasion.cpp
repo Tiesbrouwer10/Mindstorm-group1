@@ -122,8 +122,10 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     turnHead90degrees(BPEva, rotateRight);
     turnCar(BPEva, rotateLeft);
     drivePastObject(BPEva, calibratedInputs, false, true);
+    cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
     turnCar(BPEva, rotateRight);
     drivePastObject(BPEva, calibratedInputs, false, false);
+    cout << "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
     turnCar(BPEva, rotateRight);
     turnHead90degrees(BPEva, rotateLeft);
 	
