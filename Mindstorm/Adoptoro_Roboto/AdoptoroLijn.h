@@ -40,7 +40,9 @@ void turnHead90degrees(BrickPi3 &BPEva, int rotateDirection); // Rotates the son
 
 void turnCar(BrickPi3 &BPEva, int rotateDirection); // Rotates the car 90 degrees, 1 for left, 2 for right
 
-void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int & objectTimer, BrickPi3 &BPLine); //Turning function
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int & objectTimer, BrickPi3 &BPLine); // Turning function
+
+void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound); // Driving past object and detecting object to turn past
 
 void sound(); // Start sound effect
 
