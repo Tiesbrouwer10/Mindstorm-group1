@@ -20,7 +20,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	while(true){
 	
 		// Check if object is within range
-		objectDetection(BPLine, objectTimer);
+		objectDetection(BPLine, objectTimer, calibratedInputs);
 		
 		if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
 			BPLine.set_motor_power(PORT_C, 40);
