@@ -83,7 +83,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 			objectCounter += 1;
 			if(objectCounter > 500){
 				objectCounter = 0;
-				sleep(0.5);
+				sleep(1);
 				BPEva.set_motor_power(PORT_B, 0);
 				BPEva.set_motor_power(PORT_C, 0);
 				break; // Final exit statement
