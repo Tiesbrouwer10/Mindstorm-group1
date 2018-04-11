@@ -13,12 +13,12 @@ using namespace std;
 //==================================
 // Header content
 
-struct borderValues{ // Contains to be updated border values from calibration
+//struct borderValues{ // Contains to be updated border values from calibration
 	
 	//int borderValueBW;
 	//int borderValueC;
 	
-};
+//};
 
 
 borderValues sensorCalibration(); // Calibrates Sensors
