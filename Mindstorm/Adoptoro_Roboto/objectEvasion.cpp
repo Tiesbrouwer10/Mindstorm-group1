@@ -23,11 +23,11 @@ void turnHead90degrees(BrickPi3 &BPEva, int rotateDirection){
     BPEva.set_motor_power(PORT_A, rotation);
 	
     while(BPEva.get_motor_encoder(PORT_A) >= -89 && BPEva.get_motor_encoder(PORT_A) <= 89 ){
-	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
 	    sleep(0.01);
     }
     BPEva.set_motor_power(PORT_A, 0); 
 }
+
 void turnCar(BrickPi3 &BPEva, int rotateDirection){
 	
 	int motorPower = 30; // Sets car to turn left or right
@@ -35,16 +35,58 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection){
 		motorPower *= -1;
 	}
 	
-    BPEva.offset_motor_encoder(PORT_B, BPEva.get_motor_encoder(PORT_B));
-    BPEva.set_motor_power(PORT_B, (motorPower * -1));
-    BPEva.set_motor_power(PORT_C, motorPower);
+    BPEva.offset_motor_encoder(PORT_C, BPEva.get_motor_encoder(PORT_C));
+    BPEva.set_motor_power(PORT_C, (motorPower * -1));
+    BPEva.set_motor_power(PORT_B, motorPower);
 	
-    while(BPEva.get_motor_encoder(PORT_B) <= 469 && BPEva.get_motor_encoder(PORT_B) >= -469){
-	    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
+    while(BPEva.get_motor_encoder(PORT_C) <= 469 && BPEva.get_motor_encoder(PORT_C) >= -469){
 	    sleep(0.01);
     }
     BPEva.set_motor_power(PORT_B, 0);
     BPEva.set_motor_power(PORT_C, 0);
+}
+
+void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound){
+	
+	unsigned int distanceToObject = 10;
+	unsigned int objectCounter = 0;
+	
+	BPEva.set_motor_power(PORT_B, 20);
+	BPEva.set_motor_power(PORT_C, 20);
+
+	while((distanceToObject > 8 && distanceToObject != 0) || objectFound != true){
+		
+		distanceToObject = getDist(BPEva); // Get distance to object 
+		
+		if(distanceToObject < 8 && distanceToObject > 0){ // Test if object is found
+			objectCounter += 1;
+			if(objectCounter > 500){ // Random / Fault values guard
+				objectCounter = 0;
+				break; // Continue with next loop to drive past object
+			}
+		}
+		else if(objectCounter > 0){
+			objectCounter -= 1;
+		}
+	}
+	
+	while(distanceToObject < 8 && distanceToObject > 0){
+		distanceToObject = getDist(BPEva);
+		if(distanceToObject > 8 && distanceToObject != 0){
+			objectCounter += 1;
+			if(objectCounter > 500){
+				objectCounter = 0;
+					BPEva.set_motor_power(PORT_B, 0);
+					BPEva.set_motor_power(PORT_C, 0);
+				break; // Final exit statement
+			}
+		}
+		else{
+			continue;
+		}
+		
+	}
+	
 }
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
@@ -66,13 +108,11 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 				
     BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
-    cout << "heloo its me";
-    turnHead90degrees(BPEva, rotateLeft);
+    turnHead90degrees(BPEva, rotateRight);
     turnCar(BPEva, rotateLeft);
-    BPEva.set_motor_power(PORT_B, 20);
-    BPEva.set_motor_power(PORT_C, 20);
-    while(distanceToObject < 8 && distanceToObject > 0){
+	drivePastObject(BPEva, calibratedInputs, false, false);
+	turnCar(BPEva, rotateRight);
+	drivePastObject(BPEva, calibratedInputs, false, true);
 	    
-    }
     sleep(500);
 }
