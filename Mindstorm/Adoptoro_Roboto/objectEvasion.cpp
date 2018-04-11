@@ -56,6 +56,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 	int CLine = 0;
 	const unsigned int rotateLeft = 1;
 	const unsigned int rotateRight = 2;
+	int distanceToObject = 0;
     
 	// Get value from sensors (temporary)
 		if(BPEva.get_sensor(PORT_2, Light) == 0 && BPEva.get_sensor(PORT_3,Color) == 0){
@@ -68,5 +69,10 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     cout << "heloo its me";
     turnHead90degrees(BPEva, rotateLeft);
     turnCar(BPEva, rotateLeft);
+    BPEva.set_motor_power(PORT_B, 20);
+    BPEva.set_motor_power(PORT_C, 20);
+    while(distanceToObject < 8 && distanceToObject > 0){
+	    
+    }
     sleep(500);
 }
