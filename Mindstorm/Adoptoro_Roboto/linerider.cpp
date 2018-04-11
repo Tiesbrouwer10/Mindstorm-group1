@@ -48,7 +48,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 }
 
 
-void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer){
+void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues calibratedInputs){
 	int distanceToObject = 0;
 	distanceToObject = getDist(BPLine);
 	if(distanceToObject < 8 && distanceToObject > 0){
