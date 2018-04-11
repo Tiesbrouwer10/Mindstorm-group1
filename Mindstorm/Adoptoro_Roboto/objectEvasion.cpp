@@ -86,7 +86,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 		
 	}
-	sleep(2);
+	sleep(4);
 }
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
