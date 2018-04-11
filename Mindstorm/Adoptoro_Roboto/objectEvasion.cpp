@@ -53,17 +53,13 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	BPEva.set_motor_power(PORT_B, 20);
 	BPEva.set_motor_power(PORT_C, 20);
 
-	while((distanceToObject > 8 && distanceToObject != 0) || objectFound != true){
+	while(((distanceToObject >= 8 && distanceToObject != 0) && objectCounter < 500) || objectFound == false){
 		
 		distanceToObject = getDist(BPEva); // Get distance to object 
 		
 		if(distanceToObject < 8 && distanceToObject > 0){ // Test if object is found
 			cout << " OBJECT FOUND! OBject counter:" << objectCounter << "\n";
 			objectCounter += 1;
-			if(objectCounter > 500){ // Random / Fault values guard
-				objectCounter = 0;
-				sleep(0.5);
-				break; // Continue with next loop to drive past object
 			}
 		}
 		else if(objectCounter > 0){
@@ -74,22 +70,16 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 	}
 	
-	while(distanceToObject < 8 && distanceToObject > 0){
+	while((distanceToObject <= 8 && distanceToObject > 0) && objectCounter < 500){
 		distanceToObject = getDist(BPEva);
 		cout << "2de While loop engaged!\n";
 		if(distanceToObject > 8 && distanceToObject != 0){
 			cout << "Driving past object! Object counter: " << objectCounter < "\n";
 			objectCounter += 1;
-			if(objectCounter > 500){
-				objectCounter = 0;
-				sleep(1);
-				BPEva.set_motor_power(PORT_B, 0);
-				BPEva.set_motor_power(PORT_C, 0);
-				break; // Final exit statement
 			}
 		}
 		else if(objectCounter > 0){
-			objectCounter -=1;
+			objectCounter -= 1;
 			continue;
 		}
 		else{
@@ -121,11 +111,9 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
     turnHead90degrees(BPEva, rotateRight);
     turnCar(BPEva, rotateLeft);
-    drivePastObject(BPEva, calibratedInputs, false, true);
-    cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-    turnCar(BPEva, rotateRight);
     drivePastObject(BPEva, calibratedInputs, false, false);
-    cout << "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+    turnCar(BPEva, rotateRight);
+    drivePastObject(BPEva, calibratedInputs, false, true);
     turnCar(BPEva, rotateRight);
     turnHead90degrees(BPEva, rotateLeft);
 	
