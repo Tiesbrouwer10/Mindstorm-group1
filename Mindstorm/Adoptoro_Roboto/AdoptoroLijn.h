@@ -40,7 +40,7 @@ void turnHeadLeft(BrickPi3 &BPEva);
 
 void turnCarRight(BrickPi3 &BPEva);
 
-void lineSeen(uint8_t insideMotor, uint8_t outsideMotor); //Turning function
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float Accelerator); //Turning function
 
 void sound(); // Start sound effect
 
