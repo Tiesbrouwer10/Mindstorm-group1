@@ -27,6 +27,8 @@ void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
 void MatrixRider(borderValues calibratedInputs); // Follows matrix
 
+void turning(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, borderValues calibratedInputs); // turning the robot
+
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int & objectTimer, BrickPi3 &BPLine);//Turning function
 
 void sound(); // Start sound effect
