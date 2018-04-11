@@ -44,18 +44,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					if(Accelerator > 69){
-						BPLine.set_motor_power(PORT_C, -60);
-					}else{
-						BPLine.set_motor_power(PORT_C, 15);
-						BPLine.set_motor_power(PORT_B, Accelerator);
-						objectTimer -= 1;
-					}
-					if(Accelerator <= 70){
-						Accelerator += 0.1;
-						//cout << Accelerator << " BW Accelerator\n";
-						sleep(0.01);
-					}
+					lineSeen(PORT_C, PORT_B);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
 					lineSeen(PORT_B, PORT_C);
