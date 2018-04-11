@@ -57,7 +57,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		
 		distanceToObject = getDist(BPEva); // Get distance to object 
 		
-		if(distanceToObject < 8 && distanceToObject > 0){ // Test if object is found
+		if(distanceToObject > 8 && distanceToObject != 0){ // Test if object is found
 			cout << " OBJECT FOUND! OBject counter:" << objectCounter << "\n";
 			objectCounter += 1;
 		}
@@ -73,8 +73,8 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	while(objectCounter < 500){
 		distanceToObject = getDist(BPEva);
 		cout << "2de While loop engaged!\n";
-		if(distanceToObject > 8 && distanceToObject != 0){
-			cout << "Driving past object! Object counter: " << objectCounter < "\n";
+		if(distanceToObject < 8 && distanceToObject > 0){
+			cout << "Driving past object! Object counter: " << objectCounter << "\n";
 			objectCounter += 1;
 		}
 		else if(objectCounter > 0){
@@ -86,7 +86,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 		
 	}
-	sleep(4);
+	sleep(2);
 }
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
