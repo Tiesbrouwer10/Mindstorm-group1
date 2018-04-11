@@ -14,8 +14,8 @@ int getDist(BrickPi3 &BPEva){
 
 void turnHeadLeft(BrickPi3 &BPEva){
     BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
-    BPEva.set_motor_power(PORT_A, 10);
-    while(BPEva.get_motor_encoder(PORT_A) < (91)){
+    BPEva.set_motor_power(PORT_A, -10);
+    while(BPEva.get_motor_encoder(PORT_A) < (-91)){
 	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
 	    sleep(0.01);
     }
