@@ -45,10 +45,10 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 				
 				// Ride for 1 step
 				if(BWLine > calibratedInputs.borderValueBW){
-					lineSeen(PORT_C, PORT_B, Accelerator, objectTimer, BPLine);
+					lineSeen(PORT_C, PORT_B, Accelerator, BPLine);
 				}
 				else if(CLine < calibratedInputs.borderValueC){
-					lineSeen(PORT_B, PORT_C, Accelerator, objectTimer, BPLine);
+					lineSeen(PORT_B, PORT_C, Accelerator, BPLine);
 
 				}
 				else{
