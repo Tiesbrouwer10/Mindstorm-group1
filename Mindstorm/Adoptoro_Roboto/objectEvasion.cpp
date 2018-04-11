@@ -23,8 +23,8 @@ void turnHeadLeft(BrickPi3 &BPEva){
 }
 void turnCarRight(BrickPi3 &BPEva){
     BPEva.offset_motor_encoder(PORT_B, BPEva.get_motor_encoder(PORT_B));
-    BPEva.set_motor_position_relative(PORT_B, -450);
-    BPEva.set_motor_position_relative(PORT_C, 450);
+    BPEva.set_motor_power(PORT_B, -30);
+    BPEva.set_motor_position_relative(PORT_C, 30);
     while(BPEva.get_motor_encoder(PORT_C) < (450)){
 	    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
 	    sleep(0.01);
