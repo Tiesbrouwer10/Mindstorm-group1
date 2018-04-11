@@ -24,6 +24,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		cout << "Distance is: " <<distanceToObject << '\n';
 		cout << "Object Timer: " << objectTimer << "\n";
 		if(distanceToObject < 8 && distanceToObject > 0){
+			cout << "TEST\n" ;
 			objectTimer += 1;
 			if(objectTimer > 500){
 				evadeObject(BPLine, calibratedInputs);
