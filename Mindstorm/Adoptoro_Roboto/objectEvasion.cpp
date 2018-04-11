@@ -63,7 +63,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 			objectCounter += 1;
 			if(objectCounter > 500){ // Random / Fault values guard
 				objectCounter = 0;
-				sleep(1);
+				sleep(0.5);
 				break; // Continue with next loop to drive past object
 			}
 		}
@@ -83,7 +83,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 			objectCounter += 1;
 			if(objectCounter > 500){
 				objectCounter = 0;
-				sleep(1);
+				sleep(0.5);
 				BPEva.set_motor_power(PORT_B, 0);
 				BPEva.set_motor_power(PORT_C, 0);
 				break; // Final exit statement
