@@ -63,6 +63,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 			objectCounter += 1;
 			if(objectCounter > 500){ // Random / Fault values guard
 				objectCounter = 0;
+				sleep(1);
 				break; // Continue with next loop to drive past object
 			}
 		}
