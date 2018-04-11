@@ -14,8 +14,8 @@ int getDist(BrickPi3 &BPEva){
 
 void turnHead90degrees(BrickPi3 &BPEva, int LorR){
 // LorR -1 = turn right, 1 = turn left
-    speed = 10 * LorR;
-    degrees = 91* LorR;
+    int speed = 10 * LorR;
+    int degrees = 91* LorR;
     BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
     BPEva.set_motor_power(PORT_A, speed);
     while(BPEva.get_motor_encoder(PORT_A) < (degrees)){
