@@ -59,7 +59,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		distanceToObject = getDist(BPEva); // Get distance to object 
 		
 		if(distanceToObject < 8 && distanceToObject > 0){ // Test if object is found
-			cout << " OBJECT FOUND!\n;
+			cout << " OBJECT FOUND!\n";
 			objectCounter += 1;
 			if(objectCounter > 500){ // Random / Fault values guard
 				objectCounter = 0;
