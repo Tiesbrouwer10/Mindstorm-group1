@@ -12,20 +12,34 @@ int getDist(BrickPi3 &BPEva){
 	
 }
 
-void turnHead90degrees(BrickPi3 &BPEva){
+void turnHead90degrees(BrickPi3 &BPEva, int rotateDirection){
+	
+	int rotation = 10;	// Creates rotation for robot
+	if(rotateDirection == 2){
+		rotation *= -1;
+	}
+	
     BPEva.offset_motor_encoder(PORT_A, BPEva.get_motor_encoder(PORT_A));
-    BPEva.set_motor_power(PORT_A, -10);
-    while(BPEva.get_motor_encoder(PORT_A) < (-91)){
+    BPEva.set_motor_power(PORT_A, rotation);
+	
+    while(BPEva.get_motor_encoder(PORT_A) !< (-89) || BPEva.get_motor_encoder(PORT_A) !> (89) ){
 	    cout << BPEva.get_motor_encoder(PORT_A) << "\n";
 	    sleep(0.01);
     }
     BPEva.set_motor_power(PORT_A, 0); 
 }
-void turnCarRight(BrickPi3 &BPEva){
+void turnCar(BrickPi3 &BPEva, int rotateDirection){
+	
+	int motorPower = 30; // Sets car to turn left or right
+	if(rotateDirection == 2){
+		motorPower *= -1;
+	}
+	
     BPEva.offset_motor_encoder(PORT_B, BPEva.get_motor_encoder(PORT_B));
-    BPEva.set_motor_power(PORT_B, -30);
-    BPEva.set_motor_position_relative(PORT_C, 30);
-    while(BPEva.get_motor_encoder(PORT_C) < (450)){
+    BPEva.set_motor_power(PORT_B, (motorPower * -1));
+    BPEva.set_motor_power(PORT_C, motorPower);
+	
+    while(BPEva.get_motor_encoder(PORT_C) !> (449) || BPEva.get_motor_encoder(PORT_C !< -449)){
 	    cout << BPEva.get_motor_encoder(PORT_B) << "\n";
 	    sleep(0.01);
     }
@@ -40,6 +54,8 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 	
 	int BWLine = 0;
 	int CLine = 0;
+	const unsigned int rotateLeft = 1;
+	const unsigned int rotateRight = 2;
     
 	// Get value from sensors (temporary)
 		if(BPEva.get_sensor(PORT_2, Light) == 0 && BPEva.get_sensor(PORT_3,Color) == 0){
@@ -50,7 +66,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     BPEva.set_motor_position_relative(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_position_relative(PORT_C, 0); // Set left wheel to stop
     cout << "heloo its me";
-    turnHead90degrees(BPEva);
-    turnCarRight(BPEva);
+    turnHead90degrees(BPEva, rotateRight);
+    turnCar(BPEva, rotateLeft);
     sleep(500);
 }
