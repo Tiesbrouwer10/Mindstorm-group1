@@ -36,9 +36,9 @@ int getDist(BrickPi3 &BPEva); // Gets the distance the robot is away from object
 
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs); // Procedure to evading object
 
-void turnHead90degrees(BrickPi3 &BPEva);
+void turnHead90degrees(BrickPi3 &BPEva, int rotateDirection);
 
-void turnCarRight(BrickPi3 &BPEva);
+void turnCar(BrickPi3 &BPEva, int rotateDirection);
 
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int & objectTimer, BrickPi3 &BPLine); //Turning function
 
