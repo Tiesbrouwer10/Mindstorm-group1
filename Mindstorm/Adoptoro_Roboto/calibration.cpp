@@ -25,8 +25,6 @@ borderValues sensorCalibration(BrickPi3 & BPCalibration){
 	int32_t EncoderB = BPCalibration.get_motor_encoder(PORT_B);
 	int32_t EncoderC = BPCalibration.get_motor_encoder(PORT_C);
 	
-	BPCalibration.set_motor_limits(PORT_B, 70, 0);
-	BPCalibration.set_motor_limits(PORT_C, 70, 0);
 	
 	sensor_light_t		Light;
 	sensor_color_t		Color;
