@@ -69,6 +69,8 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 	}
 	
+	objectCounter = 0;
+	
 	while((distanceToObject <= 8 && distanceToObject > 0) && objectCounter < 500){
 		distanceToObject = getDist(BPEva);
 		cout << "2de While loop engaged!\n";
