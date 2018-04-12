@@ -13,12 +13,12 @@ using namespace std;
 //==================================
 // Header content
 
-//struct borderValues{ // Contains to be updated border values from calibration
+struct borderValues{ // Contains to be updated border values from calibration
 	
-//	int borderValueBW;
-//	int borderValueC;
+	int borderValueBW;
+	int borderValueC;
 	
-//};
+};
 
 //getDist(BrickPi3 &BPEva); //gets the distance of the nearest object infront of him
 
