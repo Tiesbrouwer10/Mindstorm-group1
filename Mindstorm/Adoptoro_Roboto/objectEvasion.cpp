@@ -108,7 +108,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	sleep(3);
 }
 
-bool findLine(borderValues calibratedInputs, BrickPi3 BPEva, bool &foundLine){
+bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine){
 	
 	// Declaration
 	sensor_light_t	Light;
@@ -122,9 +122,9 @@ bool findLine(borderValues calibratedInputs, BrickPi3 BPEva, bool &foundLine){
 		return foundLine;
 	}
 	
-	if(BPLine.get_sensor(PORT_2, Light) == 0){
-		BWLine = Light.reflected;
-		if(BPLine.get_sensor(PORT_3,Color) == 0){
+	if(BPEva.get_sensor(PORT_2, Light) == 0){
+		BPLine = Light.reflected;
+		if(BPEva.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
 		}
 		if(BWLine > calibratedInputs.borderValueBW){
