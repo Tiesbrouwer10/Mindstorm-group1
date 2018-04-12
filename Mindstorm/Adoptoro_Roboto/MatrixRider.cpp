@@ -38,17 +38,6 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW){
 	
-     	if(BWLine > borderValueBW){
-		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
-    	}
-    	else if(CLine < borderValueC){
-		lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
-	}
-	else{
-		BPMatrix.set_motor_power(leftMotor, 40);
-		BPMatrix.set_motor_power(rightMotor, 40);
-		Accelerator = 40;
-    	}
 }
 
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
