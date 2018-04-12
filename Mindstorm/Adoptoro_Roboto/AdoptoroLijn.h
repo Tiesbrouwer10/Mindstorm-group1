@@ -46,6 +46,8 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 
 bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine); // Checks if the robot as found the line from objectevasion
 
+void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRight, int rotateLeft); // Returns bot on top of line to continue line riding
+
 void sound(); // Start sound effect
 
 

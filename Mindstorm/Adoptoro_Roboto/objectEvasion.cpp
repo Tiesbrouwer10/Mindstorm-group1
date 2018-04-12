@@ -140,12 +140,68 @@ bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine){
 	return foundLine;
 }
 
+void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRight, int rotateLeft){
+	
+	// Declaration
+	sensor_light_t	Light;
+	sensor_color_t	Color;
+	
+	int BWLine = 0;
+	int CLine = 0;
+	
+	//==========================================================================
+	// Sets the side the robot should rotate to
+	if(rotateRight == 2){
+		int speed = 20;
+	}
+	else{
+		int speed = -20;
+	}
+
+	while(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+		
+		// Checks light sensors
+		if(BPEva.get_sensor(PORT_2, Light) == 0){
+			BWLine = Light.reflected;
+			if(BPEva.get_sensor(PORT_3,Color) == 0){
+					CLine = Color.reflected_red;
+			}
+		}
+		// Decides how to turn
+		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			
+			// Turns right or left based on speed
+			BPEva.set_motor_power(PORT_B, speed);
+			BPEva.set_motor_power(PORT_C, (speed *-1); 
+		}
+		if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			
+			// Turns right motor off to correct left side
+			BPEva.set_motor_power(PORT_B, 0); 
+			BPEva.set_motor_power(PORT_C, (speed *-1); 
+		}
+		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			
+			// Turns left motor off to correct right side
+			BPEva.set_motor_power(PORT_B, speed); 
+			BPEva.set_motor_power(PORT_C, 0); 
+		}
+		else if{
+			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+			break;
+		}
+	}
+	return;
+}
+
 void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 	
 	//==========================================================================
 	// Declaration
-	const unsigned int rotateLeft = 1;
-	const unsigned int rotateRight = 2;
+	const unsigned int rotateLeft = 1; // Base case = 1
+	const unsigned int rotateRight = 2; // Base case = 2
+	//  If want to invert rotate angle, swap values.
 	bool foundLine = false;
 	
 	// Stops both motors and sets up object evasion procedure
@@ -168,8 +224,8 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 	BPEva.set_motor_power(PORT_B, 0);
 	BPEva.set_motor_power(PORT_C, 0);
 	turnHead90degrees(BPEva, rotateLeft);
-
+	returnToLine(BPEva, calibratedInputs, rotateRight, rotateLeft); // Returns the robot to the line
 	
-	    
-    sleep(500);
+    sleep(1); // End of object Evasion
+	return;
 }
