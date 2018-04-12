@@ -36,7 +36,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
    	}
 }
 
-void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int orientation){
+void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
      	if(CLine < borderValueC && BWLine > borderValueBW){
      		if(orientation == 0 || orientation == 1){
             		Pos++;
