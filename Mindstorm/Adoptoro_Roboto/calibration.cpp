@@ -1,4 +1,5 @@
 #include "AdoptoroLijn.h"
+#include "AdoptoroMatrix.h"
 #include "BrickPi3.h"
 
 using namespace std;
