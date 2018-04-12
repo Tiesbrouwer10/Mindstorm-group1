@@ -75,7 +75,9 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 	if(CLine < borderValueC && BWLine > borderValueBW){
      		cout << "ZIE EEN KRUISPUNT\n";
 		if(CLine >= borderValueC && BWLine <= borderValueBW){
+			cout << "POS GAAT OMHOOG\n";
 			Pos++;
+			return;
 		}
      	}
 	// if the black/white sensor doesn't measure white
