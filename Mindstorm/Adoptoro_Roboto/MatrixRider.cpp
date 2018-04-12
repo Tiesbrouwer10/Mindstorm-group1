@@ -9,6 +9,13 @@
 
 using namespace std; 
 
+/*
+
+borderValues calibratedInputs = The struct with the values of what white is for the color and black/white sensor
+BrickPi3 &BPMatrix = the syncronisation of all the sensors
+
+*/
+
 void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	
 	sensor_light_t  Light;
@@ -21,8 +28,10 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	int distanceToObject = 0;
  	float Accelerator = 40;
  	int orientation = 0;
- 
+ 	
+	//if his position is not (4, 4) he will not stop
  	while(posX != 4 || posY != 4){
+		//gets a value from the color value and black/white sensor
      		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
@@ -45,28 +54,52 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	BPMatrix.set_motor_power(PORT_B, 0);
 	BPMatrix.set_motor_power(PORT_C, 0);
 }
+/*
 
+uint8_t rightMotor = The motor that is on the right side
+uint8_t leftMotor = The motor that is on the left side
+float &Accelerator = The speed of the motor(s)  
+BrickPi3 &BPMatrix = The syncronisation of all the sensors
+int CLine = The value that the color sensor measures
+int BWLine = The value that the black/white sensor measures
+int borderValueC = The value for what the color sensor sees as white
+int borderValueBW = The value for what the black/white sensor sees as white 
+int orientation = what position he is facing (0 = N, 1 = E, 2 = S, 3 = W) 
+int &Pos = The coördinate where he is or moving
+
+*/
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
-     	if(CLine < borderValueC && BWLine > borderValueBW){
+     	// if both sensors doesn't measure white
+	if(CLine < borderValueC && BWLine > borderValueBW){
      		
 		BPMatrix.set_motor_power(rightMotor, 0);
 		BPMatrix.set_motor_power(leftMotor, 0);
 		cout << "ZIE EEN KRUISPUNT\n";
 		Pos++;
      	}
+	// if the black/white sensor doesn't measure white
      	else if(BWLine > borderValueBW){
 		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
     	}
+	//if the color sensor doesn't measure white
     	else if(CLine < borderValueC){
 		lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
 	}
+	// if both sensors measures white
 	else{
 		BPMatrix.set_motor_power(rightMotor, 40);
 		BPMatrix.set_motor_power(leftMotor, 40);
 		Accelerator = 40;
     	}
 }
+/*
 
+uint8_t insideMotor = The motor thats on the inside of the turn
+uint8_t outsideMotor = The motor thats on the outside of the turn
+float &Accelerator = 
+BrickPi3 &BPMatrix = syncronisation of the sensors
+
+*/
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
 	if(Accelerator > 69){
 		BPMatrix.set_motor_power(insideMotor, -60);
