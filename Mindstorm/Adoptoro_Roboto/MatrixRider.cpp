@@ -22,7 +22,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	sensor_light_t  Light;
  	sensor_color_t  Color;
     
- 	int posX = 4;
+ 	int posX = 0;
  	int posY = 0;
  	int CLine = 0;
  	int BWLine = 0;
