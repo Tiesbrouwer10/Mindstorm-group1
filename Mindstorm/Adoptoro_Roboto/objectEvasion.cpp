@@ -173,19 +173,19 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 			cout << "Hij draait nu op de lijn1\n";
 			// Turns right or left based on speed
-			BPEva.set_motor_power(PORT_B, speedPositive);
+			BPEva.set_motor_power(PORT_B, speedPositive*2);
 			BPEva.set_motor_power(PORT_C, speedNegative); 
 		}
 		else if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 			cout << "Hey ik ben er\n";
-			// Turns right motor off to correct left side
+			 Turns right motor off to correct left side
 			BPEva.set_motor_power(PORT_B, 0); 
 			BPEva.set_motor_power(PORT_C, speedNegative); 
 		}
 		else if(BWLine > calibratedInputs.borderValueBW && CLine > calibratedInputs.borderValueC){
 			cout << "Hallo!\n";
 			// Turns left motor off to correct right side
-			BPEva.set_motor_power(PORT_B, speedPositive); 
+			BPEva.set_motor_power(PORT_B, speedPositive*2); 
 			BPEva.set_motor_power(PORT_C, 0); 
 		}
 		else{
@@ -224,7 +224,6 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 		turnCar(BPEva, rotateRight);
 		drivePastObject(BPEva, calibratedInputs, true, false, foundLine);
 	}
-	sleep(0.2);
 	// Stops at Line and gets ready to continue
 	BPEva.set_motor_power(PORT_B, 0);
 	BPEva.set_motor_power(PORT_C, 0);
