@@ -71,29 +71,31 @@ int &Pos = The coördinate where he is or moving
 
 */
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
-     	// if both sensors doesn't measure white
-	if(CLine < borderValueC && BWLine > borderValueBW){
-     		cout << "ZIE EEN KRUISPUNT\n";
-		Pos++;
-		sleep(0.9);
+     	while(true){
+		// if both sensors doesn't measure white
+		if(CLine < borderValueC && BWLine > borderValueBW){
+     			cout << "ZIE EEN KRUISPUNT\n";
+			Pos++;
+			return;
 
-     	}
-	// if the black/white sensor doesn't measure white
-     	else if(BWLine > borderValueBW){
-		cout << "NAAR RECHTS BIJSTUREN\n";
-		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
-    	}
-	//if the color sensor doesn't measure white
-    	else if(CLine < borderValueC){
-		cout << "NAAR LINKS BIJSTUREN\n";
-		lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
+     		}
+		// if the black/white sensor doesn't measure white
+     		else if(BWLine > borderValueBW){
+			cout << "NAAR RECHTS BIJSTUREN\n";
+			lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
+    		}
+		//if the color sensor doesn't measure white
+    		else if(CLine < borderValueC){
+			cout << "NAAR LINKS BIJSTUREN\n";
+			lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
+		}
+		// if both sensors measures white
+		else{
+			BPMatrix.set_motor_power(rightMotor, 40);
+			BPMatrix.set_motor_power(leftMotor, 40);
+			Accelerator = 40;
+    		}
 	}
-	// if both sensors measures white
-	else{
-		BPMatrix.set_motor_power(rightMotor, 40);
-		BPMatrix.set_motor_power(leftMotor, 40);
-		Accelerator = 40;
-    	}
 }
 /*
 
