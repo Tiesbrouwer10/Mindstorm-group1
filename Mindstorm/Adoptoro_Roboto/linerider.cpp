@@ -74,14 +74,12 @@ BrickPi3 &BPLine = BrickPi3 BPMain version of BP (As stated in main)
 
 
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, int &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
-	cout << "Ik ben in de functie!\n";
+
 	if(Accelerator > 99){
 		BPLine.set_motor_power(insideMotor, -20);
 	}
 	else if(Accelerator < 100){
-		cout << "Accelerator wordt opgevoerd!\n";
 		Accelerator += 1;
-		cout << "Accelerator activated, Accelerator power: " << Accelerator << "\n";
 		BPLine.set_motor_power(insideMotor, 15);
 		BPLine.set_motor_power(outsideMotor, Accelerator);
 		if(objectTimer > 0){
