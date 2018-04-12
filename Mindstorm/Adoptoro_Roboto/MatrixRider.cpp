@@ -74,7 +74,6 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
      	// if both sensors doesn't measure white
 	if(CLine < borderValueC && BWLine > borderValueBW){
      		cout << "ZIE EEN KRUISPUNT\n";
-		sleep(1);
 		BPMatrix.set_motor_power(rightMotor, 0);
 		BPMatrix.set_motor_power(leftMotor, 0);
 		Pos++;
