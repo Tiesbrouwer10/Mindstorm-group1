@@ -34,6 +34,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 					cout << posY << " :DE Y PLEK\n";
             			} 																					
 				else{
+					cout << "IK GA BREAKEN\n";
 					BPMatrix.set_motor_power(PORT_B, 0);
 					BPMatrix.set_motor_power(PORT_C, 0);
 					break;
