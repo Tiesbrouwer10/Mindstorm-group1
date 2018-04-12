@@ -22,7 +22,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	float Accelerator = 40;
  	int orientation = 0;
  
- 	while(posX != 4 && posY != 4){
+ 	while(posX != 4 || posY != 4){
      		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
