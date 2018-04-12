@@ -170,7 +170,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		//	BPEva.set_motor_power(PORT_C, speedNegative); 
 		//}
 		if(CLine < calibratedInputs.borderValueC){
-			BPEva.set_motor_power(PORT_B, speedPositive);
+			BPEva.set_motor_power(PORT_B, speedPositive*2);
 			BPEva.set_motor_power(PORT_C, 10);
 		}
 		//else if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
@@ -221,6 +221,7 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 		turnCar(BPEva, rotateRight);
 		drivePastObject(BPEva, calibratedInputs, true, false, foundLine);
 	}
+	sleep(0.2);
 	// Stops at Line and gets ready to continue
 	BPEva.set_motor_power(PORT_B, 0);
 	BPEva.set_motor_power(PORT_C, 0);
