@@ -180,7 +180,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 			cout << "Hey ik ben er\n";
 			// Turns right motor off to correct left side
 			BPEva.set_motor_power(PORT_B, 0); 
-			BPEva.set_motor_power(PORT_C, speedNegative); 
+			BPEva.set_motor_power(PORT_C, SpeedNegative); 
 		}
 		else if(BWLine > calibratedInputs.borderValueBW && CLine > calibratedInputs.borderValueC){
 			cout << "Hallo!\n";
@@ -192,6 +192,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 			cout << "Hij is klaar!\n";
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+			sleep(2);
 			break;
 		}
 	}
