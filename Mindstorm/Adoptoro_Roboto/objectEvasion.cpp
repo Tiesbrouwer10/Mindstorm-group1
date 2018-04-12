@@ -148,14 +148,15 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 	
 	int BWLine = 0;
 	int CLine = 0;
+	int speed = 0;
 	
 	//==========================================================================
 	// Sets the side the robot should rotate to
 	if(rotateRight == 2){
-		int speed = 20;
+		speed = 20;
 	}
 	else{
-		int speed = -20;
+		speed = -20;
 	}
 
 	while(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
@@ -186,7 +187,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 			BPEva.set_motor_power(PORT_B, speed); 
 			BPEva.set_motor_power(PORT_C, 0); 
 		}
-		else if{
+		else{
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
 			break;
