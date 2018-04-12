@@ -22,7 +22,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	float Accelerator = 40;
  	int orientation = 0;
  
- 	while(posX != 4 || posY != 4){
+ 	while(posY != 4){
      		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
@@ -41,6 +41,8 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
          		}
       		}
    	}
+	BPMatrix.set_motor_power(PORT_B, 0);
+	BPMatrix.set_motor_power(PORT_C, 0);
 }
 
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
