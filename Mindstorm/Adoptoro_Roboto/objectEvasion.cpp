@@ -151,8 +151,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 				CLine = Color.reflected_red;
 		}
 	}
-
-	cout << "Hij bereikt de While loop!\n";
+	
 	while(true){
 		
 		// Checks light sensors
@@ -172,7 +171,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		if(CLine < calibratedInputs.borderValueC){
 			cout << "Henlo\n";
 			BPEva.set_motor_power(PORT_B, speedPositive*2);
-			BPEva.set_motor_power(PORT_C, 10);
+			BPEva.set_motor_power(PORT_C, -10);
 		}
 		//else if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 		//	cout << "Hey ik ben er\n";
