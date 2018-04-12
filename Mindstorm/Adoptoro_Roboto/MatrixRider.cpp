@@ -73,10 +73,7 @@ int &Pos = The coördinate where he is or moving
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
      	// if both sensors doesn't measure white
 	if(CLine < borderValueC && BWLine > borderValueBW){
-		sleep(0.5);
      		cout << "ZIE EEN KRUISPUNT\n";
-		BPMatrix.set_motor_power(rightMotor, 0);
-		BPMatrix.set_motor_power(leftMotor, 0);
 		Pos++;
 		sleep(1);
      	}
