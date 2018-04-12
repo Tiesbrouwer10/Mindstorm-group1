@@ -170,6 +170,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		//	BPEva.set_motor_power(PORT_C, speedNegative); 
 		//}
 		if(CLine < calibratedInputs.borderValueC){
+			cout << "Henlo\n";
 			BPEva.set_motor_power(PORT_B, speedPositive*2);
 			BPEva.set_motor_power(PORT_C, 10);
 		}
