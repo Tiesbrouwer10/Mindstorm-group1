@@ -67,9 +67,9 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 
 uint8_t insideMotor = The motor thats on the inside when turning
 uint8_t outsideMotor = The motor thats on the outside when turning
-float &Accelerator = 
-unsigned int &objectTimer = 
-BrickPi3 &BPLine = 
+float &Accelerator = Accelerates and gets higher value the longer the sensor detects a black line
+unsigned int &objectTimer = Times how many clock pulses an object is in its way, to prevent errors
+BrickPi3 &BPLine = BrickPi3 BPMain version of BP (As stated in main)
 
 */
 
