@@ -9,6 +9,6 @@
 
 using namespace std; 
 
-void matrix(){
+void matrix(borderValues calibratedInputs, BrickPi3 &BPLine){
  cout << "ZAT IN MATRIX \n"; 
 }
