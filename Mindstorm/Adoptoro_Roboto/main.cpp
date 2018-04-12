@@ -22,7 +22,7 @@ int main(){
 	//sound(); // For fun
 	// Get values from sensors
 	// sensorCalibration();
-	cout << "GEEF MODUS ROBOT, L voor line, M voor Matrix";
+	cout << "GEEF MODUS ROBOT, L voor line, M voor Matrix: ";
 	cin >> modus;
 	// Start lineriding function
 	if(modus == 'L'){
