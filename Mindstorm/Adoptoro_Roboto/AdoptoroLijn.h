@@ -40,7 +40,7 @@ void turnHead90degrees(BrickPi3 &BPEva, int rotateDirection); // Rotates the son
 
 void turnCar(BrickPi3 &BPEva, int rotateDirection); // Rotates the car 90 degrees, 1 for left, 2 for right
 
-void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine); // Turning function
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine); // The robot reposition itself until its correctly on the line
 
 void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound, bool &foundLine); // Driving past object and detecting object to turn past
 
@@ -52,11 +52,11 @@ void sound(); // Start sound effect
 
 //EXCLUSIVE TO MATRIX
 
-void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix);
+void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix); // Starts the matrix code
 
-void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix);
+void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix); // The robot reposition itself until its correctly on the line
 
-void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos);
+void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos); //Checks what his position on the line is
 	
 //void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues calibratedInputs); // Check if object is within range
 
