@@ -29,8 +29,8 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	             		CLine = Color.reflected_red;
                 
               			if(orientation == 0 && posY != 4 ){
-                			void riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, borderValueC, borderValueBW, orientation, Pos);
-            			} 
+                			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
+            			} 																				
          		}
       		}
    	}
