@@ -12,6 +12,7 @@ using namespace std;
 #include <signal.h>
 #include <string>
 #include "BrickPi3.h"
+#include "AdoptoroMatrix.h"
 
 //==================================
 // Structs 
