@@ -41,7 +41,8 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
      	if(CLine < borderValueC && BWLine > borderValueBW){
-     		BPMatrix.set_motor_power(rightMotor, 0);
+     		sleep(0.5);
+		BPMatrix.set_motor_power(rightMotor, 0);
 		BPMatrix.set_motor_power(leftMotor, 0);
 		cout << "ZIE EEN KRUISPUNT\n";
      	}
