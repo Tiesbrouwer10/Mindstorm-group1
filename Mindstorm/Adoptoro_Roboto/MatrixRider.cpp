@@ -52,6 +52,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
          		}
       		}
    	}
+	cout << "UIT DE WHILE LOOP\n";
 	BPMatrix.set_motor_power(PORT_B, 0);
 	BPMatrix.set_motor_power(PORT_C, 0);
 }
@@ -81,10 +82,12 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
      	}
 	// if the black/white sensor doesn't measure white
      	else if(BWLine > borderValueBW){
+		cout << "NAAR RECHTS BIJSTUREN\n";
 		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
     	}
 	//if the color sensor doesn't measure white
     	else if(CLine < borderValueC){
+		cout << "NAAR LINKS BIJSTUREN\n";
 		lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
 	}
 	// if both sensors measures white
