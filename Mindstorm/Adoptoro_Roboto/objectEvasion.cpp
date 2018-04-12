@@ -38,14 +38,14 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection){
     BPEva.set_motor_power(PORT_C, (motorPower * -1));
     BPEva.set_motor_power(PORT_B, motorPower);
 	
-    while(BPEva.get_motor_encoder(PORT_C) <= 469 && BPEva.get_motor_encoder(PORT_C) >= -469){
+    while(BPEva.get_motor_encoder(PORT_C) <= 479 && BPEva.get_motor_encoder(PORT_C) >= -479){
 	    sleep(0.01);
     }
     BPEva.set_motor_power(PORT_B, 0);
     BPEva.set_motor_power(PORT_C, 0);
 }
 
-void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound){
+void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound, bool &foundLine){
 	
 	unsigned int distanceToObject = 10;
 	unsigned int objectCounter = 0;
@@ -54,6 +54,14 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	BPEva.set_motor_power(PORT_C, 20);
 
 	while(objectCounter < 500 && objectFound == false){
+		
+		// Checks if line is found
+		if(detectLine == true){
+			foundLine = findLine(calibratedInputs, BPEva, foundLine);
+		}
+		if(foundLine == true){
+			return;
+		}
 		
 		distanceToObject = getDist(BPEva); // Get distance to object 
 		
@@ -72,7 +80,17 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	objectCounter = 0;
 	
 	while(objectCounter < 500){
+		
+		// Checks if line is found
+		if(detectLine == true){
+			foundLine = findLine(calibratedInputs, BPEva, foundLine);
+		}
+		if(foundLine == true){
+			return;
+		}
+		
 		distanceToObject = getDist(BPEva);
+		
 		cout << "2de While loop engaged!\n";
 		if(distanceToObject > 15 && distanceToObject != 0){
 			cout << "Driving past object! Object counter: " << objectCounter << "\n";
@@ -90,32 +108,64 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	sleep(3);
 }
 
-void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+bool findLine(borderValues calibratedInputs., BrickPi3 BPEva, bool &foundLine){
 	
+	// Declaration
 	sensor_light_t	Light;
 	sensor_color_t	Color;
 	
 	int BWLine = 0;
 	int CLine = 0;
+	
+	// Checks if line was already found
+	if(foundLine == true){
+		return foundLine;
+	}
+	
+	if(BPLine.get_sensor(PORT_2, Light) == 0){
+		BWLine = Light.reflected;
+		if(BPLine.get_sensor(PORT_3,Color) == 0){
+				CLine = Color.reflected_red;
+		}
+		if(BWLine > calibratedInputs.borderValueBW){
+				foundLine = true;
+			}
+		if(CLine < calibratedInputs.borderValueC){
+				foundLine = true;
+		}
+		else{
+			foundLine = false;
+		}
+	}
+	return foundLine;
+}
+
+void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+	
+	//==========================================================================
+	// Declaration
 	const unsigned int rotateLeft = 1;
 	const unsigned int rotateRight = 2;
-	int distanceToObject = 0;
-    
-	// Get value from sensors (temporary)
-		if(BPEva.get_sensor(PORT_2, Light) == 0 && BPEva.get_sensor(PORT_3,Color) == 0){
-			BWLine = Light.reflected;
-			CLine = Color.reflected_red;
-		}
-				
-    BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+	bool foundLine = false;
+	
+	// Stops both motors and sets up object evasion procedure
+	BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+				
+	//==========================================================================
+	// Steps to evade object
+	
     turnHead90degrees(BPEva, rotateRight);
     turnCar(BPEva, rotateLeft);
-    drivePastObject(BPEva, calibratedInputs, false, true);
-    turnCar(BPEva, rotateRight);
-    drivePastObject(BPEva, calibratedInputs, false, false);
-    turnCar(BPEva, rotateRight);
-    turnHead90degrees(BPEva, rotateLeft);
+    drivePastObject(BPEva, calibratedInputs, false, true, foundLine);
+	
+	// Keeps turning and driving around object until it finds a line
+	while(foundLine == false){
+		turnCar(BPEva, rotateRight);
+		drivePastObject(BPEva, calibratedInputs, true, false, foundLine);
+	}
+	
+	turnHead90degrees(BPEva, rotateLeft);
 	
 	    
     sleep(500);

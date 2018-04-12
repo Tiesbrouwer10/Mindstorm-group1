@@ -42,9 +42,13 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection); // Rotates the car 90 degree
 
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine); // Turning function
 
-void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound); // Driving past object and detecting object to turn past
+void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound, bool &foundLine); // Driving past object and detecting object to turn past
+
+bool findLine(borderValues calibratedInputs., BrickPi3 BPEva, bool &foundLine); // Checks if the robot as found the line from objectevasion
 
 void sound(); // Start sound effect
+
+
 
 //EXCLUSIVE TO MATRIX
 
