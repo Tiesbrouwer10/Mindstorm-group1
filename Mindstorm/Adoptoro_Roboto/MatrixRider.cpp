@@ -85,7 +85,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 				BPMatrix.set_motor_power(leftMotor, 0);
 				return;	
 			}
-			sleep(0.5);
+			sleep(1);
 
      		}
 		// if the black/white sensor doesn't measure white
