@@ -12,7 +12,7 @@ using namespace std;
 #include <signal.h>
 #include "BrickPi3.h"
 
-
+using namespace std;
 
 //==================================
 // Structs 
