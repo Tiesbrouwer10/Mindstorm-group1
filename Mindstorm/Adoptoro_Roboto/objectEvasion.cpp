@@ -173,13 +173,13 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 			
 			// Turns right or left based on speed
 			BPEva.set_motor_power(PORT_B, speed);
-			BPEva.set_motor_power(PORT_C, (speed *-1); 
+			BPEva.set_motor_power(PORT_C, (speed *-1)); 
 		}
 		if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 			
 			// Turns right motor off to correct left side
 			BPEva.set_motor_power(PORT_B, 0); 
-			BPEva.set_motor_power(PORT_C, (speed *-1); 
+			BPEva.set_motor_power(PORT_C, (speed *-1)); 
 		}
 		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 			
