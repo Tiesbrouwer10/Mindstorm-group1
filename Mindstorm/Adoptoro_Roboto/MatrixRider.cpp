@@ -18,6 +18,8 @@ BrickPi3 &BPMatrix = the syncronisation of all the sensors
 
 void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	
+	sound();
+	
 	sensor_light_t  Light;
  	sensor_color_t  Color;
     
