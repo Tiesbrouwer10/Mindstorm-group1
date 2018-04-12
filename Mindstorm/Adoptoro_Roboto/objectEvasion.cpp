@@ -116,7 +116,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 		
 	}
-	sleep(2);
+	sleep(4);
 }
 
 bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine){ // Checks wether the line was found
