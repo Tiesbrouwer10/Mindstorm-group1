@@ -11,7 +11,7 @@ using namespace std;
 #include <vector>
 #include <signal.h>
 #include "BrickPi3.h"
-#include "AdoptoroLijn.h"
+
 
 //==================================
 // Header content
