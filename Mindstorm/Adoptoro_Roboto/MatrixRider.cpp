@@ -57,7 +57,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 		Accelerator = 40;
     }
 }
-
+*/
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
 	if(Accelerator > 69){
 		BPMatrix.set_motor_power(insideMotor, -60);
@@ -70,4 +70,4 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 		sleep(0.01);
 	}
 }
-*/
+
