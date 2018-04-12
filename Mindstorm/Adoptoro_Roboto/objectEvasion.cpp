@@ -66,7 +66,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	BPEva.set_motor_power(PORT_B, 20);
 	BPEva.set_motor_power(PORT_C, 20);
 
-	while(objectCounter < 500 && objectFound == false){ // Checks wether it has found the object
+	while(objectCounter < 100 && objectFound == false){ // Checks wether it has found the object
 		cout << "In eerste while loop: " << objectCounter << "\n";
 		// Checks if line is found
 		if(detectLine == true){
@@ -92,7 +92,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	
 	objectCounter = 0;
 	
-	while(objectCounter < 500){ // Checks wether it has passed the object
+	while(objectCounter < 100){ // Checks wether it has passed the object
 		cout << "In eerste while loop: " << objectCounter << "\n";
 		// Checks if line is found
 		if(detectLine == true){
