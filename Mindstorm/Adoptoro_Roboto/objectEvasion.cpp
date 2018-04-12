@@ -178,7 +178,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		}
 		else if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 			cout << "Hey ik ben er\n";
-			 Turns right motor off to correct left side
+			//Turns right motor off to correct left side
 			BPEva.set_motor_power(PORT_B, 0); 
 			BPEva.set_motor_power(PORT_C, speedNegative); 
 		}
