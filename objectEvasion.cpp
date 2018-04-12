@@ -150,6 +150,14 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 	int CLine = 0;
 	int speed = 0;
 	
+	// Gets the sensor Values for the first time
+	if(BPEva.get_sensor(PORT_2, Light) == 0){
+			BWLine = Light.reflected;
+		if(BPEva.get_sensor(PORT_3,Color) == 0){
+				CLine = Color.reflected_red;
+		}
+	}
+			
 	//==========================================================================
 	// Sets the side the robot should rotate to
 	if(rotateRight == 2){
@@ -158,7 +166,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 	else{
 		speed = -20;
 	}
-
+	cout << "Hij bereikt de While loop!\n";
 	while(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 		
 		// Checks light sensors
@@ -170,7 +178,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		}
 		// Decides how to turn
 		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
-			
+			cout << "Hij draait nu op de lijn1\n";
 			// Turns right or left based on speed
 			BPEva.set_motor_power(PORT_B, speed);
 			BPEva.set_motor_power(PORT_C, (speed *-1)); 
@@ -188,6 +196,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 			BPEva.set_motor_power(PORT_C, 0); 
 		}
 		else{
+			cout << "Hij is klaar!\n";
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
 			break;
