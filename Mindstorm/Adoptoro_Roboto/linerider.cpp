@@ -20,7 +20,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		distanceToObject = getDist(BPLine);
 		if(distanceToObject < 8 && distanceToObject > 0){
 			objectTimer += 1;
-			if(objectTimer > 250){
+			if(objectTimer > 50){
 				evadeObject(BPLine, calibratedInputs);
 			}
 		}
@@ -73,7 +73,7 @@ BrickPi3 &BPLine = BrickPi3 BPMain version of BP (As stated in main)
 
 
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
-	
+	cout << "Ik ben nu in de functie!\n";
 	if(Accelerator > 99){
 		BPLine.set_motor_power(insideMotor, -20);
 	}
