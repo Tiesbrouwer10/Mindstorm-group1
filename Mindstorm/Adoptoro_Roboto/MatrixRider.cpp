@@ -17,9 +17,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPLine){
  	int posX = 0;
  	int posY = 0;
  	int CLine = 0;
- 	int BWline = 0;
+ 	int BWLine = 0;
  	int distanceToObject = 0;
- 	float Accelerator = 40
+ 	float Accelerator = 40;
  	int orientation = 0;
  
  	while(posX != 4 && posY != 4){
