@@ -13,7 +13,7 @@ using namespace std;
 //==================================
 // Header content
 
-struct borderValues{ // Contains to be updated border values from calibration
+struct borderValuesMatrix{ // Contains to be updated border values from calibration
 	
 	int borderValueBW;
 	int borderValueC;
@@ -26,7 +26,7 @@ struct borderValues{ // Contains to be updated border values from calibration
 
 
 
-borderValues sensorCalibration(BrickPi3 &BPMain); // Calibrates Sensors
+borderValuesMatrix sensorCalibration(BrickPi3 &BPMain); // Calibrates Sensors
 
 void exitSignalHandler(int signo); // Exits the program with no run-away motors
 
