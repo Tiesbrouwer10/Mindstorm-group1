@@ -46,7 +46,7 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection){
     BPEva.set_motor_power(PORT_C, (motorPower * -1)); 
     BPEva.set_motor_power(PORT_B, motorPower);
 	
-    while(BPEva.get_motor_encoder(PORT_C) <= 489 && BPEva.get_motor_encoder(PORT_C) >= -489){ // Rotates it until desired rotation is met (90)
+    while(BPEva.get_motor_encoder(PORT_C) <= 479 && BPEva.get_motor_encoder(PORT_C) >= -479){ // Rotates it until desired rotation is met (90)
 	    sleep(0.01);
     }
 	
