@@ -10,6 +10,6 @@ this function tells the command line interface to execute a command that reads "
 the mp3 file that you want to be played
 */
 
-    system("mplayer beep.mp3");
+    system("mplayer beep.mp3;mplayer beep.mp3;mplayer beep.mp3");
     
 }
