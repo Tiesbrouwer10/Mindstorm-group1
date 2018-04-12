@@ -20,7 +20,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 		distanceToObject = getDist(BPLine);
 		if(distanceToObject < 8 && distanceToObject > 0){
 			objectTimer += 1;
-			if(objectTimer > 500){
+			if(objectTimer > 250){
 				evadeObject(BPLine, calibratedInputs);
 			}
 		}
