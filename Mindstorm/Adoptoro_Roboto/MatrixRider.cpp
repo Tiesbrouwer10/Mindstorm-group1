@@ -8,3 +8,7 @@
 //==================================
 
 using namespace std; 
+
+void matrix(){
+ cout << "ZAT IN MATRIX \n"; 
+}
