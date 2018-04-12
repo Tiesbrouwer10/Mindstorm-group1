@@ -38,14 +38,14 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection){
     BPEva.set_motor_power(PORT_C, (motorPower * -1));
     BPEva.set_motor_power(PORT_B, motorPower);
 	
-    while(BPEva.get_motor_encoder(PORT_C) <= 469 && BPEva.get_motor_encoder(PORT_C) >= -469){
+    while(BPEva.get_motor_encoder(PORT_C) <= 489 && BPEva.get_motor_encoder(PORT_C) >= -489){
 	    sleep(0.01);
     }
     BPEva.set_motor_power(PORT_B, 0);
     BPEva.set_motor_power(PORT_C, 0);
 }
 
-void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound){
+void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound, bool &foundLine){
 	
 	unsigned int distanceToObject = 10;
 	unsigned int objectCounter = 0;
@@ -55,9 +55,17 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 
 	while(objectCounter < 500 && objectFound == false){
 		
+		// Checks if line is found
+		if(detectLine == true){
+			foundLine = findLine(calibratedInputs, BPEva, foundLine);
+		}
+		if(foundLine == true){
+			return;
+		}
+		
 		distanceToObject = getDist(BPEva); // Get distance to object 
 		
-		if(distanceToObject < 8 && distanceToObject > 0){ // Test if object is found
+		if(distanceToObject < 15 && distanceToObject > 0){ // Test if object is found
 			cout << " OBJECT FOUND! OBject counter:" << objectCounter << "\n";
 			objectCounter += 1;
 		}
@@ -72,9 +80,19 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	objectCounter = 0;
 	
 	while(objectCounter < 500){
+		
+		// Checks if line is found
+		if(detectLine == true){
+			foundLine = findLine(calibratedInputs, BPEva, foundLine);
+		}
+		if(foundLine == true){
+			return;
+		}
+		
 		distanceToObject = getDist(BPEva);
+		
 		cout << "2de While loop engaged!\n";
-		if(distanceToObject > 8 && distanceToObject != 0){
+		if(distanceToObject > 15 && distanceToObject != 0){
 			cout << "Driving past object! Object counter: " << objectCounter << "\n";
 			objectCounter += 1;
 		}
@@ -87,36 +105,128 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		}
 		
 	}
-	sleep(2);
+	sleep(3);
 }
-9=
-void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+
+bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine){
 	
+	// Declaration
 	sensor_light_t	Light;
 	sensor_color_t	Color;
 	
 	int BWLine = 0;
 	int CLine = 0;
-	const unsigned int rotateLeft = 1;
-	const unsigned int rotateRight = 2;
-	int distanceToObject = 0;
-    
-	// Get value from sensors (temporary)
-		if(BPEva.get_sensor(PORT_2, Light) == 0 && BPEva.get_sensor(PORT_3,Color) == 0){
-			BWLine = Light.reflected;
-			CLine = Color.reflected_red;
+	
+	// Checks if line was already found
+	if(foundLine == true){
+		return foundLine;
+	}
+	
+	if(BPEva.get_sensor(PORT_2, Light) == 0){
+		BWLine = Light.reflected;
+		if(BPEva.get_sensor(PORT_3,Color) == 0){
+				CLine = Color.reflected_red;
 		}
-				
-    BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+		if(BWLine > calibratedInputs.borderValueBW){
+				foundLine = true;
+			}
+		if(CLine < calibratedInputs.borderValueC){
+				foundLine = true;
+		}
+		else{
+			foundLine = false;
+		}
+	}
+	return foundLine;
+}
+
+void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRight, int rotateLeft){
+	
+	// Declaration
+	sensor_light_t	Light;
+	sensor_color_t	Color;
+	
+	int BWLine = 0;
+	int CLine = 0;
+	int speed = 0;
+	
+	//==========================================================================
+	// Sets the side the robot should rotate to
+	if(rotateRight == 2){
+		speed = 20;
+	}
+	else{
+		speed = -20;
+	}
+
+	while(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+		
+		// Checks light sensors
+		if(BPEva.get_sensor(PORT_2, Light) == 0){
+			BWLine = Light.reflected;
+			if(BPEva.get_sensor(PORT_3,Color) == 0){
+					CLine = Color.reflected_red;
+			}
+		}
+		// Decides how to turn
+		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			
+			// Turns right or left based on speed
+			BPEva.set_motor_power(PORT_B, speed);
+			BPEva.set_motor_power(PORT_C, (speed *-1)); 
+		}
+		if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			
+			// Turns right motor off to correct left side
+			BPEva.set_motor_power(PORT_B, 0); 
+			BPEva.set_motor_power(PORT_C, (speed *-1)); 
+		}
+		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			
+			// Turns left motor off to correct right side
+			BPEva.set_motor_power(PORT_B, speed); 
+			BPEva.set_motor_power(PORT_C, 0); 
+		}
+		else{
+			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+			break;
+		}
+	}
+	return;
+}
+
+void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
+	
+	//==========================================================================
+	// Declaration
+	const unsigned int rotateLeft = 1; // Base case = 1
+	const unsigned int rotateRight = 2; // Base case = 2
+	//  If want to invert rotate angle, swap values.
+	bool foundLine = false;
+	
+	// Stops both motors and sets up object evasion procedure
+	BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
     BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+				
+	//==========================================================================
+	// Steps to evade object
+	
     turnHead90degrees(BPEva, rotateRight);
     turnCar(BPEva, rotateLeft);
-    drivePastObject(BPEva, calibratedInputs, false, true);
-    turnCar(BPEva, rotateRight);
-    drivePastObject(BPEva, calibratedInputs, false, false);
-    turnCar(BPEva, rotateRight);
-    turnHead90degrees(BPEva, rotateLeft);
+    drivePastObject(BPEva, calibratedInputs, false, true, foundLine);
 	
-	    
-    sleep(500);
+	// Keeps turning and driving around object until it finds a line
+	while(foundLine == false){
+		turnCar(BPEva, rotateRight);
+		drivePastObject(BPEva, calibratedInputs, true, false, foundLine);
+	}
+	// Stops at Line and gets ready to continue
+	BPEva.set_motor_power(PORT_B, 0);
+	BPEva.set_motor_power(PORT_C, 0);
+	turnHead90degrees(BPEva, rotateLeft);
+	returnToLine(BPEva, calibratedInputs, rotateRight, rotateLeft); // Returns the robot to the line
+	
+    sleep(1); // End of object Evasion
+	return;
 }
