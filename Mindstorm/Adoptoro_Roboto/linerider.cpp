@@ -78,7 +78,7 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 	}
 	cout << "De accelerator is geactiveerd, Accelerator waarde: " << Accelerator << "\n";
 	else if(Accelerator <= 90){
-		Accelerator += 1;
+		Accelerator += 0.5;
 	}
 	else{
 		BPLine.set_motor_power(insideMotor, 15);
