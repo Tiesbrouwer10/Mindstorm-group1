@@ -224,8 +224,8 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 		turnCar(BPEva, rotateRight);
 		drivePastObject(BPEva, calibratedInputs, true, false, foundLine);
 	}
+	sleep(1);
 	// Stops at Line and gets ready to continue
-	sleep(0.6);
 	BPEva.set_motor_power(PORT_B, 0);
 	BPEva.set_motor_power(PORT_C, 0);
 	turnHead90degrees(BPEva, rotateLeft);
