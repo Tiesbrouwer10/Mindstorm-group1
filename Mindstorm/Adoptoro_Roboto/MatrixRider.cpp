@@ -30,7 +30,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
                 
               			if(orientation == 0 && posY != 4 ){
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
-            			} 
+					posY++;
+					cout << posY << " :DE Y PLEK\n";
+            			} 																					
 				else{
 					break;
 				}
