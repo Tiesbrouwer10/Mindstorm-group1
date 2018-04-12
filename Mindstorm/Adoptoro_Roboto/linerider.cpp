@@ -81,8 +81,6 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, int &Accelerator, unsig
 	else if(Accelerator < 100){
 		cout << "Accelerator wordt opgevoerd!\n";
 		Accelerator += 1;
-	}
-	else{
 		cout << "Accelerator activated, Accelerator power: " << Accelerator << "\n";
 		BPLine.set_motor_power(insideMotor, 15);
 		BPLine.set_motor_power(outsideMotor, Accelerator);
@@ -90,4 +88,5 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, int &Accelerator, unsig
 			objectTimer -= 1;
 		}
 	}
+
 }
