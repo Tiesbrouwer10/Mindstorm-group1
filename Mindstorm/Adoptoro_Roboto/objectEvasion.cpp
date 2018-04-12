@@ -148,18 +148,19 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 	
 	int BWLine = 0;
 	int CLine = 0;
-	int speed = 0;
+	int speedPositive = 30;
+	int speedNegative = -30;
 	
-	//==========================================================================
-	// Sets the side the robot should rotate to
-	if(rotateRight == 2){
-		speed = 20;
+	// Gets the sensor Values for the first time
+	if(BPEva.get_sensor(PORT_2, Light) == 0){
+			BWLine = Light.reflected;
+		if(BPEva.get_sensor(PORT_3,Color) == 0){
+				CLine = Color.reflected_red;
+		}
 	}
-	else{
-		speed = -20;
-	}
+
 	cout << "Hij bereikt de While loop!\n";
-	while(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+	while(true){
 		
 		// Checks light sensors
 		if(BPEva.get_sensor(PORT_2, Light) == 0){
@@ -172,19 +173,19 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 			cout << "Hij draait nu op de lijn1\n";
 			// Turns right or left based on speed
-			BPEva.set_motor_power(PORT_B, speed);
-			BPEva.set_motor_power(PORT_C, (speed *-1)); 
+			BPEva.set_motor_power(PORT_B, speedPositive);
+			BPEva.set_motor_power(PORT_C, speedNegative); 
 		}
-		if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
-			
+		else if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
+			cout << "Hey ik ben er\n";
 			// Turns right motor off to correct left side
 			BPEva.set_motor_power(PORT_B, 0); 
-			BPEva.set_motor_power(PORT_C, (speed *-1)); 
+			BPEva.set_motor_power(PORT_C, SpeedNegative); 
 		}
-		if(BWLine > calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
-			
+		else if(BWLine > calibratedInputs.borderValueBW && CLine > calibratedInputs.borderValueC){
+			cout << "Hallo!\n";
 			// Turns left motor off to correct right side
-			BPEva.set_motor_power(PORT_B, speed); 
+			BPEva.set_motor_power(PORT_B, speedPositive); 
 			BPEva.set_motor_power(PORT_C, 0); 
 		}
 		else{
