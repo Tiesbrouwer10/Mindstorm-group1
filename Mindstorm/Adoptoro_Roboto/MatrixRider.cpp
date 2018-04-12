@@ -68,7 +68,7 @@ void riding(int &Pos, uint8_t PORT_B, uint8_t PORTC, int &Accelerator, BrickPi3 
          if(orientation == 0 || orientation == 1){
             Pos++;
          }
-         else(){
+         else{
             Pos--;
          }
      }
