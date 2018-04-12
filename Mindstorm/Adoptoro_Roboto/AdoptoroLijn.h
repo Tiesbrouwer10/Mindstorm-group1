@@ -47,7 +47,15 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 
 void sound(); // Start sound effect
 
+//EXCLUSIVE TO MATRIX
+
 void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix);
+
+void lineSeenM()uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix);
+
+void riding(int &Pos, uint8_t PORT_B, uint8_t PORTC, int &Accelerator, BrickPi3 &BPMatrix, int orientation, int borderValueBW, int borderValueC);
+
+void turning(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, int sensor);
 
 //void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues calibratedInputs); // Check if object is within range
 
