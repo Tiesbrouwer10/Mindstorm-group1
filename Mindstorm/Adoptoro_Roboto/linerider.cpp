@@ -86,5 +86,6 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 		if(objectTimer > 0){
 			objectTimer -= 1;
 		}
+		sleep(0.1);
 	}
 }
