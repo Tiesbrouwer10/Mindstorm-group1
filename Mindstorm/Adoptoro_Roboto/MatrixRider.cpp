@@ -44,7 +44,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 					sleep(0.1);
 					cout << posY << " :DE Y PLEK\n";
             			} 																					
-				else if(posY == 3){
+				else if(posY == 4){
 					cout << "IK GA BREAKEN\n";
 					BPMatrix.set_motor_power(PORT_B, 0);
 					BPMatrix.set_motor_power(PORT_C, 0);
@@ -75,13 +75,18 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
      	cout << "IN DE FUNCITE\n";
 		// if both sensors doesn't measure white
 		if(CLine < borderValueC && BWLine > borderValueBW){
+			BPMatrix.set_motor_power(rightMotor, 40);
+			BPMatrix.set_motor_power(leftMotor, 40);
+			Accelerator = 40;
      			cout << "ZIE EEN KRUISPUNT\n";
 			Pos++;
-			sleep(1);
+			if(Pos == 4){
+				return;	
+			}
 
      		}
 		// if the black/white sensor doesn't measure white
-     		else if(BWLine > borderValueBW){
+     		if(BWLine > borderValueBW){
 			sleep(0.1);
 			cout << "NAAR RECHTS BIJSTUREN\n";
 			lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
