@@ -123,7 +123,7 @@ bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine){
 	}
 	
 	if(BPEva.get_sensor(PORT_2, Light) == 0){
-		BPLine = Light.reflected;
+		BWLine = Light.reflected;
 		if(BPEva.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
 		}
