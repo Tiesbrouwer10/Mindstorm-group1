@@ -39,8 +39,8 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix){
 	
 }
-/*
+
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
 	
 }
-*/
+
