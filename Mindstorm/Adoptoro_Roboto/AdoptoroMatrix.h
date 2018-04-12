@@ -9,6 +9,7 @@ using namespace std;
 #include <iostream>
 #include <unistd.h>
 #include <vector>
+#include "BrickPi3.h"
 
 //==================================
 // Header content
