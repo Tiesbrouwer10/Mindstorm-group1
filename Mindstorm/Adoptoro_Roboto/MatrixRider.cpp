@@ -46,10 +46,10 @@ void riding(uint8_t PORT_B, uint8_t PORT_C, float &Accelerator, BrickPi3 &BPMatr
 		}
      	}
      	else if(BWLine > borderValueBW){
-		lineSeenM(PORT_C, PORT_B, Accelerator, BPLine);
+		lineSeenM(PORT_C, PORT_B, Accelerator, BPMatrix);
     	}
     	else if(CLine < borderValueC){
-		lineSeenM(PORT_B, PORT_C, Accelerator, BPLine);
+		lineSeenM(PORT_B, PORT_C, Accelerator, BPMatrix);
 	}
 	else{
 		BPMatrix.set_motor_power(PORT_C, 40);
