@@ -108,7 +108,7 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	sleep(3);
 }
 
-bool findLine(borderValues calibratedInputs., BrickPi3 BPEva, bool &foundLine){
+bool findLine(borderValues calibratedInputs, BrickPi3 BPEva, bool &foundLine){
 	
 	// Declaration
 	sensor_light_t	Light;
