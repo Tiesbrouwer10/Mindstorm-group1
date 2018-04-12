@@ -45,8 +45,8 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 		lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
 	}
 	else{
-		BPMatrix.set_motor_power(PORT_C, 40);
-		BPMatrix.set_motor_power(PORT_B, 40);
+		BPMatrix.set_motor_power(leftMotor, 40);
+		BPMatrix.set_motor_power(rightMotor, 40);
 		Accelerator = 40;
     	}
 }
