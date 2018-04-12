@@ -187,6 +187,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		//}
 		else{
 			cout << "Hij is klaar!\n";
+			sleep(0.5);
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
 			sleep(2);
@@ -195,10 +196,19 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		
 	}
 	while(true){
-		if(CLine < calibratedInputs.borderValueC){
+		
+		// Checks light sensors
+		if(BPEva.get_sensor(PORT_2, Light) == 0){
+			BWLine = Light.reflected;
+			if(BPEva.get_sensor(PORT_3,Color) == 0){
+					CLine = Color.reflected_red;
+			}
+		}
+		
+		if(CLine > calibratedInputs.borderValueC){
 			cout << "Henlo\n";
-			BPEva.set_motor_power(PORT_B, speedPositive*2);
-			BPEva.set_motor_power(PORT_C, -20);
+			BPEva.set_motor_power(PORT_B, speedPositive*3);
+			BPEva.set_motor_power(PORT_C, -10);
 	}
 			else{
 			cout << "Hij is klaar!\n";
