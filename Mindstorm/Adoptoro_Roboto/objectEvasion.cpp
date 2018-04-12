@@ -38,7 +38,7 @@ void turnCar(BrickPi3 &BPEva, int rotateDirection){
     BPEva.set_motor_power(PORT_C, (motorPower * -1));
     BPEva.set_motor_power(PORT_B, motorPower);
 	
-    while(BPEva.get_motor_encoder(PORT_C) <= 499 && BPEva.get_motor_encoder(PORT_C) >= -499){
+    while(BPEva.get_motor_encoder(PORT_C) <= 489 && BPEva.get_motor_encoder(PORT_C) >= -489){
 	    sleep(0.01);
     }
     BPEva.set_motor_power(PORT_B, 0);
@@ -164,8 +164,11 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
 		turnCar(BPEva, rotateRight);
 		drivePastObject(BPEva, calibratedInputs, true, false, foundLine);
 	}
-	
+	// Stops at Line and gets ready to continue
+	BPEva.set_motor_power(PORT_B, 0);
+	BPEva.set_motor_power(PORT_C, 0);
 	turnHead90degrees(BPEva, rotateLeft);
+
 	
 	    
     sleep(500);
