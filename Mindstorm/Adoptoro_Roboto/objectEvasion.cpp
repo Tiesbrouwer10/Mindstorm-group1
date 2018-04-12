@@ -130,8 +130,7 @@ bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine){
 		else{
 			foundLine = false;
 		}
-	}
-	return foundLine;
+return foundLine;
 }
 
 void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRight, int rotateLeft){
