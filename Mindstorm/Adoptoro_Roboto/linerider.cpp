@@ -81,11 +81,11 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 		Accelerator += 1;
 	}
 	else{
+		cout << "Accelerator activated, Accelerator power: " << Accelerator << "\n";
 		BPLine.set_motor_power(insideMotor, 15);
 		BPLine.set_motor_power(outsideMotor, Accelerator);
 		if(objectTimer > 0){
 			objectTimer -= 1;
 		}
-		sleep(0.1);
 	}
 }
