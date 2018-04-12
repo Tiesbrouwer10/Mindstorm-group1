@@ -11,7 +11,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 	
 	int BWLine = 0;
 	int CLine = 0;
-	float Accelerator = 40;
+	int Accelerator = 40;
 	int distanceToObject = 0;
 	unsigned int objectTimer = 0;
 	
@@ -30,6 +30,7 @@ void lineRider(borderValues calibratedInputs, BrickPi3 &BPLine){
 			BWLine = Light.reflected;
 			if(BPLine.get_sensor(PORT_3,Color) == 0){
 				CLine = Color.reflected_red;
+				
 				// if both the color and black/white sensors see something that is not white he ignores it and continues driving
 				if(CLine < calibratedInputs.borderValueC && BWLine > calibratedInputs.borderValueBW){
 					BPLine.set_motor_power(PORT_C, 40);
@@ -72,12 +73,13 @@ BrickPi3 &BPLine = BrickPi3 BPMain version of BP (As stated in main)
 */
 
 
-void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
-	cout << "Ik ben nu in de functie!\n";
+void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, int &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
+	cout << "Ik ben in de functie!\n";
 	if(Accelerator > 99){
 		BPLine.set_motor_power(insideMotor, -20);
 	}
 	else if(Accelerator < 100){
+		cout << "Accelerator wordt opgevoerd!\n";
 		Accelerator += 1;
 	}
 	else{
