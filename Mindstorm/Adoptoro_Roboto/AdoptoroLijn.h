@@ -44,7 +44,7 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 
 void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detectLine, bool objectFound, bool &foundLine); // Driving past object and detecting object to turn past
 
-bool findLine(borderValues calibratedInputs, BrickPi3 BPEva, bool &foundLine); // Checks if the robot as found the line from objectevasion
+bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine); // Checks if the robot as found the line from objectevasion
 
 void sound(); // Start sound effect
 
