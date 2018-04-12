@@ -80,12 +80,12 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 		sleep(1);
      	}
 	// if the black/white sensor doesn't measure white
-     	else if(BWLine > borderValueBW){
+     	else if(BWLine > borderValueBW && CLine => borderValueC){
 		cout << "NAAR RECHTS BIJSTUREN\n";
 		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
     	}
 	//if the color sensor doesn't measure white
-    	else if(CLine < borderValueC){
+    	else if(CLine < borderValueC && BWLine =< borderValueBW){
 		cout << "NAAR LINKS BIJSTUREN\n";
 		lineSeenM(rightMotor, leftMotor, Accelerator, BPMatrix);
 	}
