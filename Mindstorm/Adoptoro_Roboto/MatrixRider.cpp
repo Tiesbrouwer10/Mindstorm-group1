@@ -30,7 +30,10 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
                 
               			if(orientation == 0 && posY != 4 ){
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
-            			} 																				
+            			} 
+				else{
+					break;
+				}
          		}
       		}
    	}
@@ -38,12 +41,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
      	if(CLine < borderValueC && BWLine > borderValueBW){
-     		if(orientation == 0 || orientation == 1){
-            		Pos++;
-         		}
-         	else{
-            		Pos--;
-         	}
+     		BPMatrix.set_motor_power(rightMotor, 0);
+		BPMatrix.set_motor_power(leftMotor, 0);
+		cout << "ZIE EEN KRUISPUNT\n";
      	}
      	else if(BWLine > borderValueBW){
 		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
