@@ -16,6 +16,6 @@ using namespace std;
 //==================================
 // Header content
 
-
+void matrixRider(borderValues calibratedInputs, BrickPi3 &BPMatrix)
 
 #endif /* MATRIX_HPP */
