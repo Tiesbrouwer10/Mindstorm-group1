@@ -10,6 +10,7 @@ using namespace std;
 #include <unistd.h>
 #include <vector>
 #include "BrickPi3.h"
+#include "AdoptoroLijn.h"
 
 //==================================
 // Header content
