@@ -14,7 +14,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	sensor_light_t  Light;
  	sensor_color_t  Color;
     
- 	int posX = 0;
+ 	int posX = 4;
  	int posY = 0;
  	int CLine = 0;
  	int BWLine = 0;
@@ -22,7 +22,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	float Accelerator = 40;
  	int orientation = 0;
  
- 	while(posY != 4){
+ 	while(posX != 4 && posY != 4){
      		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
@@ -48,7 +48,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
      	if(CLine < borderValueC && BWLine > borderValueBW){
      		
-		sleep(0.5);
+		sleep(1);
 		BPMatrix.set_motor_power(rightMotor, 0);
 		BPMatrix.set_motor_power(leftMotor, 0);
 		cout << "ZIE EEN KRUISPUNT\n";
