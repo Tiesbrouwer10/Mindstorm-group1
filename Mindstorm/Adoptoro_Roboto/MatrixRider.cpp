@@ -39,6 +39,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	             		CLine = Color.reflected_red;
                 
               			if(posY != 3 ){
+					
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
 					
 					cout << posY << " :DE Y PLEK\n";
@@ -71,7 +72,8 @@ int &Pos = The coördinate where he is or moving
 
 */
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
-     	while(true){
+     	cout << "IN DE FUNCITE\n";
+	while(true){
 		// if both sensors doesn't measure white
 		if(CLine < borderValueC && BWLine > borderValueBW){
      			cout << "ZIE EEN KRUISPUNT\n";
@@ -91,6 +93,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 		}
 		// if both sensors measures white
 		else{
+			cout << "ZIET NIKS\n";
 			BPMatrix.set_motor_power(rightMotor, 40);
 			BPMatrix.set_motor_power(leftMotor, 40);
 			Accelerator = 40;
