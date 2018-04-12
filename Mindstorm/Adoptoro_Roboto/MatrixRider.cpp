@@ -8,7 +8,7 @@
 
 using namespace std; 
 
-void matrixRider(borderValues calibratedInputs, BrickPi3 &BPMatrix){
+void matrixRider(borderValuesMatrix calibratedInputs, BrickPi3 &BPMatrix){
     
     sensor_light_t  Light;
     sensor_color_t  Color;
