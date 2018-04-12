@@ -171,7 +171,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		if(CLine < calibratedInputs.borderValueC){
 			cout << "Henlo\n";
 			BPEva.set_motor_power(PORT_B, speedPositive*2);
-			BPEva.set_motor_power(PORT_C, -10);
+			BPEva.set_motor_power(PORT_C, -20);
 		}
 		//else if(BWLine < calibratedInputs.borderValueBW && CLine < calibratedInputs.borderValueC){
 		//	cout << "Hey ik ben er\n";
@@ -186,6 +186,21 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		//	BPEva.set_motor_power(PORT_C, 0); 
 		//}
 		else{
+			cout << "Hij is klaar!\n";
+			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
+			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
+			sleep(2);
+			break;
+		}
+		
+	}
+	while(true){
+		if(CLine < calibratedInputs.borderValueC){
+			cout << "Henlo\n";
+			BPEva.set_motor_power(PORT_B, speedPositive*2);
+			BPEva.set_motor_power(PORT_C, -20);
+	}
+			else{
 			cout << "Hij is klaar!\n";
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
