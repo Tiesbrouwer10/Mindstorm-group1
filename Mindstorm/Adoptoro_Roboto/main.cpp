@@ -29,7 +29,7 @@ int main(){
 		lineRider(sensorCalibration(BPMain), BPMain);
 	}
 	else if(modus == 'M'){
-		matrixRider(sensorCalibration(BPMain), BPMain);
+		//matrixRider(sensorCalibration(BPMain), BPMain);
 	}
 	
 }
