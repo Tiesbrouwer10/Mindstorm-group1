@@ -45,6 +45,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 		BPMatrix.set_motor_power(rightMotor, 0);
 		BPMatrix.set_motor_power(leftMotor, 0);
 		cout << "ZIE EEN KRUISPUNT\n";
+		Pos++;
      	}
      	else if(BWLine > borderValueBW){
 		lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
