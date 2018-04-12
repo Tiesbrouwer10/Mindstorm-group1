@@ -9,9 +9,9 @@
 
 using namespace std; 
 
-void matrix(borderValues calibratedInputs, BrickPi3 &BPLine){
+void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	
- 	sensor_light_t  Light;
+	sensor_light_t  Light;
  	sensor_color_t  Color;
     
  	int posX = 0;
@@ -23,28 +23,50 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPLine){
  	int orientation = 0;
  
  	while(posX != 4 && posY != 4){
-     		if(BPLine.get_sensor(PORT_2, Light) == 0){
+     		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
-	          		if(BPLine.get_sensor(PORT_3,Color) == 0){
-	             			CLine = Color.reflected_red;
+	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
+	             		CLine = Color.reflected_red;
                 
-              				if(orientation == 0 && posY != 4 ){
-                				cout << "ORIEN0\n";
-              				}
-              				else if(orientation == 0 && posY == 4){
-                 				cout << "ORIEN0 EN posY 4\n";
-              				}
-              				else if(orientation == 1 && posX != 4){
-                				cout << "ORIEN1\n";
-              				}
-              				else if(orientation == 2 && posY != 0){
-                 				cout << "ORIEN2\n";
-              				}
-              				else if(orientation == 3 && posX != 0){
-                 				cout << "ORIEN3\n";
-            				} 
-         			}
-      			}
-   		}
+              			if(orientation == 0 && posY != 4 ){
+                			cout << "ORIEN0\n";
+            			} 
+         		}
+      		}
+   	}
 }
 
+void riding(uint8_t PORT_B, uint8_t PORT_C, float &Accelerator, BrickPi3 &BPMatrix){
+	if(CLine < borderValueC && BWLine > borderValueBW){
+        	if(orientation == 0 || orientation == 1){
+        		Pos++;
+        	}
+        	else{
+        		Pos--;
+		}
+     	}
+     	else if(BWLine > borderValueBW){
+		lineSeenM(PORT_C, PORT_B, Accelerator, BPLine);
+    	}
+    	else if(CLine < borderValueC){
+		lineSeenM(PORT_B, PORT_C, Accelerator, BPLine);
+	}
+	else{
+		BPMatrix.set_motor_power(PORT_C, 40);
+		BPMatrix.set_motor_power(PORT_B, 40);
+		Accelerator = 40;
+    	}
+}
+
+void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
+	if(Accelerator > 69){
+		BPMatrix.set_motor_power(insideMotor, -60);
+	}else{
+		BPMatrix.set_motor_power(insideMotor, 15);
+		BPMatrix.set_motor_power(outsideMotor, Accelerator);
+	}
+	if(Accelerator <= 70){
+		Accelerator += 0.2;
+		sleep(0.01);
+	}
+}
