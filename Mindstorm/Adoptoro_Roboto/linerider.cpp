@@ -78,7 +78,7 @@ void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, uns
 		BPLine.set_motor_power(insideMotor, -20);
 	}
 	else if(Accelerator <= 100){
-		Accelerator += 0.2;
+		Accelerator += 1;
 	}
 	else{
 		BPLine.set_motor_power(insideMotor, 15);
