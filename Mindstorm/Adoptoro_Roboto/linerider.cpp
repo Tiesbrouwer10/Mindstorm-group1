@@ -74,10 +74,10 @@ BrickPi3 &BPLine = BrickPi3 BPMain version of BP (As stated in main)
 
 void lineSeen(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, unsigned int &objectTimer, BrickPi3 &BPLine){
 	
-	if(Accelerator > 89){
-		BPLine.set_motor_power(insideMotor, -90);
+	if(Accelerator > 99){
+		BPLine.set_motor_power(insideMotor, -20);
 	}
-	else if(Accelerator <= 90){
+	else if(Accelerator <= 100){
 		Accelerator += 0.2;
 	}
 	else{
