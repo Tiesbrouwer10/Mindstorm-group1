@@ -124,12 +124,12 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 
 void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t  &Light){
 	int BWLine = 0;
+	BPMatrix.set_motor_power(insideMotor,-40);
+	BPMatrix.set_motor_power(outsideMotor, 40);
+	sleep(1);
 	while(true){
 		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
-			BPMatrix.set_motor_power(insideMotor,-40);
-			BPMatrix.set_motor_power(outsideMotor, 40);
-			sleep(2);
 			if(BWLine > calibratedInputs){
 				BPMatrix.set_motor_power(insideMotor, 0);
 				BPMatrix.set_motor_power(outsideMotor, 0);
