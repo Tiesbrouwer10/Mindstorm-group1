@@ -38,11 +38,11 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
 	             		CLine = Color.reflected_red;
                 
-              			if(posY != 3 ){
+              			if(posY > 3 ){
 					
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);																					
 				}
-				else if(posY != 3){
+				else if(posY == 3){
 					cout << "BEN AAN HET BIJ STUREN\n";
 					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
 					break;
