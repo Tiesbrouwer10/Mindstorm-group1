@@ -41,13 +41,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
               			if(posY != 4 ){
 					
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
-					cout << posY << " :DE Y PLEK\n";
-            			} 																					
-				else if(posY == 4){
-					cout << "IK GA BREAKEN\n";
-					BPMatrix.set_motor_power(PORT_B, 0);
-					BPMatrix.set_motor_power(PORT_C, 0);
-					break;
+					cout << posY << " :DE Y PLEK\n";																					
 				}
          		}
       		}
@@ -81,9 +75,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 			Pos++;
 			
 			if(Pos == 4){
-				BPMatrix.set_motor_power(rightMotor, 0);
-				BPMatrix.set_motor_power(leftMotor, 0);
-				return;	
+				turning(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
 			}
 			sleep(1);
 
@@ -128,3 +120,13 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 	}
 }
 
+void turning(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, int sensor){
+	BPMatrix.set_motor_power(insideMotor,-40);
+    	BPMatrix.set_motor_power(outsideMotor, 40);
+	sleep(0.5);
+	if(sensor > calibratedInputs){
+		BPMatrix.set_motor_power(insideMotor, 0);
+    		BPMatrix.set_motor_power(outsideMotor, 0);
+	}
+	
+}
