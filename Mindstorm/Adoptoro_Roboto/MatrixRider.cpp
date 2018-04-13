@@ -78,6 +78,9 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 			Pos++;
 			sleep(1);
 			cout << "ZIE EEN KRUISPUNT\n";
+			if(Pos == 3){
+				return;
+			}
 
      		}
 		// if the black/white sensor doesn't measure white
