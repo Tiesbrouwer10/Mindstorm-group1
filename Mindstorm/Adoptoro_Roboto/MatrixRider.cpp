@@ -37,7 +37,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		cout << posY << ", " << posX << ", " << orientation << "\n";
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
-		for(unsigned int i = 0; i < 5; i++;){
+		for(unsigned int i = 0; i < 5; i++){
 			temp = getDist(BPMatrix);
 			if(temp > 0){
 				distanceToObject += temp;
