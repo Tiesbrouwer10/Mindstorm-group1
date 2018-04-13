@@ -34,12 +34,20 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	while(posX != 3 || posY != 3){
 		//gets a value from the color value and black/white sensor
      		
-		cout << posY << ", " << posX << "\n";
+		cout << posY << ", " << posX << ", " << orientation << "\n";
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
-		distanceToObject = getDist(BPMatrix);
+		for(unsigned int i = 0; i < 5; i++;){
+			temp = getDist(BPMatrix);
+			if(temp > 0){
+				distanceToObject += temp;
+			}else{
+				i--;
+			}
+		}
+		distanceToObject /= 5;
 		if(distanceToObject < 25){
-			cout << distanceToObject << "\n";
+			cout << distanceToObject << " distance \n";
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
