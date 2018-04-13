@@ -46,9 +46,6 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 				else if(posY == 3){
 					cout << "BEN AAN HET BIJ STUREN\n";
 					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
-					if(BWLine > calibratedInputs.borderValueBW){
-						break;
-					}
 				}
          		}
       		}
@@ -125,12 +122,15 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 }
 
 void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, int sensor){
-	BPMatrix.set_motor_power(insideMotor,-40);
-    	BPMatrix.set_motor_power(outsideMotor, 40);
-	sleep(2);
-	if(sensor > calibratedInputs){
-		BPMatrix.set_motor_power(insideMotor, 0);
-    		BPMatrix.set_motor_power(outsideMotor, 0);
+	while(true){
+		BPMatrix.set_motor_power(insideMotor,-40);
+    		BPMatrix.set_motor_power(outsideMotor, 40);
+		sleep(2);
+		if(sensor > calibratedInputs){
+			BPMatrix.set_motor_power(insideMotor, 0);
+    			BPMatrix.set_motor_power(outsideMotor, 0);
+			break;
+		}
 	}
 	
 }
