@@ -1,3 +1,5 @@
+// Authors: Niels, Jasper, Tony, Marc
+
 #include "AdoptoroLijn.h"
 #include "BrickPi3.h"
 
