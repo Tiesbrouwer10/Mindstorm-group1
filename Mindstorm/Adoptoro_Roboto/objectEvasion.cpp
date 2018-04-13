@@ -67,7 +67,6 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	BPEva.set_motor_power(PORT_C, 20);
 
 	while(objectCounter < 100 && objectFound == false){ // Checks wether it has found the object
-		cout << "In eerste while loop: " << objectCounter << "\n";
 		// Checks if line is found
 		if(detectLine == true){
 			foundLine = findLine(calibratedInputs, BPEva, foundLine);
@@ -79,7 +78,6 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 		distanceToObject = getDist(BPEva); // Get distance to object 
 		
 		if(distanceToObject < 15 && distanceToObject > 0){ // Test if object is found
-			cout << " OBJECT FOUND!\n";
 			objectCounter += 1;
 		}
 		else if(objectCounter > 0){
@@ -93,7 +91,6 @@ void drivePastObject(BrickPi3 &BPEva, borderValues calibratedInputs, bool detect
 	objectCounter = 0;
 	
 	while(objectCounter < 100){ // Checks wether it has passed the object
-		cout << "In eerste while loop: " << objectCounter << "\n";
 		// Checks if line is found
 		if(detectLine == true){
 			foundLine = findLine(calibratedInputs, BPEva, foundLine);
@@ -246,3 +243,13 @@ void evadeObject(BrickPi3 &BPEva, borderValues &calibratedInputs){
     // End of object Evasion
 	return;
 }
+
+// bool foundLine : boolean wether line has already been found or not, will not skip if set to false
+// int objectCounter : Checks for 50 clockpulses if object is found, preventive to errors
+// bool detectLine : Wether it has to detect the line or ignore it, will not check if set to false
+// int objectFound : Wether object still needs to be detected to jump to second while loop, if set to false 
+//  continued --> will do full object detection and driving past
+// int rotateDirection : is rotateLeft or rotateRight based on what was entered in the function call
+// BrickPi3 &BPEva : BPMain in this file
+// borderValues calibratedInputs : Contains calibrated inputs and bordervalues declared in the struct (used in line detection)
+
