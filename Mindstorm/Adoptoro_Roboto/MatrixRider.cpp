@@ -1,3 +1,5 @@
+// Authors Jasper de WInther, Tony van der Krogt
+
 //==================================
 // Headerfile includes
 
