@@ -135,7 +135,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 /*
 uint8_t insideMotor = The motor thats on the inside of the turn
 uint8_t outsideMotor = The motor thats on the outside of the turn
-float &Accelerator = 
+float &Accelerator = Accelerates and gets higher value the longer the sensor detects a black line
 BrickPi3 &BPMatrix = syncronisation of the sensors
 */
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
@@ -151,19 +151,19 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 	}
 }
 
-void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t  &Light, int &orientation){
+void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t  &Light, int &orientation){ // Turns the robot right
 	int BWLine = 0;
-	BPMatrix.set_motor_power(insideMotor,-40);
+	BPMatrix.set_motor_power(insideMotor,-40); // Motor power for turning right
 	BPMatrix.set_motor_power(outsideMotor, 40);
 	sleep(1);
 	while(true){
 		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
-			if(BWLine > calibratedInputs){
-				BPMatrix.set_motor_power(insideMotor, 0);
+			if(BWLine > calibratedInputs){ // Detects if it finds a black line
+				BPMatrix.set_motor_power(insideMotor, 0); // Stops robot
 				BPMatrix.set_motor_power(outsideMotor, 0);
-				orientation++;
-				if(orientation == 4){
+				orientation++; // Changes orientation to rotate right (+1)
+				if(orientation == 4){ // If orientation surpasses the 4th angle it will reset to the first
 					orientation = 0;
 				}
 				break;
@@ -172,19 +172,19 @@ void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, in
 	}
 }
 
-void turnLeft(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_color_t  &Color, int &orientation){
+void turnLeft(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_color_t  &Color, int &orientation){ // Turns the robot left
 	int CLine = 0;
-	BPMatrix.set_motor_power(insideMotor,-40);
+	BPMatrix.set_motor_power(insideMotor,-40); // Motor power for turning left
 	BPMatrix.set_motor_power(outsideMotor, 40);
 	sleep(1);
 	while(true){
 		if(BPMatrix.get_sensor(PORT_3, Color) == 0){
 			CLine = Color.reflected_red;
-			if(CLine < calibratedInputs){
-				BPMatrix.set_motor_power(insideMotor, 0);
+			if(CLine < calibratedInputs){ // Detects if it finds a black line
+				BPMatrix.set_motor_power(insideMotor, 0); // Stops robot
 				BPMatrix.set_motor_power(outsideMotor, 0);
-				orientation--;
-				if(orientation == -1){
+				orientation--; // Changes orientation to rotate left (-1)
+				if(orientation == -1){ // If orientation surpasses the 4th angle it will reset to the first
 					orientation = 3;
 				}
 				break;
