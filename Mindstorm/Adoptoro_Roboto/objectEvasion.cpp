@@ -1,7 +1,10 @@
+// Authors: Niels, Jasper, Matthies
+
 #include "AdoptoroLijn.h"
 #include "BrickPi3.h"
 
 using namespace std;
+
 
 int getDist(BrickPi3 &BPEva){
 	
