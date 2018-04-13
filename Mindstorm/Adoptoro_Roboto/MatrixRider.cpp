@@ -43,9 +43,10 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);																					
 					sleep(0.2);
 				}
-				else if(posY == 3){
+				else if(posY == 3 && posX != 3){
 					cout << "BEN AAN HET BIJ STUREN\n";
-					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
+					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW);
+					riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posX);
 				}
          		}
       		}
@@ -121,7 +122,7 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 	}
 }
 
-void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, int sensor){
+void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs){
 	whiel(true){
 		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 			BWLine = Light.reflected;
