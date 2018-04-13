@@ -169,7 +169,7 @@ void turnLeft(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int
 	sleep(1);
 	while(true){
 		if(BPMatrix.get_sensor(PORT_3, Color) == 0){
-			CLine = Color.reflected;
+			CLine = Color.reflected_red;
 			if(CLine > calibratedInputs){
 				BPMatrix.set_motor_power(insideMotor, 0);
 				BPMatrix.set_motor_power(outsideMotor, 0);
