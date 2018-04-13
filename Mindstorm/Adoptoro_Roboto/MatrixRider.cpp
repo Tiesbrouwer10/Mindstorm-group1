@@ -56,6 +56,8 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
 		}
 		else if(((posY < 3 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 3 && posX > -1) && (orientation == 1 ||orientation == 3))){ // If within grid
+			
+			//Object orientation driving, remembers the orientation and drives remembering the orientation
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
@@ -67,10 +69,12 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			}
 			sleep(0.2);
 		}else{
-			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
+			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation); // If about to leave matrix it will turn right
 		}
 	}
 	cout << "UIT DE WHILE LOOP\n";
+	
+	// Stops the motors
 	BPMatrix.set_motor_power(PORT_B, 0);
 	BPMatrix.set_motor_power(PORT_C, 0);
 }
