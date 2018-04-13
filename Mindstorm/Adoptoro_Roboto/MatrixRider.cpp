@@ -49,7 +49,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		else if(posY == 3 && posX != 3){
 			cout << "BEN AAN HET BIJ STUREN\n";
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light);
-			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color);
+			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
       		}
    	}
 	cout << "UIT DE WHILE LOOP\n";
