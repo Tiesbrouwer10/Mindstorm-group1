@@ -29,6 +29,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	int distanceToObject = 0;
  	float Accelerator = 40;
  	int orientation = 0;
+	int temp = 0;
  	
 	//if his position is not (4, 4) he will not stop
  	while(posX != 3 || posY != 3){
