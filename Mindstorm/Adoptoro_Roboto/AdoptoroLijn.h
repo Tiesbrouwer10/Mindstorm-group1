@@ -2,7 +2,7 @@
 #define LIJN_HPP
 
 using namespace std;
-
+// Accidentally set name in dutch 
 //==================================
 // Include guards
 
