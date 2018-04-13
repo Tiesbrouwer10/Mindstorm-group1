@@ -46,7 +46,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 				i--;
 			}
 		}
-		distanceToObject /= 6;
+		distanceToObject /= 7;
 		cout << distanceToObject << " distance \n";
 		if(distanceToObject < 25){
 			
