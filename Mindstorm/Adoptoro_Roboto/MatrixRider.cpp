@@ -52,7 +52,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation); // Drives straight ahead until crossroad
 			cout << distanceToObject << " distance \n";
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation); // Turns back left
-      		}
+      			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
+			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
+		}
 		else if(((posY < 3 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 3 && posX > -1) && (orientation == 1 ||orientation == 3))){ // If within grid
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
