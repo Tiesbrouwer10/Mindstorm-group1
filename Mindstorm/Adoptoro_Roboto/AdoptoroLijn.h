@@ -60,7 +60,7 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int &Pos, sensor_light_t &Light, sensor_color_t &Color, int &orientation); //Checks what his position on the line is
 	
-void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t &Light); // The robot turns to the right until it sees the black line again
+void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t &Light, int &orientation); // The robot turns to the right until it sees the black line again
 
 //void objectDetection(BrickPi3 BPLine, unsigned int &objectTimer, borderValues calibratedInputs); // Check if object is within range
 
