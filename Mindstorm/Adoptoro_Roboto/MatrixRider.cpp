@@ -1,4 +1,4 @@
-// Authors Jasper de WInther, Tony van der Krogt
+// Authors Jasper de Winther, Tony van der Krogt
 
 //==================================
 // Headerfile includes
