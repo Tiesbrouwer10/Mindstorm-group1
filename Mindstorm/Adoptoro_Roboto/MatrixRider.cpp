@@ -31,7 +31,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	int orientation = 0;
  	
 	//if his position is not (4, 4) he will not stop
- 	while(posX != 3 || posY != 3){
+ 	while(posX != 3 && posY != 3){
 		//gets a value from the color value and black/white sensor
      		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
