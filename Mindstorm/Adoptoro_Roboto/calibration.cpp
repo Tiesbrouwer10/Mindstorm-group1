@@ -10,7 +10,7 @@ borderValues sensorCalibration(BrickPi3 & BPCalibration){
 	int BWValue = 0;
 	int CValue = 0;
 	
-	// Black/White and Color sensor port defenition
+	// Black/White, Color and sonar sensor port defenition
 	BPCalibration.set_sensor_type(PORT_2, SENSOR_TYPE_NXT_LIGHT_ON);
 	BPCalibration.set_sensor_type(PORT_3, SENSOR_TYPE_NXT_COLOR_FULL);
 	BPCalibration.set_sensor_type(PORT_1, SENSOR_TYPE_NXT_ULTRASONIC);
@@ -25,13 +25,13 @@ borderValues sensorCalibration(BrickPi3 & BPCalibration){
 	int32_t EncoderB = BPCalibration.get_motor_encoder(PORT_B);
 	int32_t EncoderC = BPCalibration.get_motor_encoder(PORT_C);
 	
-	
+	// Creating structs
 	sensor_light_t		Light;
 	sensor_color_t		Color;
 	
 	error = 0;
 	
-	
+	// Allows sesnors to start
 	sleep(2);
 	
 	for(unsigned int i = 0; i < 10; i++){
@@ -44,6 +44,7 @@ borderValues sensorCalibration(BrickPi3 & BPCalibration){
 		
 		sleep(0.1);
 	}
+	// calculates avarage values
 	BWValue /= 10;
 	CValue /= 10;
 	
