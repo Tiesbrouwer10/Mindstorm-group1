@@ -38,7 +38,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
 		distanceToObject = getDist(BPMatrix);
-		if((((posY < 4 && posY > -1) && orientation == 0) || ((posX < 4 && posX > -1)&& orientation == 1)) && distanceToObject > 30){
+		if((((posY < 4 && posY > -1) && orientation == 0) || ((posX < 4 && posX > -1)&& orientation == 1))){
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
