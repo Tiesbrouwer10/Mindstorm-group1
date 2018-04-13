@@ -31,18 +31,18 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
  	int orientation = 0;
  	
 	//if his position is not (4, 4) he will not stop
- 	while(posX != 4 || posY != 4){
+ 	while(posX != 3 || posY != 3){
 		//gets a value from the color value and black/white sensor
      		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
 	             		CLine = Color.reflected_red;
                 
-              			if(posY != 4 ){
+              			if(posY != 3 ){
 					
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);																					
 				}
-				else if(posY != 4){
+				else if(posY != 3){
 					cout << "BEN AAN HET BIJ STUREN\n";
 					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
 					break;
@@ -69,7 +69,6 @@ int &Pos = The coördinate where he is or moving
 
 */
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos){
-     	cout << "IN DE FUNCITE\n";
 		// if both sensors doesn't measure white
 		if(CLine < borderValueC && BWLine > borderValueBW){
 			BPMatrix.set_motor_power(rightMotor, 40);
