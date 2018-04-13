@@ -35,25 +35,25 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		cout << posY << ", " << posX << ", " << orientation << "\n";
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
-		for(unsigned int i = 0; i < 5; i++){
+		for(unsigned int i = 0; i < 5; i++){ // Asks for 5 ultrasonic values
 			temp = getDist(BPMatrix);
 			if(temp > 0){
 				distanceToObject += temp;
-			}else if(i >= 0){
+			}else if(i >= 0){ // If ultrasonic error is detected, (value 0) it will ask for another value
 				i--;
 			}
 		}
-		distanceToObject /= 8;
+		distanceToObject /= 8; 
 		cout << distanceToObject << " distance \n";
-		if(distanceToObject < 25){
+		if(distanceToObject < 25){ // Driving around object
 			
-			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
+			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation); // Turns right
 			cout << distanceToObject << " distance \n";
-			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
+			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation); // Drives straight ahead until crossroad
 			cout << distanceToObject << " distance \n";
-			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
+			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation); // Turns back left
       		}
-		else if(((posY < 3 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 3 && posX > -1) && (orientation == 1 ||orientation == 3))){
+		else if(((posY < 3 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 3 && posX > -1) && (orientation == 1 ||orientation == 3))){ // If within grid
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
