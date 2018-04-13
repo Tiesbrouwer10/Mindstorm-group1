@@ -33,22 +33,23 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	//if his position is not (4, 4) he will not stop
  	while(posX != 3 || posY != 3){
 		//gets a value from the color value and black/white sensor
-     		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
-	       		BWLine = Light.reflected;
-	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
-	             		CLine = Color.reflected_red;
-                		cout << posY << ", " << posX << "\n";
-              			if(posY != 3 ){
-					
-                			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY, Light, Color);																					
-					sleep(0.2);
-				}
-				else if(posY == 3 && posX != 3){
-					cout << "BEN AAN HET BIJ STUREN\n";
-					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light);
-					riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posX, Light, Color);
-				}
-         		}
+     		
+		cout << posY << ", " << posX << "\n";
+		BPMatrix.set_motor_power(PORT_B, 0);
+		BPMatrix.set_motor_power(PORT_C, 0);
+		distanceToObject = getDist(BPMatrix);
+		if(((posY != 3 && orientation == 0) || (posX != 3 && orientation == 1)) && distanceToObject > 30){
+			if (orientation == 0){
+				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
+			}else if(orientation == 1){
+				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
+			}
+			sleep(0.2);
+		}
+		else if(posY == 3 && posX != 3){
+			cout << "BEN AAN HET BIJ STUREN\n";
+			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light);
+			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color);
       		}
    	}
 	cout << "UIT DE WHILE LOOP\n";
@@ -69,7 +70,7 @@ int orientation = what position he is facing (0 = N, 1 = E, 2 = S, 3 = W)
 int &Pos = The coördinate where he is or moving
 
 */
-void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int orientation, int &Pos, sensor_light_t  &Light, sensor_color_t  &Color){
+void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int &Pos, sensor_light_t  &Light, sensor_color_t  &Color, int &orientation){
 	int CLine = 0;
  	int BWLine = 0;
 	while(true){
