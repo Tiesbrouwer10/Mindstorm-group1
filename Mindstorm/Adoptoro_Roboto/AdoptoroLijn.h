@@ -65,6 +65,7 @@ bool findLine(borderValues calibratedInputs, BrickPi3 &BPEva, bool &foundLine);
 // Returns bot on top of line to continue line riding
 void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRight, int rotateLeft); 
 
+
 //EXCLUSIVE TO MATRIX
 
 // Starts the matrix code
