@@ -44,7 +44,6 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			}
 		}
 		distanceToObject /= 8; 
-		cout << distanceToObject << " distance \n";
 		if(distanceToObject < 25){ // Driving around object
 			
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation); // Turns right
@@ -57,7 +56,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		}
 		else if(((posY < 3 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 3 && posX > -1) && (orientation == 1 ||orientation == 3))){ // If within grid
 			
-			//Object orientation driving, remembers the orientation and drives remembering the orientation
+			//Object orientation driving, remembers the orientation and drives remembering the orientation and position in the grid
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
@@ -72,7 +71,6 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation); // If about to leave matrix it will turn right
 		}
 	}
-	cout << "UIT DE WHILE LOOP\n";
 	
 	// Stops the motors
 	BPMatrix.set_motor_power(PORT_B, 0);
@@ -94,23 +92,22 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 	int CLine = 0;
  	int BWLine = 0;
 	while(true){
-		if(BPMatrix.get_sensor(PORT_2, Light) == 0){
+		if(BPMatrix.get_sensor(PORT_2, Light) == 0){ 
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
 	             		CLine = Color.reflected_red;
 				// if both sensors doesn't measure white
-				if(CLine < borderValueC && BWLine > borderValueBW){
+				if(CLine < borderValueC && BWLine > borderValueBW){ // Checks if it rotates the right way
 					BPMatrix.set_motor_power(rightMotor, 40);
 					BPMatrix.set_motor_power(leftMotor, 40);
 					Accelerator = 40;
-					if(orientation == 0 || orientation == 1){
-						Pos++;
+					if(orientation == 0 || orientation == 1){ // Changes position based on orientation
+						Pos++; // Changes position (+1)
 					}
 					else{
-						Pos--;
+						Pos--; // Changes position (-1)
 					}
 					sleep(1);
-					cout << "ZIE EEN KRUISPUNT\n";
 					return;
 
 				}
