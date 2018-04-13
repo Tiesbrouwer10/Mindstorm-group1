@@ -38,7 +38,12 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
 		distanceToObject = getDist(BPMatrix);
-		if((((posY < 3 && posY > -1) && orientation == 0) || ((posX < 3 && posX > -1)&& orientation == 1))){
+		if(distanceToObject < 30){
+			cout << "BEN AAN HET BIJ STUREN\n";
+			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
+			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
+      		}
+		else if((((posY < 3 && posY > -1) && orientation == 0) || ((posX < 3 && posX > -1)&& orientation == 1))){
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
@@ -49,12 +54,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
 			}
 			sleep(0.2);
-		}
-		else{
-			cout << "BEN AAN HET BIJ STUREN\n";
+		}else{
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
-      		}
    	}
 	cout << "UIT DE WHILE LOOP\n";
 	BPMatrix.set_motor_power(PORT_B, 0);
