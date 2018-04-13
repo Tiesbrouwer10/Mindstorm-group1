@@ -75,7 +75,7 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 			Pos++;
 			
 			if(Pos == 4){
-				turning(PORT_B, PORT_C, BPMatrix, borderValueBW, BWLine);
+				turnRight(PORT_B, PORT_C, BPMatrix, borderValueBW, BWLine);
 			}
 			sleep(1);
 
