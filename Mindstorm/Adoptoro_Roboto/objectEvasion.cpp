@@ -173,14 +173,14 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		}
 		
 		if(CLine < calibratedInputs.borderValueC){ // Drives until it finds white
-			BPEva.set_motor_power(PORT_B, 60);
-			BPEva.set_motor_power(PORT_C, -20);
+			BPEva.set_motor_power(PORT_B, 40);
+			BPEva.set_motor_power(PORT_C, 0);
 		}
 		else{
-			sleep(0.5);
+			sleep(2);
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
-			sleep(2);
+			sleep(0.5);
 			break;
 		}
 		
@@ -198,8 +198,8 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 		}
 		
 		if(CLine > calibratedInputs.borderValueC){
-			BPEva.set_motor_power(PORT_B, 90);
-			BPEva.set_motor_power(PORT_C, -10);
+			BPEva.set_motor_power(PORT_B, 40);
+			BPEva.set_motor_power(PORT_C, -40);
 	}
 			else{
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
