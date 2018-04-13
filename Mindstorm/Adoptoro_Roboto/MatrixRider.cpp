@@ -39,9 +39,11 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		BPMatrix.set_motor_power(PORT_C, 0);
 		distanceToObject = getDist(BPMatrix);
 		if(distanceToObject < 30){
-			cout << "BEN AAN HET BIJ STUREN\n";
+			cout << distanceToObject << "\n";
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
-			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
+			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
+			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Light, orientation);
+			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);	
       		}
 		else if((((posY < 3 && posY > -1) && orientation == 0) || ((posX < 3 && posX > -1)&& orientation == 1))){
 			if (orientation == 0){
@@ -56,8 +58,6 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			sleep(0.2);
 		}else{
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
-			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
-
 		}
 	}
 	cout << "UIT DE WHILE LOOP\n";
@@ -155,6 +155,27 @@ void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, in
 				orientation++;
 				if(orientation == 4){
 					orientation = 0;
+				}
+				break;
+			}
+		}
+	}
+}
+
+void turnLeft(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_color_t  &Color, int &orientation){
+	int CLine = 0;
+	BPMatrix.set_motor_power(insideMotor,-40);
+	BPMatrix.set_motor_power(outsideMotor, 40);
+	sleep(1);
+	while(true){
+		if(BPMatrix.get_sensor(PORT_3, Color) == 0){
+			CLine = COlor.reflected;
+			if(CLine > calibratedInputs){
+				BPMatrix.set_motor_power(insideMotor, 0);
+				BPMatrix.set_motor_power(outsideMotor, 0);
+				orientation--;
+				if(orientation == -1){
+					orientation = 3;
 				}
 				break;
 			}
