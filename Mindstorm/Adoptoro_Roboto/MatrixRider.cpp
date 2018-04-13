@@ -43,6 +43,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
 					cout << posY << " :DE Y PLEK\n";																					
 				}
+				else if(posY != 4){
+					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
+				}
          		}
       		}
    	}
