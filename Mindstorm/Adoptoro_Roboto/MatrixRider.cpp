@@ -44,6 +44,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 					cout << posY << " :DE Y PLEK\n";																					
 				}
 				else if(posY != 4){
+					cout << "BEN AAN HET BIJ STUREN\n";
 					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
 				}
          		}
