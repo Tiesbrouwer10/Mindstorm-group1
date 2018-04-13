@@ -69,7 +69,7 @@ int orientation = what position he is facing (0 = N, 1 = E, 2 = S, 3 = W)
 int &Pos = The coördinate where he is or moving
 
 */
-void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int orientation, int &Possensor_light_t  Light, sensor_color_t  Color){
+void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int orientation, int &Pos, sensor_light_t  &Light, sensor_color_t  &Color){
 	int CLine = 0;
  	int BWLine = 0;
 	while(true){
