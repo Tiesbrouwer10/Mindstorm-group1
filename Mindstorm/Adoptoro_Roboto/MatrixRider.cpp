@@ -57,7 +57,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		}else{
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
-   	}
+
+		}
+	}
 	cout << "UIT DE WHILE LOOP\n";
 	BPMatrix.set_motor_power(PORT_B, 0);
 	BPMatrix.set_motor_power(PORT_C, 0);
