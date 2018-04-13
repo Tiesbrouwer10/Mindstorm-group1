@@ -122,7 +122,6 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 }
 
 void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, int sensor){
-	while(true){
 		BPMatrix.set_motor_power(insideMotor,-40);
     		BPMatrix.set_motor_power(outsideMotor, 40);
 		sleep(2);
@@ -131,6 +130,4 @@ void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, in
     			BPMatrix.set_motor_power(outsideMotor, 0);
 			break;
 		}
-	}
-	
 }
