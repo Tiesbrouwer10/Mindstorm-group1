@@ -58,7 +58,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix); // Starts the ma
 
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix); // The robot reposition itself until its correctly on the line
 
-void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int CLine, int BWLine, int borderValueC, int borderValueBW, int orientation, int &Pos); //Checks what his position on the line is
+void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int orientation, int &Pos, sensor_light_t &Light, sensor_color_t &Color); //Checks what his position on the line is
 	
 void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t &Light); // The robot turns to the right until it sees the black line again
 
