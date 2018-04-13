@@ -1,4 +1,3 @@
-
 //==================================
 // Headerfile includes
 
@@ -10,10 +9,8 @@
 using namespace std; 
 
 /*
-
 borderValues calibratedInputs = The struct with the values of what white is for the color and black/white sensor
 BrickPi3 &BPMatrix = the syncronisation of all the sensors
-
 */
 
 void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
@@ -56,7 +53,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			cout << distanceToObject << " distance \n";
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
       		}
-		else if((((posY < 3 && posY > -1)) || ((posX < 3 && posX > -1)))){
+		else if((((posY < 3 && posY > -1) && orientation == 0) || ((posX < 3 && posX > -1)&& orientation == 1))){
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
@@ -76,7 +73,6 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	BPMatrix.set_motor_power(PORT_C, 0);
 }
 /*
-
 uint8_t rightMotor = The motor that is on the right side
 uint8_t leftMotor = The motor that is on the left side
 float &Accelerator = The speed of the motor(s)  
@@ -87,7 +83,6 @@ int borderValueC = The value for what the color sensor sees as white
 int borderValueBW = The value for what the black/white sensor sees as white 
 int orientation = what position he is facing (0 = N, 1 = E, 2 = S, 3 = W) 
 int &Pos = The coördinate where he is or moving
-
 */
 void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 &BPMatrix, int borderValueC, int borderValueBW, int &Pos, sensor_light_t  &Light, sensor_color_t  &Color, int &orientation){
 	int CLine = 0;
@@ -132,12 +127,10 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 	}
 }
 /*
-
 uint8_t insideMotor = The motor thats on the inside of the turn
 uint8_t outsideMotor = The motor thats on the outside of the turn
 float &Accelerator = 
 BrickPi3 &BPMatrix = syncronisation of the sensors
-
 */
 void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, BrickPi3 &BPMatrix){
 	if(Accelerator > 69){
