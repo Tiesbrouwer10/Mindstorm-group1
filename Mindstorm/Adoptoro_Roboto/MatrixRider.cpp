@@ -29,7 +29,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	int temp = 0;
  	
 	//if his position is not (4, 4) he will not stop
- 	while(posX != 3 || posY != 3){
+ 	while(posX != 4 || posY != 4){
 		//gets a value from the color value and black/white sensor
      		
 		cout << posY << ", " << posX << ", " << orientation << "\n";
@@ -54,7 +54,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
       			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
 		}
-		else if(((posY < 3 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 3 && posX > -1) && (orientation == 1 ||orientation == 3))){ // If within grid
+		else if(((posY < 4 && posY > -1) && (orientation == 0 ||orientation == 2)) || ((posX < 4 && posX > -1) && (orientation == 1 ||orientation == 3))){ // If within grid
 			
 			//Object orientation driving, remembers the orientation and drives remembering the orientation and position in the grid
 			if (orientation == 0){
