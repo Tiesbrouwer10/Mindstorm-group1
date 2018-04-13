@@ -42,7 +42,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			cout << distanceToObject << "\n";
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
-			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Light, orientation);
+			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);	
       		}
 		else if((((posY < 3 && posY > -1) && orientation == 0) || ((posX < 3 && posX > -1)&& orientation == 1))){
@@ -169,7 +169,7 @@ void turnLeft(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int
 	sleep(1);
 	while(true){
 		if(BPMatrix.get_sensor(PORT_3, Color) == 0){
-			CLine = COlor.reflected;
+			CLine = Color.reflected;
 			if(CLine > calibratedInputs){
 				BPMatrix.set_motor_power(insideMotor, 0);
 				BPMatrix.set_motor_power(outsideMotor, 0);
