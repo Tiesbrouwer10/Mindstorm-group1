@@ -47,8 +47,9 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 			}
 		}
 		distanceToObject /= 5;
+		cout << distanceToObject << " distance \n";
 		if(distanceToObject < 25){
-			cout << distanceToObject << " distance \n";
+			
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
