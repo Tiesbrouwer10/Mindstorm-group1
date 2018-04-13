@@ -38,17 +38,21 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
 		distanceToObject = getDist(BPMatrix);
-		if(((posY != 3 && orientation == 0) || (posX != 3 && orientation == 1)) && distanceToObject > 30){
+		if((((posY < 4 && posY > -1) && orientation == 0) || ((posX < 4 && posX > -1)&& orientation == 1)) && distanceToObject > 30){
 			if (orientation == 0){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);																					
 			}else if(orientation == 1){
 				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
+			}else if(orientation == 2){
+				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);
+			}else if(orientation == 3){
+				riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
 			}
 			sleep(0.2);
 		}
-		else if(posY == 3 && posX != 3){
+		else{
 			cout << "BEN AAN HET BIJ STUREN\n";
-			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light);
+			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);
       		}
    	}
@@ -83,7 +87,12 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 					BPMatrix.set_motor_power(rightMotor, 40);
 					BPMatrix.set_motor_power(leftMotor, 40);
 					Accelerator = 40;
-					Pos++;
+					if(orientation == 0 || orientation == 1){
+						Pos++;
+					}
+					else{
+						Pos--;
+					}
 					sleep(1);
 					cout << "ZIE EEN KRUISPUNT\n";
 					return;
@@ -128,7 +137,7 @@ void lineSeenM(uint8_t insideMotor, uint8_t outsideMotor, float &Accelerator, Br
 	}
 }
 
-void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t  &Light){
+void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, int calibratedInputs, sensor_light_t  &Light, int orientation){
 	int BWLine = 0;
 	BPMatrix.set_motor_power(insideMotor,-40);
 	BPMatrix.set_motor_power(outsideMotor, 40);
@@ -139,6 +148,10 @@ void turnRight(uint8_t insideMotor, uint8_t outsideMotor, BrickPi3 &BPMatrix, in
 			if(BWLine > calibratedInputs){
 				BPMatrix.set_motor_power(insideMotor, 0);
 				BPMatrix.set_motor_power(outsideMotor, 0);
+				orientation++;
+				if(orientation == 4){
+					orientation = 0;
+				}
 				break;
 			}
 		}
