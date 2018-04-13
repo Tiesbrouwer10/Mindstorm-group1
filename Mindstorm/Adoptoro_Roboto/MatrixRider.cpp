@@ -41,6 +41,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
               			if(posY < 4 ){
 					
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);																					
+					sleep(0.2);
 				}
 				else if(posY == 3){
 					cout << "BEN AAN HET BIJ STUREN\n";
