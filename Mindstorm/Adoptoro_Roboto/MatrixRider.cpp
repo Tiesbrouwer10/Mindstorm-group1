@@ -37,7 +37,7 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 	       		BWLine = Light.reflected;
 	          	if(BPMatrix.get_sensor(PORT_3,Color) == 0){
 	             		CLine = Color.reflected_red;
-                
+                		cout << posY << ", " << posX << "\n";
               			if(posY != 3 ){
 					
                 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);																					
