@@ -38,12 +38,11 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
 		BPMatrix.set_motor_power(PORT_B, 0);
 		BPMatrix.set_motor_power(PORT_C, 0);
 		distanceToObject = getDist(BPMatrix);
-		if(distanceToObject < 30){
+		if(distanceToObject < 25){
 			cout << distanceToObject << "\n";
 			turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, Light, orientation);
 			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posX, Light, Color, orientation);	
 			turnLeft(PORT_C, PORT_B, BPMatrix, calibratedInputs.borderValueC, Color, orientation);
-			riding(PORT_B, PORT_C, Accelerator, BPMatrix, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, posY, Light, Color, orientation);	
       		}
 		else if((((posY < 3 && posY > -1) && orientation == 0) || ((posX < 3 && posX > -1)&& orientation == 1))){
 			if (orientation == 0){
