@@ -177,7 +177,7 @@ void returnToLine(BrickPi3 &BPEva, borderValues calibratedInputs, int rotateRigh
 			BPEva.set_motor_power(PORT_C, 0);
 		}
 		else{
-			sleep(2);
+			sleep(1.5);
 			BPEva.set_motor_power(PORT_B, 0); // Set right wheel to stop
 			BPEva.set_motor_power(PORT_C, 0); // Set left wheel to stop
 			sleep(0.5);
