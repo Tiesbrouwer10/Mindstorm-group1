@@ -40,12 +40,12 @@ void matrix(borderValues calibratedInputs, BrickPi3 &BPMatrix){
                 
               			if(posY != 4 ){
 					
-                			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);
-					cout << posY << " :DE Y PLEK\n";																					
+                			riding(PORT_B, PORT_C, Accelerator, BPMatrix, CLine, BWLine, calibratedInputs.borderValueC, calibratedInputs.borderValueBW, orientation, posY);																					
 				}
 				else if(posY != 4){
 					cout << "BEN AAN HET BIJ STUREN\n";
 					turnRight(PORT_B, PORT_C, BPMatrix, calibratedInputs.borderValueBW, BWLine);
+					break;
 				}
          		}
       		}
@@ -75,15 +75,13 @@ void riding(uint8_t rightMotor, uint8_t leftMotor, float &Accelerator, BrickPi3 
 			BPMatrix.set_motor_power(rightMotor, 40);
 			BPMatrix.set_motor_power(leftMotor, 40);
 			Accelerator = 40;
-     			cout << "ZIE EEN KRUISPUNT\n";
 			Pos++;
-			
 			sleep(1);
+			cout << "ZIE EEN KRUISPUNT\n";
 
      		}
 		// if the black/white sensor doesn't measure white
      		if(BWLine > borderValueBW){
-			sleep(0.1);
 			cout << "NAAR RECHTS BIJSTUREN\n";
 			lineSeenM(leftMotor, rightMotor, Accelerator, BPMatrix);
     		}
